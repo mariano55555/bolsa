@@ -23,6 +23,11 @@ public function logout()
 }
 
 
+public function home()
+{
+	# code...
+}
+
 /**
  * index method
  *
