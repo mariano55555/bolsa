@@ -9,15 +9,10 @@ class UsersController extends AppController {
 
 
 
-
-
-
-
-
 public function login()
 {
 	# code...
-	
+
 }
 
 
@@ -69,7 +64,7 @@ public function logout()
 			}
 		}
 		$groups = $this->User->Group->find('list');
-		$jobs = $this->User->Job->find('list');
+		$jobs   = $this->User->Job->find('list');
 		$this->set(compact('groups', 'jobs'));
 	}
 
@@ -96,7 +91,7 @@ public function logout()
 			$this->request->data = $this->User->find('first', $options);
 		}
 		$groups = $this->User->Group->find('list');
-		$jobs = $this->User->Job->find('list');
+		$jobs   = $this->User->Job->find('list');
 		$this->set(compact('groups', 'jobs'));
 	}
 
@@ -163,7 +158,7 @@ public function logout()
 			}
 		}
 		$groups = $this->User->Group->find('list');
-		$jobs = $this->User->Job->find('list');
+		$jobs   = $this->User->Job->find('list');
 		$this->set(compact('groups', 'jobs'));
 	}
 
@@ -190,7 +185,7 @@ public function logout()
 			$this->request->data = $this->User->find('first', $options);
 		}
 		$groups = $this->User->Group->find('list');
-		$jobs = $this->User->Job->find('list');
+		$jobs   = $this->User->Job->find('list');
 		$this->set(compact('groups', 'jobs'));
 	}
 
