@@ -6,7 +6,7 @@ App::uses('AppModel', 'Model');
  * @property User $User
  */
 class Access extends AppModel {
-
+	public $actsAs = array('WhoDidIt');
 /**
  * Validation rules
  *

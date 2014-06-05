@@ -5,7 +5,7 @@ App::uses('AppModel', 'Model');
  *
  */
 class Tag extends AppModel {
-
+	public $actsAs = array('WhoDidIt');
 /**
  * Display field
  *

@@ -43,13 +43,13 @@
 <body>
 	<div id="container">
 		<?php echo $this->Element('default/topheader'); ?>
-		<?php echo $this->Element('default/header'); ?>
+		<?php //echo $this->Element('default/header'); ?>
 		<div id="content1">
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
 		<?php echo $this->Element('default/footer'); ?>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
+	<?php //echo $this->element('sql_dump'); ?>
 </body>
 </html>

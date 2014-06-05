@@ -16,7 +16,21 @@ class JobsControllerTest extends ControllerTestCase {
 		'app.job',
 		'app.company',
 		'app.contact',
+		'app.city',
+		'app.country',
+		'app.area',
+		'app.areas_job',
+		'app.contract',
+		'app.contracts_job',
+		'app.experience',
+		'app.experiences_job',
+		'app.industry',
+		'app.industries_job',
 		'app.user',
+		'app.group',
+		'app.access',
+		'app.subscription',
+		'app.tag',
 		'app.jobs_user'
 	);
 

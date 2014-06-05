@@ -7,7 +7,7 @@ App::uses('AppModel', 'Model');
  * @property Job $Job
  */
 class Company extends AppModel {
-
+	public $actsAs = array('WhoDidIt');
 /**
  * Display field
  *

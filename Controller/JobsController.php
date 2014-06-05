@@ -15,6 +15,7 @@ class JobsController extends AppController {
 	public function index() {
 		$this->Job->recursive = 0;
 		$this->set('jobs', $this->paginate());
+		$this->__list();
 	}
 
 /**
@@ -47,9 +48,7 @@ class JobsController extends AppController {
 				$this->Session->setFlash(__('The job could not be saved. Please, try again.'));
 			}
 		}
-		$companies = $this->Job->Company->find('list');
-		$users = $this->Job->User->find('list');
-		$this->set(compact('companies', 'users'));
+		$this->__list();
 	}
 
 /**
@@ -74,9 +73,7 @@ class JobsController extends AppController {
 			$options = array('conditions' => array('Job.' . $this->Job->primaryKey => $id));
 			$this->request->data = $this->Job->find('first', $options);
 		}
-		$companies = $this->Job->Company->find('list');
-		$users = $this->Job->User->find('list');
-		$this->set(compact('companies', 'users'));
+		$this->__list();
 	}
 
 /**
@@ -141,9 +138,7 @@ class JobsController extends AppController {
 				$this->Session->setFlash(__('The job could not be saved. Please, try again.'));
 			}
 		}
-		$companies = $this->Job->Company->find('list');
-		$users = $this->Job->User->find('list');
-		$this->set(compact('companies', 'users'));
+		$this->__list();
 	}
 
 /**
@@ -168,9 +163,7 @@ class JobsController extends AppController {
 			$options = array('conditions' => array('Job.' . $this->Job->primaryKey => $id));
 			$this->request->data = $this->Job->find('first', $options);
 		}
-		$companies = $this->Job->Company->find('list');
-		$users = $this->Job->User->find('list');
-		$this->set(compact('companies', 'users'));
+		$this->__list();
 	}
 
 /**
@@ -194,4 +187,28 @@ class JobsController extends AppController {
 		$this->Session->setFlash(__('Job was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+
+
+	//CUSTOM
+
+
+
+
+	//PRIVATE
+
+	private function __list()
+	{
+		$companies   = $this->Job->Company->find('list');
+		$cities      = $this->Job->City->find('list');
+		$areas       = $this->Job->Area->find('list');
+		$contracts   = $this->Job->Contract->find('list');
+		$experiences = $this->Job->Experience->find('list');
+		$industries  = $this->Job->Industry->find('list');
+		$users       = $this->Job->User->find('list');
+		$this->set(compact('companies', 'cities', 'areas', 'contracts', 'experiences', 'industries', 'users'));
+	}
+
+
+
 }

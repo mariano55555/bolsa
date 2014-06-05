@@ -9,7 +9,7 @@ App::uses('AppModel', 'Model');
  * @property Job $Job
  */
 class User extends AppModel {
-
+	public $actsAs = array('WhoDidIt');
 /**
  * Display field
  *

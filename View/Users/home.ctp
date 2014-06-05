@@ -681,3 +681,94 @@
   </div>
 </div>
 <!-- /Content --> 
+
+<!-- Footer -->
+<!--<div id="footer">-->
+  <section class="row-fluid">
+    <div id="stories" class="block border">
+      <div class="inner">
+        <section class="row-fluid">
+          <section class="span12 storyblock">
+            <h2>Success Stories</h2>
+            <div class="block-content butt-flexslider">
+              <ul class="slides">
+                <li class="user-avatar"> <a href="#"><img src="content/users-avatar/user-1.jpg" alt="User" height="114" width="114"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-2.jpg" alt="User" height="114" width="113"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-3.jpg" alt="User" height="114" width="114"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-4.jpg" alt="User" height="114" width="113"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-5.jpg" alt="User" height="114" width="114"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-2.jpg" alt="User" height="114" width="113"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-3.jpg" alt="User" height="114" width="114"/>
+                  <div class="effect"></div>
+                  </a> </li>
+                <li class="user-avatar"> <a href="#"><img src="content/users-avatar/user-5.jpg" alt="User" height="114" width="114"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-4.jpg" alt="User" height="114" width="113"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-3.jpg" alt="User" height="114" width="114"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-2.jpg" alt="User" height="114" width="113"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-1.jpg" alt="User" height="114" width="114"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-2.jpg" alt="User" height="114" width="113"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-3.jpg" alt="User" height="114" width="114"/>
+                  <div class="effect"></div>
+                  </a> </li>
+                <li class="user-avatar"> <a href="#"><img src="content/users-avatar/user-3.jpg" alt="User" height="114" width="114"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-2.jpg" alt="User" height="114" width="113"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-5.jpg" alt="User" height="114" width="114"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-4.jpg" alt="User" height="114" width="113"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-1.jpg" alt="User" height="114" width="114"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-2.jpg" alt="User" height="114" width="113"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-3.jpg" alt="User" height="114" width="114"/>
+                  <div class="effect"></div>
+                  </a> </li>
+                <li class="user-avatar"> <a href="#"> <img src="content/users-avatar/user-1.jpg" alt="User" height="114" width="114"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-4.jpg" alt="User" height="114" width="113"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-2.jpg" alt="User" height="114" width="114"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-5.jpg" alt="User" height="114" width="113"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-3.jpg" alt="User" height="114" width="114"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-2.jpg" alt="User" height="114" width="113"/>
+                  <div class="effect"></div>
+                  </a> <a href="#"><img src="content/users-avatar/user-3.jpg" alt="User" height="114" width="114"/>
+                  <div class="effect"></div>
+                  </a> </li>
+              </ul>
+              <div class="story_block">
+                <div class="before"></div>
+                <div class="title">Jane’s Success Story</div>
+                <div class="text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.
+                  Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam.
+                  Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus. </div>
+                <div class="link">Jane Smithson</div>
+                <div class="info"> Company Name: UOU Apps<br/>
+                  Job Role: Technology/IT<br/>
+                  Date Posted: 17 June 2013 </div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+  </section>
+<!---</div>-->
+<!-- /Footer -->

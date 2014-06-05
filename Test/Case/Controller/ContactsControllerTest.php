@@ -15,7 +15,13 @@ class ContactsControllerTest extends ControllerTestCase {
 	public $fixtures = array(
 		'app.contact',
 		'app.company',
-		'app.job'
+		'app.job',
+		'app.user',
+		'app.group',
+		'app.access',
+		'app.subscription',
+		'app.tag',
+		'app.jobs_user'
 	);
 
 /**

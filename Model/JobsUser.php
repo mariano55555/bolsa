@@ -7,7 +7,7 @@ App::uses('AppModel', 'Model');
  * @property Job $Job
  */
 class JobsUser extends AppModel {
-
+	public $actsAs = array('WhoDidIt');
 /**
  * Validation rules
  *

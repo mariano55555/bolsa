@@ -4,10 +4,15 @@ App::uses('AppModel', 'Model');
  * Job Model
  *
  * @property Company $Company
+ * @property City $City
+ * @property Area $Area
+ * @property Contract $Contract
+ * @property Experience $Experience
+ * @property Industry $Industry
  * @property User $User
  */
 class Job extends AppModel {
-
+	public $actsAs = array('WhoDidIt');
 /**
  * Display field
  *
@@ -57,6 +62,13 @@ class Job extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'City' => array(
+			'className' => 'City',
+			'foreignKey' => 'city_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 
@@ -66,6 +78,66 @@ class Job extends AppModel {
  * @var array
  */
 	public $hasAndBelongsToMany = array(
+		'Area' => array(
+			'className' => 'Area',
+			'joinTable' => 'areas_jobs',
+			'foreignKey' => 'job_id',
+			'associationForeignKey' => 'area_id',
+			'unique' => 'keepExisting',
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		),
+		'Contract' => array(
+			'className' => 'Contract',
+			'joinTable' => 'contracts_jobs',
+			'foreignKey' => 'job_id',
+			'associationForeignKey' => 'contract_id',
+			'unique' => 'keepExisting',
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		),
+		'Experience' => array(
+			'className' => 'Experience',
+			'joinTable' => 'experiences_jobs',
+			'foreignKey' => 'job_id',
+			'associationForeignKey' => 'experience_id',
+			'unique' => 'keepExisting',
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		),
+		'Industry' => array(
+			'className' => 'Industry',
+			'joinTable' => 'industries_jobs',
+			'foreignKey' => 'job_id',
+			'associationForeignKey' => 'industry_id',
+			'unique' => 'keepExisting',
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'finderQuery' => '',
+			'deleteQuery' => '',
+			'insertQuery' => ''
+		),
 		'User' => array(
 			'className' => 'User',
 			'joinTable' => 'jobs_users',

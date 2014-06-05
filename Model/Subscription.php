@@ -7,7 +7,7 @@ App::uses('AppModel', 'Model');
  * @property Tag $Tag
  */
 class Subscription extends AppModel {
-
+	public $actsAs = array('WhoDidIt');
 /**
  * Validation rules
  *

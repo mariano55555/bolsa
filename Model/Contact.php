@@ -6,7 +6,7 @@ App::uses('AppModel', 'Model');
  * @property Company $Company
  */
 class Contact extends AppModel {
-
+	public $actsAs = array('WhoDidIt');
 /**
  * Display field
  *
