@@ -23,10 +23,70 @@ class User extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'name' => array(
+			'name' => array(
+				'notempty' => array(
+					'rule' => array('notempty'),
+					'message' => 'Ingrese su nombre completo. Campo requerido',
+					//'allowEmpty' => false,
+					//'required' => false,
+					//'last' => false, // Stop validation after this rule
+					//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				),
+				'minlength' => array(
+					'rule' => array('minlength','5'),
+					'message' => 'Longitud mínima de nombre completo de 5 caracteres.',
+					//'allowEmpty' => false,
+					//'required' => false,
+					//'last' => false, // Stop validation after this rule
+					//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				),
+				'Name Length' => array(
+					'rule' => 'nameLength',
+					'message' => "Escribe al menos un nombre y un apellido"
+					)
+			),
+		'phone' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Campo requerido. Ingresa un numero de teléfono',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'password' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'Ingrese una contraseña para la cuenta de usuario.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'minlength' => array(
+				'rule' => array('minlength','5'),
+				'message' => 'Longitud mínima de contraseña de 5 caracteres.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				)
+			),
+		'password_confirmation' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'Campo requerido. Confirma la contraseña',
+			),
+			'Match passwords' => array(
+				'rule' => 'matchPasswords',
+				'message' => "Tus contraseñas no concuerdan"
+			)
+		),
+		'carnet' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'Carnet es un campo requerido',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -36,7 +96,7 @@ class User extends AppModel {
 		'email' => array(
 			'email' => array(
 				'rule' => array('email'),
-				//'message' => 'Your custom message here',
+				'message' => 'Campo email requerido. Ingresa tu cuenta de correo electrónico',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
@@ -129,5 +189,38 @@ class User extends AppModel {
 			'insertQuery' => ''
 		)
 	);
+
+
+	//confirmacion de contraseñas
+	public function matchPasswords($data)
+	{
+		if ($this->data['User']['password'] == $this->data['User']['password_confirmation'])
+		{
+			return true;
+		}
+		$this->invalidate('password_confirmation', "Tus contraseñas no concuerdan");
+		return false;
+	}
+
+	public function nameLength($data)
+	{
+		$nombre = explode(" ",$this->data['User']['name']);
+		if (count($nombre) < 2)
+		{
+			$this->invalidate('name', "Escribe al menos un nombre y un apellido");
+			return false;
+		}
+			return true;
+	}
+
+	public function beforeSave($options = array()) {
+		if (isset($this->data['User']['password'])) {
+			$this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+			#AuthComponent::password($this->data['Profesionale']['password']);
+			unset($this->data['User']['passwd']);
+		}
+		return true;
+	}
+
 
 }

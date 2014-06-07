@@ -7,97 +7,6 @@ App::uses('AppController', 'Controller');
  */
 class ContactsController extends AppController {
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->Contact->recursive = 0;
-		$this->set('contacts', $this->paginate());
-	}
-
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->Contact->exists($id)) {
-			throw new NotFoundException(__('Invalid contact'));
-		}
-		$options = array('conditions' => array('Contact.' . $this->Contact->primaryKey => $id));
-		$this->set('contact', $this->Contact->find('first', $options));
-	}
-
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Contact->create();
-			if ($this->Contact->save($this->request->data)) {
-				$this->Session->setFlash(__('The contact has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The contact could not be saved. Please, try again.'));
-			}
-		}
-		$companies = $this->Contact->Company->find('list');
-		$this->set(compact('companies'));
-	}
-
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->Contact->exists($id)) {
-			throw new NotFoundException(__('Invalid contact'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Contact->save($this->request->data)) {
-				$this->Session->setFlash(__('The contact has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The contact could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Contact.' . $this->Contact->primaryKey => $id));
-			$this->request->data = $this->Contact->find('first', $options);
-		}
-		$companies = $this->Contact->Company->find('list');
-		$this->set(compact('companies'));
-	}
-
-/**
- * delete method
- *
- * @throws NotFoundException
- * @throws MethodNotAllowedException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->Contact->id = $id;
-		if (!$this->Contact->exists()) {
-			throw new NotFoundException(__('Invalid contact'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->Contact->delete()) {
-			$this->Session->setFlash(__('Contact deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Contact was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
 
 /**
  * admin_index method
@@ -105,8 +14,8 @@ class ContactsController extends AppController {
  * @return void
  */
 	public function admin_index() {
-		$this->Contact->recursive = 0;
-		$this->set('contacts', $this->paginate());
+		$contacts = $this->Contact->find("all", array('order' => array('Contact.created DESC')));
+		$this->set(compact('contacts'));
 	}
 
 /**
@@ -117,11 +26,8 @@ class ContactsController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
-		if (!$this->Contact->exists($id)) {
-			throw new NotFoundException(__('Invalid contact'));
-		}
-		$options = array('conditions' => array('Contact.' . $this->Contact->primaryKey => $id));
-		$this->set('contact', $this->Contact->find('first', $options));
+		$contact = $this->__findContact($id);
+		$this->set(compact('contact'));
 	}
 
 /**
@@ -139,8 +45,7 @@ class ContactsController extends AppController {
 				$this->Session->setFlash(__('The contact could not be saved. Please, try again.'));
 			}
 		}
-		$companies = $this->Contact->Company->find('list');
-		$this->set(compact('companies'));
+		$this->__list();
 	}
 
 /**
@@ -165,8 +70,7 @@ class ContactsController extends AppController {
 			$options = array('conditions' => array('Contact.' . $this->Contact->primaryKey => $id));
 			$this->request->data = $this->Contact->find('first', $options);
 		}
-		$companies = $this->Contact->Company->find('list');
-		$this->set(compact('companies'));
+		$this->__list();
 	}
 
 /**
@@ -190,4 +94,26 @@ class ContactsController extends AppController {
 		$this->Session->setFlash(__('Contact was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+	/**
+	 * PRIVATE METHODS
+	 */
+	
+	private function __list()
+	{
+		$companies = $this->Contact->Company->find('list');
+		$this->set(compact('companies'));
+	}
+
+	private function __findContact($id = NULL)
+	{
+		$options = array('conditions' => array('Contact.' . $this->Contact->primaryKey => $id));
+		$contact = $this->Contact->find('first', $options);
+		if (empty($contact)) {
+			$this->Session->setFlash("La Información solicitada no ha sido encontrada.", "flash_error");
+			$this->redirect(array('action'=>'index'));
+		}
+		return $contact;
+	}
+
 }

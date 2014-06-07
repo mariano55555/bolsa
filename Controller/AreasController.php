@@ -13,8 +13,8 @@ class AreasController extends AppController {
  * @return void
  */
 	public function admin_index() {
-		$this->Area->recursive = 0;
-		$this->set('areas', $this->paginate());
+		$areas = $this->Area->find('all', array('order' => array('Area.created DESC')));
+		$this->set(compact('areas'));
 	}
 
 /**
@@ -25,11 +25,8 @@ class AreasController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
-		if (!$this->Area->exists($id)) {
-			throw new NotFoundException(__('Invalid area'));
-		}
-		$options = array('conditions' => array('Area.' . $this->Area->primaryKey => $id));
-		$this->set('area', $this->Area->find('first', $options));
+		$area = $this->__findArea($id);
+		$this->set(compact('area'));
 	}
 
 /**
@@ -47,8 +44,7 @@ class AreasController extends AppController {
 				$this->Session->setFlash(__('The area could not be saved. Please, try again.'));
 			}
 		}
-		$jobs = $this->Area->Job->find('list');
-		$this->set(compact('jobs'));
+		$this->__list();
 	}
 
 /**
@@ -59,9 +55,7 @@ class AreasController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
-		if (!$this->Area->exists($id)) {
-			throw new NotFoundException(__('Invalid area'));
-		}
+		$area = $this->__findArea($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Area->save($this->request->data)) {
 				$this->Session->setFlash(__('The area has been saved'));
@@ -70,11 +64,9 @@ class AreasController extends AppController {
 				$this->Session->setFlash(__('The area could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Area.' . $this->Area->primaryKey => $id));
-			$this->request->data = $this->Area->find('first', $options);
+			$this->request->data = $area;
 		}
-		$jobs = $this->Area->Job->find('list');
-		$this->set(compact('jobs'));
+		$this->__list();
 	}
 
 /**
@@ -87,9 +79,7 @@ class AreasController extends AppController {
  */
 	public function admin_delete($id = null) {
 		$this->Area->id = $id;
-		if (!$this->Area->exists()) {
-			throw new NotFoundException(__('Invalid area'));
-		}
+		$this->__findArea($this->Area->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Area->delete()) {
 			$this->Session->setFlash(__('Area deleted'));
@@ -100,5 +90,26 @@ class AreasController extends AppController {
 	}
 
 
-	// Private methiods
+	/**
+	 * PRIVATE METHODS
+	 */
+	
+
+	private function __list()
+	{
+		$jobs = $this->Area->Job->find('list');
+		$this->set(compact('jobs'));
+	}
+
+	private function __findArea($id = NULL)
+	{
+		$options = array('conditions' => array('Area.' . $this->Area->primaryKey => $id));
+		$area  = $this->Area->find('first', $options);
+		if (empty($area)) {
+			$this->Session->setFlash("La Información solicitada no ha sido encontrada.", "flash_error");
+			$this->redirect(array('action'=>'index'));
+		}
+		return $area;
+	}
+
 }

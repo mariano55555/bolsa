@@ -7,97 +7,6 @@ App::uses('AppController', 'Controller');
  */
 class IndustriesController extends AppController {
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->Industry->recursive = 0;
-		$this->set('industries', $this->paginate());
-	}
-
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->Industry->exists($id)) {
-			throw new NotFoundException(__('Invalid industry'));
-		}
-		$options = array('conditions' => array('Industry.' . $this->Industry->primaryKey => $id));
-		$this->set('industry', $this->Industry->find('first', $options));
-	}
-
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Industry->create();
-			if ($this->Industry->save($this->request->data)) {
-				$this->Session->setFlash(__('The industry has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The industry could not be saved. Please, try again.'));
-			}
-		}
-		$jobs = $this->Industry->Job->find('list');
-		$this->set(compact('jobs'));
-	}
-
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->Industry->exists($id)) {
-			throw new NotFoundException(__('Invalid industry'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Industry->save($this->request->data)) {
-				$this->Session->setFlash(__('The industry has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The industry could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Industry.' . $this->Industry->primaryKey => $id));
-			$this->request->data = $this->Industry->find('first', $options);
-		}
-		$jobs = $this->Industry->Job->find('list');
-		$this->set(compact('jobs'));
-	}
-
-/**
- * delete method
- *
- * @throws NotFoundException
- * @throws MethodNotAllowedException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->Industry->id = $id;
-		if (!$this->Industry->exists()) {
-			throw new NotFoundException(__('Invalid industry'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->Industry->delete()) {
-			$this->Session->setFlash(__('Industry deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Industry was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
 
 /**
  * admin_index method
@@ -105,8 +14,8 @@ class IndustriesController extends AppController {
  * @return void
  */
 	public function admin_index() {
-		$this->Industry->recursive = 0;
-		$this->set('industries', $this->paginate());
+		$industries = $this->Industry->find("all", array('order' => array('Industry.created DESC')));
+		$this->set(compact('industries'));
 	}
 
 /**
@@ -117,11 +26,8 @@ class IndustriesController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
-		if (!$this->Industry->exists($id)) {
-			throw new NotFoundException(__('Invalid industry'));
-		}
-		$options = array('conditions' => array('Industry.' . $this->Industry->primaryKey => $id));
-		$this->set('industry', $this->Industry->find('first', $options));
+		$industry = $this->__findIndustry($id);
+		$this->set(compact('industry'));
 	}
 
 /**
@@ -139,8 +45,7 @@ class IndustriesController extends AppController {
 				$this->Session->setFlash(__('The industry could not be saved. Please, try again.'));
 			}
 		}
-		$jobs = $this->Industry->Job->find('list');
-		$this->set(compact('jobs'));
+		$this->__list();
 	}
 
 /**
@@ -151,9 +56,7 @@ class IndustriesController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
-		if (!$this->Industry->exists($id)) {
-			throw new NotFoundException(__('Invalid industry'));
-		}
+		$industry = $this->__findIndustry($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Industry->save($this->request->data)) {
 				$this->Session->setFlash(__('The industry has been saved'));
@@ -162,11 +65,9 @@ class IndustriesController extends AppController {
 				$this->Session->setFlash(__('The industry could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Industry.' . $this->Industry->primaryKey => $id));
-			$this->request->data = $this->Industry->find('first', $options);
+			$this->request->data = $industry;
 		}
-		$jobs = $this->Industry->Job->find('list');
-		$this->set(compact('jobs'));
+		$this->__list();
 	}
 
 /**
@@ -179,9 +80,7 @@ class IndustriesController extends AppController {
  */
 	public function admin_delete($id = null) {
 		$this->Industry->id = $id;
-		if (!$this->Industry->exists()) {
-			throw new NotFoundException(__('Invalid industry'));
-		}
+		$this->__findIndustry($this->Industry->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Industry->delete()) {
 			$this->Session->setFlash(__('Industry deleted'));
@@ -189,5 +88,37 @@ class IndustriesController extends AppController {
 		}
 		$this->Session->setFlash(__('Industry was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+
+	/**
+	 * PRIVATE METHODS
+	 */
+	
+	/**
+	 * [__list description]
+	 * @return [type] [description]
+	 */
+	
+	private function __list()
+	{
+		$jobs = $this->Industry->Job->find('list');
+		$this->set(compact('jobs'));
+	}
+
+	/**
+	 * [__findIndustry description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	
+	private function __findIndustry($id = NULL)
+	{
+		$options  = array('conditions' => array('Industry.' . $this->Industry->primaryKey => $id));
+		$industry = $this->Industry->find('first', $options);
+		if (empty($industry)) {
+			$this->Session->setFlash("La Información solicitada no ha sido encontrada.", "flash_error");
+			$this->redirect(array('action'=>'index'));
+		}
+		return $industry;
 	}
 }

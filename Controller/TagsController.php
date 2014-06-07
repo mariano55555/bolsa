@@ -7,93 +7,6 @@ App::uses('AppController', 'Controller');
  */
 class TagsController extends AppController {
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->Tag->recursive = 0;
-		$this->set('tags', $this->paginate());
-	}
-
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->Tag->exists($id)) {
-			throw new NotFoundException(__('Invalid tag'));
-		}
-		$options = array('conditions' => array('Tag.' . $this->Tag->primaryKey => $id));
-		$this->set('tag', $this->Tag->find('first', $options));
-	}
-
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Tag->create();
-			if ($this->Tag->save($this->request->data)) {
-				$this->Session->setFlash(__('The tag has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The tag could not be saved. Please, try again.'));
-			}
-		}
-	}
-
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->Tag->exists($id)) {
-			throw new NotFoundException(__('Invalid tag'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Tag->save($this->request->data)) {
-				$this->Session->setFlash(__('The tag has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The tag could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Tag.' . $this->Tag->primaryKey => $id));
-			$this->request->data = $this->Tag->find('first', $options);
-		}
-	}
-
-/**
- * delete method
- *
- * @throws NotFoundException
- * @throws MethodNotAllowedException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->Tag->id = $id;
-		if (!$this->Tag->exists()) {
-			throw new NotFoundException(__('Invalid tag'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->Tag->delete()) {
-			$this->Session->setFlash(__('Tag deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Tag was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
 
 /**
  * admin_index method
@@ -101,8 +14,8 @@ class TagsController extends AppController {
  * @return void
  */
 	public function admin_index() {
-		$this->Tag->recursive = 0;
-		$this->set('tags', $this->paginate());
+		$tags = $this->Tag->find("all", array('order' => array('Tag.created DESC')));
+		$this->set(compact('tags'));
 	}
 
 /**
@@ -113,11 +26,8 @@ class TagsController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
-		if (!$this->Tag->exists($id)) {
-			throw new NotFoundException(__('Invalid tag'));
-		}
-		$options = array('conditions' => array('Tag.' . $this->Tag->primaryKey => $id));
-		$this->set('tag', $this->Tag->find('first', $options));
+		$tag = $this->__findTag($id);
+		$this->set(compact('tag'));
 	}
 
 /**
@@ -145,9 +55,7 @@ class TagsController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
-		if (!$this->Tag->exists($id)) {
-			throw new NotFoundException(__('Invalid tag'));
-		}
+		$tag = $this->__findTag($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Tag->save($this->request->data)) {
 				$this->Session->setFlash(__('The tag has been saved'));
@@ -156,8 +64,7 @@ class TagsController extends AppController {
 				$this->Session->setFlash(__('The tag could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Tag.' . $this->Tag->primaryKey => $id));
-			$this->request->data = $this->Tag->find('first', $options);
+			$this->request->data = $tag;
 		}
 	}
 
@@ -171,9 +78,7 @@ class TagsController extends AppController {
  */
 	public function admin_delete($id = null) {
 		$this->Tag->id = $id;
-		if (!$this->Tag->exists()) {
-			throw new NotFoundException(__('Invalid tag'));
-		}
+		$this->__findTag($this->Tag->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Tag->delete()) {
 			$this->Session->setFlash(__('Tag deleted'));
@@ -182,4 +87,23 @@ class TagsController extends AppController {
 		$this->Session->setFlash(__('Tag was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+
+	/**
+	 * PRIVATE METHOD
+	 */
+
+	private function __findTag($id = NULL)
+	{
+		$options = array('conditions' => array('Tag.' . $this->Tag->primaryKey => $id));
+		$tag     = $this->Tag->find('first', $options);
+		if (empty($tag)) {
+			$this->Session->setFlash("La Información solicitada no ha sido encontrada.", "flash_error");
+			$this->redirect(array('action'=>'index'));
+		}
+		return $tag;
+
+	}
+
+
 }

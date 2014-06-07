@@ -11,15 +11,28 @@ class UsersController extends AppController {
 
 public function login()
 {
-	# code...
+	$this->layout = "admin";
+	if ($this->request->is('post')) {
+        if ($this->Auth->login()) {
+            return $this->redirect($this->Auth->redirectUrl());
+            // Prior to 2.3 use
+            // `return $this->redirect($this->Auth->redirect());`
+        } else {
+            $this->Session->setFlash(
+                __('Username or password is incorrect'),
+                'default',
+                array(),
+                'auth'
+            );
+        }
+    }
 
 }
 
 
 public function logout()
 {
-	# code...
-
+	return $this->redirect($this->Auth->logout());
 }
 
 
@@ -29,107 +42,13 @@ public function home()
 }
 
 /**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->User->recursive = 0;
-		$this->set('users', $this->paginate());
-	}
-
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->User->exists($id)) {
-			throw new NotFoundException(__('Invalid user'));
-		}
-		$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
-		$this->set('user', $this->User->find('first', $options));
-	}
-
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->User->create();
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
-			}
-		}
-		$groups = $this->User->Group->find('list');
-		$jobs   = $this->User->Job->find('list');
-		$this->set(compact('groups', 'jobs'));
-	}
-
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->User->exists($id)) {
-			throw new NotFoundException(__('Invalid user'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
-			$this->request->data = $this->User->find('first', $options);
-		}
-		$groups = $this->User->Group->find('list');
-		$jobs   = $this->User->Job->find('list');
-		$this->set(compact('groups', 'jobs'));
-	}
-
-/**
- * delete method
- *
- * @throws NotFoundException
- * @throws MethodNotAllowedException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->User->id = $id;
-		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid user'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->User->delete()) {
-			$this->Session->setFlash(__('User deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('User was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
-
-/**
  * admin_index method
  *
  * @return void
  */
 	public function admin_index() {
-		$this->User->recursive = 0;
-		$this->set('users', $this->paginate());
+		$users = $this->User->find("all", array('order' => array('User.created DESC')));
+		$this->set(compact('users'));
 	}
 
 /**
@@ -140,11 +59,8 @@ public function home()
  * @return void
  */
 	public function admin_view($id = null) {
-		if (!$this->User->exists($id)) {
-			throw new NotFoundException(__('Invalid user'));
-		}
-		$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
-		$this->set('user', $this->User->find('first', $options));
+		$user = $this->__findUser($id);
+		$this->set(compact('user'));
 	}
 
 /**
@@ -162,9 +78,7 @@ public function home()
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
 		}
-		$groups = $this->User->Group->find('list');
-		$jobs   = $this->User->Job->find('list');
-		$this->set(compact('groups', 'jobs'));
+		$this->__list();
 	}
 
 /**
@@ -175,9 +89,7 @@ public function home()
  * @return void
  */
 	public function admin_edit($id = null) {
-		if (!$this->User->exists($id)) {
-			throw new NotFoundException(__('Invalid user'));
-		}
+		$user = $this->__findUser($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('The user has been saved'));
@@ -186,12 +98,10 @@ public function home()
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
-			$this->request->data = $this->User->find('first', $options);
+			
+			$this->request->data = $user;
 		}
-		$groups = $this->User->Group->find('list');
-		$jobs   = $this->User->Job->find('list');
-		$this->set(compact('groups', 'jobs'));
+		$this->__list();
 	}
 
 /**
@@ -204,9 +114,7 @@ public function home()
  */
 	public function admin_delete($id = null) {
 		$this->User->id = $id;
-		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid user'));
-		}
+		$this->__findUser($this->User->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->User->delete()) {
 			$this->Session->setFlash(__('User deleted'));
@@ -214,5 +122,29 @@ public function home()
 		}
 		$this->Session->setFlash(__('User was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+
+
+	/**
+	 * PRIVATE METHOD
+	 */
+	
+	private function __list()
+	{
+		$groups = $this->User->Group->find('list');
+		$jobs   = $this->User->Job->find('list');
+		$this->set(compact('groups', 'jobs'));
+	}
+
+
+	private function __findUser($id = NULL)
+	{
+		$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+		$user    = $this->User->find('first', $options);
+		if (empty($user)) {
+			$this->Session->setFlash("La Información solicitada no ha sido encontrada.", "flash_error");
+			$this->redirect(array('action'=>'index'));
+		}
+		return $user;		
 	}
 }

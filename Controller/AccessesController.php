@@ -14,7 +14,7 @@ class AccessesController extends AppController {
  * @return void
  */
 	public function admin_index() {
-		$accesses = $this->Access->find("all");
+		$accesses = $this->Access->find("all", array('order' => array('Access.start DESC')));
 		$this->set(compact('accesses'));
 	}
 

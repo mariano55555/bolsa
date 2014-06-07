@@ -26,11 +26,8 @@ class JobsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		if (!$this->Job->exists($id)) {
-			throw new NotFoundException(__('Invalid job'));
-		}
-		$options = array('conditions' => array('Job.' . $this->Job->primaryKey => $id));
-		$this->set('job', $this->Job->find('first', $options));
+		$job = $this->__findJob($id);
+		$this->set(compact('job'));
 	}
 
 /**
@@ -51,52 +48,8 @@ class JobsController extends AppController {
 		$this->__list();
 	}
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->Job->exists($id)) {
-			throw new NotFoundException(__('Invalid job'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Job->save($this->request->data)) {
-				$this->Session->setFlash(__('The job has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The job could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Job.' . $this->Job->primaryKey => $id));
-			$this->request->data = $this->Job->find('first', $options);
-		}
-		$this->__list();
-	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @throws MethodNotAllowedException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->Job->id = $id;
-		if (!$this->Job->exists()) {
-			throw new NotFoundException(__('Invalid job'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->Job->delete()) {
-			$this->Session->setFlash(__('Job deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Job was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
+
 
 /**
  * admin_index method
@@ -104,8 +57,8 @@ class JobsController extends AppController {
  * @return void
  */
 	public function admin_index() {
-		$this->Job->recursive = 0;
-		$this->set('jobs', $this->paginate());
+		$jobs = $this->Job->find("all", array('order' => array('Job.created DESC')));
+		$this->set(compact('jobs'));
 	}
 
 /**
@@ -116,11 +69,8 @@ class JobsController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
-		if (!$this->Job->exists($id)) {
-			throw new NotFoundException(__('Invalid job'));
-		}
-		$options = array('conditions' => array('Job.' . $this->Job->primaryKey => $id));
-		$this->set('job', $this->Job->find('first', $options));
+		$job = $this->__findJob($id);
+		$this->set(compact('job'));
 	}
 
 /**
@@ -149,9 +99,7 @@ class JobsController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
-		if (!$this->Job->exists($id)) {
-			throw new NotFoundException(__('Invalid job'));
-		}
+		$job = $this->__findJob($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Job->save($this->request->data)) {
 				$this->Session->setFlash(__('The job has been saved'));
@@ -160,8 +108,7 @@ class JobsController extends AppController {
 				$this->Session->setFlash(__('The job could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Job.' . $this->Job->primaryKey => $id));
-			$this->request->data = $this->Job->find('first', $options);
+			$this->request->data = $job;
 		}
 		$this->__list();
 	}
@@ -176,9 +123,7 @@ class JobsController extends AppController {
  */
 	public function admin_delete($id = null) {
 		$this->Job->id = $id;
-		if (!$this->Job->exists()) {
-			throw new NotFoundException(__('Invalid job'));
-		}
+		$this->__findJob($this->Job->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Job->delete()) {
 			$this->Session->setFlash(__('Job deleted'));
@@ -196,7 +141,12 @@ class JobsController extends AppController {
 
 
 	//PRIVATE
-
+	
+	/**
+	 * [__list description]
+	 * @return [type] [description]
+	 */
+	
 	private function __list()
 	{
 		$companies   = $this->Job->Company->find('list');
@@ -209,6 +159,21 @@ class JobsController extends AppController {
 		$this->set(compact('companies', 'cities', 'areas', 'contracts', 'experiences', 'industries', 'users'));
 	}
 
+	/**
+	 * [__findJob description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	private function __findJob($id = NULL)
+	{
+		$options = array('conditions' => array('Job.' . $this->Job->primaryKey => $id));
+		$job     = $this->Job->find('first', $options);
+		if (empty($job)) {
+			$this->Session->setFlash("La Información solicitada no ha sido encontrada.", "flash_error");
+			$this->redirect(array('action'=>'index'));
+		}
+		return $job;	
+	}
 
 
 }

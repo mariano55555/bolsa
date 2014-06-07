@@ -7,99 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class JobsUsersController extends AppController {
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->JobsUser->recursive = 0;
-		$this->set('jobsUsers', $this->paginate());
-	}
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->JobsUser->exists($id)) {
-			throw new NotFoundException(__('Invalid jobs user'));
-		}
-		$options = array('conditions' => array('JobsUser.' . $this->JobsUser->primaryKey => $id));
-		$this->set('jobsUser', $this->JobsUser->find('first', $options));
-	}
-
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->JobsUser->create();
-			if ($this->JobsUser->save($this->request->data)) {
-				$this->Session->setFlash(__('The jobs user has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The jobs user could not be saved. Please, try again.'));
-			}
-		}
-		$users = $this->JobsUser->User->find('list');
-		$jobs = $this->JobsUser->Job->find('list');
-		$this->set(compact('users', 'jobs'));
-	}
-
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->JobsUser->exists($id)) {
-			throw new NotFoundException(__('Invalid jobs user'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->JobsUser->save($this->request->data)) {
-				$this->Session->setFlash(__('The jobs user has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The jobs user could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('JobsUser.' . $this->JobsUser->primaryKey => $id));
-			$this->request->data = $this->JobsUser->find('first', $options);
-		}
-		$users = $this->JobsUser->User->find('list');
-		$jobs = $this->JobsUser->Job->find('list');
-		$this->set(compact('users', 'jobs'));
-	}
-
-/**
- * delete method
- *
- * @throws NotFoundException
- * @throws MethodNotAllowedException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->JobsUser->id = $id;
-		if (!$this->JobsUser->exists()) {
-			throw new NotFoundException(__('Invalid jobs user'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->JobsUser->delete()) {
-			$this->Session->setFlash(__('Jobs user deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Jobs user was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
 
 /**
  * admin_index method
@@ -107,8 +15,8 @@ class JobsUsersController extends AppController {
  * @return void
  */
 	public function admin_index() {
-		$this->JobsUser->recursive = 0;
-		$this->set('jobsUsers', $this->paginate());
+		$jobsUsers = $this->JobsUser->find("all", array('order' => array('JobsUser.created DESC')));
+		$this->set(compact('jobsUsers'));
 	}
 
 /**
@@ -119,11 +27,8 @@ class JobsUsersController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
-		if (!$this->JobsUser->exists($id)) {
-			throw new NotFoundException(__('Invalid jobs user'));
-		}
-		$options = array('conditions' => array('JobsUser.' . $this->JobsUser->primaryKey => $id));
-		$this->set('jobsUser', $this->JobsUser->find('first', $options));
+		$jobsUser = $this->__findJobsUsers($id);
+		$this->set(compact('jobsUser'));
 	}
 
 /**
@@ -141,9 +46,7 @@ class JobsUsersController extends AppController {
 				$this->Session->setFlash(__('The jobs user could not be saved. Please, try again.'));
 			}
 		}
-		$users = $this->JobsUser->User->find('list');
-		$jobs = $this->JobsUser->Job->find('list');
-		$this->set(compact('users', 'jobs'));
+		$this->__list();
 	}
 
 /**
@@ -154,9 +57,7 @@ class JobsUsersController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
-		if (!$this->JobsUser->exists($id)) {
-			throw new NotFoundException(__('Invalid jobs user'));
-		}
+		$data = $this->__findJobsUsers($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->JobsUser->save($this->request->data)) {
 				$this->Session->setFlash(__('The jobs user has been saved'));
@@ -165,12 +66,9 @@ class JobsUsersController extends AppController {
 				$this->Session->setFlash(__('The jobs user could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('JobsUser.' . $this->JobsUser->primaryKey => $id));
-			$this->request->data = $this->JobsUser->find('first', $options);
+			$this->request->data = $data;
 		}
-		$users = $this->JobsUser->User->find('list');
-		$jobs = $this->JobsUser->Job->find('list');
-		$this->set(compact('users', 'jobs'));
+		$this->__list();
 	}
 
 /**
@@ -183,9 +81,7 @@ class JobsUsersController extends AppController {
  */
 	public function admin_delete($id = null) {
 		$this->JobsUser->id = $id;
-		if (!$this->JobsUser->exists()) {
-			throw new NotFoundException(__('Invalid jobs user'));
-		}
+		$this->__findJobsUsers($this->JobsUser->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->JobsUser->delete()) {
 			$this->Session->setFlash(__('Jobs user deleted'));
@@ -193,5 +89,36 @@ class JobsUsersController extends AppController {
 		}
 		$this->Session->setFlash(__('Jobs user was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+
+
+	/*
+	 * PRIVATE METHODS
+	 */
+
+	/**
+	 * [__findJobsUsers description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	private function __findJobsUsers($id = NULL)
+	{
+		$options = array('conditions' => array('JobsUser.' . $this->JobsUser->primaryKey => $id));
+		$data    = $this->JobsUser->find('first', $options);
+		if (empty($data)) {
+			$this->Session->setFlash("La Información solicitada no ha sido encontrada.", "flash_error");
+			$this->redirect(array('action'=>'index'));
+		}
+		return $data;
+	}
+	/**
+	 * [__list description]
+	 * @return [type] [description]
+	 */
+	private function __list()
+	{
+		$users = $this->JobsUser->User->find('list');
+		$jobs  = $this->JobsUser->Job->find('list');
+		$this->set(compact('users', 'jobs'));
 	}
 }

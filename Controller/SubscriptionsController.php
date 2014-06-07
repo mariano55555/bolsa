@@ -13,8 +13,8 @@ class SubscriptionsController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->Subscription->recursive = 0;
-		$this->set('subscriptions', $this->paginate());
+		$subscriptions = $this->Subscription->find("all");
+		$this->set(compact('subscriptions'));
 	}
 
 /**
@@ -25,11 +25,8 @@ class SubscriptionsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		if (!$this->Subscription->exists($id)) {
-			throw new NotFoundException(__('Invalid subscription'));
-		}
-		$options = array('conditions' => array('Subscription.' . $this->Subscription->primaryKey => $id));
-		$this->set('subscription', $this->Subscription->find('first', $options));
+		$subscription = $this->__findSubscription($id);
+		$this->set(compact('subscription'));
 	}
 
 /**
@@ -47,9 +44,7 @@ class SubscriptionsController extends AppController {
 				$this->Session->setFlash(__('The subscription could not be saved. Please, try again.'));
 			}
 		}
-		$users = $this->Subscription->User->find('list');
-		$tags = $this->Subscription->Tag->find('list');
-		$this->set(compact('users', 'tags'));
+		$this->__list();
 	}
 
 /**
@@ -60,9 +55,7 @@ class SubscriptionsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		if (!$this->Subscription->exists($id)) {
-			throw new NotFoundException(__('Invalid subscription'));
-		}
+		$subscription = $this->__findSubscription($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Subscription->save($this->request->data)) {
 				$this->Session->setFlash(__('The subscription has been saved'));
@@ -71,12 +64,9 @@ class SubscriptionsController extends AppController {
 				$this->Session->setFlash(__('The subscription could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Subscription.' . $this->Subscription->primaryKey => $id));
-			$this->request->data = $this->Subscription->find('first', $options);
+			$this->request->data = $subscription;
 		}
-		$users = $this->Subscription->User->find('list');
-		$tags = $this->Subscription->Tag->find('list');
-		$this->set(compact('users', 'tags'));
+		$this->__list();
 	}
 
 /**
@@ -89,9 +79,7 @@ class SubscriptionsController extends AppController {
  */
 	public function delete($id = null) {
 		$this->Subscription->id = $id;
-		if (!$this->Subscription->exists()) {
-			throw new NotFoundException(__('Invalid subscription'));
-		}
+		$subscription = $this->__findSubscription($this->Subscription->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Subscription->delete()) {
 			$this->Session->setFlash(__('Subscription deleted'));
@@ -107,8 +95,8 @@ class SubscriptionsController extends AppController {
  * @return void
  */
 	public function admin_index() {
-		$this->Subscription->recursive = 0;
-		$this->set('subscriptions', $this->paginate());
+		$subscriptions = $this->Subscription->find("all", array('order' => array('Subscription.created DESC')));
+		$this->set(compact('subscriptions'));
 	}
 
 /**
@@ -119,11 +107,8 @@ class SubscriptionsController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
-		if (!$this->Subscription->exists($id)) {
-			throw new NotFoundException(__('Invalid subscription'));
-		}
-		$options = array('conditions' => array('Subscription.' . $this->Subscription->primaryKey => $id));
-		$this->set('subscription', $this->Subscription->find('first', $options));
+		$subscription = $this->__findSubscription($id);
+		$this->set(compact('subscription'));
 	}
 
 /**
@@ -141,9 +126,7 @@ class SubscriptionsController extends AppController {
 				$this->Session->setFlash(__('The subscription could not be saved. Please, try again.'));
 			}
 		}
-		$users = $this->Subscription->User->find('list');
-		$tags = $this->Subscription->Tag->find('list');
-		$this->set(compact('users', 'tags'));
+		$this->__list();
 	}
 
 /**
@@ -154,9 +137,7 @@ class SubscriptionsController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
-		if (!$this->Subscription->exists($id)) {
-			throw new NotFoundException(__('Invalid subscription'));
-		}
+		$subscription = $this->__findSubscription($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Subscription->save($this->request->data)) {
 				$this->Session->setFlash(__('The subscription has been saved'));
@@ -165,12 +146,10 @@ class SubscriptionsController extends AppController {
 				$this->Session->setFlash(__('The subscription could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Subscription.' . $this->Subscription->primaryKey => $id));
-			$this->request->data = $this->Subscription->find('first', $options);
+			
+			$this->request->data = $subscription;
 		}
-		$users = $this->Subscription->User->find('list');
-		$tags = $this->Subscription->Tag->find('list');
-		$this->set(compact('users', 'tags'));
+		$this->__list();
 	}
 
 /**
@@ -183,9 +162,7 @@ class SubscriptionsController extends AppController {
  */
 	public function admin_delete($id = null) {
 		$this->Subscription->id = $id;
-		if (!$this->Subscription->exists()) {
-			throw new NotFoundException(__('Invalid subscription'));
-		}
+		$this->__findSubscription($this->Subscription->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Subscription->delete()) {
 			$this->Session->setFlash(__('Subscription deleted'));
@@ -193,5 +170,36 @@ class SubscriptionsController extends AppController {
 		}
 		$this->Session->setFlash(__('Subscription was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+
+	/**
+	 * PRIVATE METHODS
+	 */
+	
+	/**
+	 * [__list description]
+	 * @return [type] [description]
+	 */
+	private function __list()
+	{
+		$users = $this->Subscription->User->find('list');
+		$tags  = $this->Subscription->Tag->find('list');
+		$this->set(compact('users', 'tags'));
+	}
+
+	/**
+	 * [__findSubscription description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	private function __findSubscription($id = NULL)
+	{
+		$options      = array('conditions' => array('Subscription.' . $this->Subscription->primaryKey => $id));
+		$Subscription = $this->Subscription->find('first', $options);
+		if (empty($Subscription)) {
+			$this->Session->setFlash("La Información solicitada no ha sido encontrada.", "flash_error");
+			$this->redirect(array('action'=>'index'));
+		}
+		return $Subscription;
 	}
 }

@@ -7,97 +7,6 @@ App::uses('AppController', 'Controller');
  */
 class ExperiencesController extends AppController {
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->Experience->recursive = 0;
-		$this->set('experiences', $this->paginate());
-	}
-
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->Experience->exists($id)) {
-			throw new NotFoundException(__('Invalid experience'));
-		}
-		$options = array('conditions' => array('Experience.' . $this->Experience->primaryKey => $id));
-		$this->set('experience', $this->Experience->find('first', $options));
-	}
-
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Experience->create();
-			if ($this->Experience->save($this->request->data)) {
-				$this->Session->setFlash(__('The experience has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The experience could not be saved. Please, try again.'));
-			}
-		}
-		$jobs = $this->Experience->Job->find('list');
-		$this->set(compact('jobs'));
-	}
-
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->Experience->exists($id)) {
-			throw new NotFoundException(__('Invalid experience'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Experience->save($this->request->data)) {
-				$this->Session->setFlash(__('The experience has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The experience could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('Experience.' . $this->Experience->primaryKey => $id));
-			$this->request->data = $this->Experience->find('first', $options);
-		}
-		$jobs = $this->Experience->Job->find('list');
-		$this->set(compact('jobs'));
-	}
-
-/**
- * delete method
- *
- * @throws NotFoundException
- * @throws MethodNotAllowedException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->Experience->id = $id;
-		if (!$this->Experience->exists()) {
-			throw new NotFoundException(__('Invalid experience'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->Experience->delete()) {
-			$this->Session->setFlash(__('Experience deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Experience was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
 
 /**
  * admin_index method
@@ -105,8 +14,8 @@ class ExperiencesController extends AppController {
  * @return void
  */
 	public function admin_index() {
-		$this->Experience->recursive = 0;
-		$this->set('experiences', $this->paginate());
+		$experiences = $this->Experience->find("all", array('order' => array('Experience.created DESC')));
+		$this->set(compact('experiences'));
 	}
 
 /**
@@ -117,11 +26,8 @@ class ExperiencesController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
-		if (!$this->Experience->exists($id)) {
-			throw new NotFoundException(__('Invalid experience'));
-		}
-		$options = array('conditions' => array('Experience.' . $this->Experience->primaryKey => $id));
-		$this->set('experience', $this->Experience->find('first', $options));
+		$experience = $this->__findExperience($id);
+		$this->set(compact('experience'));
 	}
 
 /**
@@ -139,8 +45,7 @@ class ExperiencesController extends AppController {
 				$this->Session->setFlash(__('The experience could not be saved. Please, try again.'));
 			}
 		}
-		$jobs = $this->Experience->Job->find('list');
-		$this->set(compact('jobs'));
+		$this->__list();
 	}
 
 /**
@@ -151,9 +56,7 @@ class ExperiencesController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
-		if (!$this->Experience->exists($id)) {
-			throw new NotFoundException(__('Invalid experience'));
-		}
+		$experience = $this->__findExperience($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Experience->save($this->request->data)) {
 				$this->Session->setFlash(__('The experience has been saved'));
@@ -162,11 +65,9 @@ class ExperiencesController extends AppController {
 				$this->Session->setFlash(__('The experience could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('Experience.' . $this->Experience->primaryKey => $id));
-			$this->request->data = $this->Experience->find('first', $options);
+			$this->request->data = $experience;
 		}
-		$jobs = $this->Experience->Job->find('list');
-		$this->set(compact('jobs'));
+		$this->__list();
 	}
 
 /**
@@ -179,9 +80,7 @@ class ExperiencesController extends AppController {
  */
 	public function admin_delete($id = null) {
 		$this->Experience->id = $id;
-		if (!$this->Experience->exists()) {
-			throw new NotFoundException(__('Invalid experience'));
-		}
+		$experience = $this->__findExperience($this->Experience->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Experience->delete()) {
 			$this->Session->setFlash(__('Experience deleted'));
@@ -189,5 +88,37 @@ class ExperiencesController extends AppController {
 		}
 		$this->Session->setFlash(__('Experience was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+
+	/**
+	 * PRIVATE METHODS
+	 * 
+	 */
+	
+
+	/**
+	 * [__list description]
+	 * @return [type] [description]
+	 */
+	private function __list(){
+		$jobs = $this->Experience->Job->find('list');
+		$this->set(compact('jobs'));
+	}
+
+	/**
+	 * [__findExperience description]
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	
+	private function __findExperience($id = NULL)
+	{
+		$options    = array('conditions' => array('Experience.' . $this->Experience->primaryKey => $id));
+		$experience = $this->Experience->find('first', $options);
+		if (empty($experience)) {
+			$this->Session->setFlash("La Información solicitada no ha sido encontrada.", "flash_error");
+			$this->redirect(array('action'=>'index'));
+		}
+		return $experience;
 	}
 }

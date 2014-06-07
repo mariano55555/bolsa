@@ -7,99 +7,6 @@ App::uses('AppController', 'Controller');
  */
 class ExperiencesJobsController extends AppController {
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
-		$this->ExperiencesJob->recursive = 0;
-		$this->set('experiencesJobs', $this->paginate());
-	}
-
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		if (!$this->ExperiencesJob->exists($id)) {
-			throw new NotFoundException(__('Invalid experiences job'));
-		}
-		$options = array('conditions' => array('ExperiencesJob.' . $this->ExperiencesJob->primaryKey => $id));
-		$this->set('experiencesJob', $this->ExperiencesJob->find('first', $options));
-	}
-
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->ExperiencesJob->create();
-			if ($this->ExperiencesJob->save($this->request->data)) {
-				$this->Session->setFlash(__('The experiences job has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The experiences job could not be saved. Please, try again.'));
-			}
-		}
-		$jobs = $this->ExperiencesJob->Job->find('list');
-		$experiences = $this->ExperiencesJob->Experience->find('list');
-		$this->set(compact('jobs', 'experiences'));
-	}
-
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
-		if (!$this->ExperiencesJob->exists($id)) {
-			throw new NotFoundException(__('Invalid experiences job'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->ExperiencesJob->save($this->request->data)) {
-				$this->Session->setFlash(__('The experiences job has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The experiences job could not be saved. Please, try again.'));
-			}
-		} else {
-			$options = array('conditions' => array('ExperiencesJob.' . $this->ExperiencesJob->primaryKey => $id));
-			$this->request->data = $this->ExperiencesJob->find('first', $options);
-		}
-		$jobs = $this->ExperiencesJob->Job->find('list');
-		$experiences = $this->ExperiencesJob->Experience->find('list');
-		$this->set(compact('jobs', 'experiences'));
-	}
-
-/**
- * delete method
- *
- * @throws NotFoundException
- * @throws MethodNotAllowedException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->ExperiencesJob->id = $id;
-		if (!$this->ExperiencesJob->exists()) {
-			throw new NotFoundException(__('Invalid experiences job'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->ExperiencesJob->delete()) {
-			$this->Session->setFlash(__('Experiences job deleted'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Experiences job was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
 
 /**
  * admin_index method
@@ -107,8 +14,8 @@ class ExperiencesJobsController extends AppController {
  * @return void
  */
 	public function admin_index() {
-		$this->ExperiencesJob->recursive = 0;
-		$this->set('experiencesJobs', $this->paginate());
+		$experiencesJobs = $this->ExperiencesJob->find("all", array('order' => array('ExperiencesJob.created DESC')));
+		$this->set(compact('experiencesJobs'));
 	}
 
 /**
@@ -119,11 +26,8 @@ class ExperiencesJobsController extends AppController {
  * @return void
  */
 	public function admin_view($id = null) {
-		if (!$this->ExperiencesJob->exists($id)) {
-			throw new NotFoundException(__('Invalid experiences job'));
-		}
-		$options = array('conditions' => array('ExperiencesJob.' . $this->ExperiencesJob->primaryKey => $id));
-		$this->set('experiencesJob', $this->ExperiencesJob->find('first', $options));
+		$experiencesJob = $this->__findExperiencesJob($id);
+		$this->set(compact('experiencesJob'));
 	}
 
 /**
@@ -141,9 +45,7 @@ class ExperiencesJobsController extends AppController {
 				$this->Session->setFlash(__('The experiences job could not be saved. Please, try again.'));
 			}
 		}
-		$jobs = $this->ExperiencesJob->Job->find('list');
-		$experiences = $this->ExperiencesJob->Experience->find('list');
-		$this->set(compact('jobs', 'experiences'));
+		$this->__list();
 	}
 
 /**
@@ -154,9 +56,7 @@ class ExperiencesJobsController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
-		if (!$this->ExperiencesJob->exists($id)) {
-			throw new NotFoundException(__('Invalid experiences job'));
-		}
+		$experiencesJobs = $this->__findExperiencesJob($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->ExperiencesJob->save($this->request->data)) {
 				$this->Session->setFlash(__('The experiences job has been saved'));
@@ -165,12 +65,9 @@ class ExperiencesJobsController extends AppController {
 				$this->Session->setFlash(__('The experiences job could not be saved. Please, try again.'));
 			}
 		} else {
-			$options = array('conditions' => array('ExperiencesJob.' . $this->ExperiencesJob->primaryKey => $id));
-			$this->request->data = $this->ExperiencesJob->find('first', $options);
+			$this->request->data = $experiencesJobs;
 		}
-		$jobs = $this->ExperiencesJob->Job->find('list');
-		$experiences = $this->ExperiencesJob->Experience->find('list');
-		$this->set(compact('jobs', 'experiences'));
+		$this->__list();
 	}
 
 /**
@@ -183,9 +80,7 @@ class ExperiencesJobsController extends AppController {
  */
 	public function admin_delete($id = null) {
 		$this->ExperiencesJob->id = $id;
-		if (!$this->ExperiencesJob->exists()) {
-			throw new NotFoundException(__('Invalid experiences job'));
-		}
+		$this->__findExperiencesJob($this->ExperiencesJob->id)
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->ExperiencesJob->delete()) {
 			$this->Session->setFlash(__('Experiences job deleted'));
@@ -193,5 +88,33 @@ class ExperiencesJobsController extends AppController {
 		}
 		$this->Session->setFlash(__('Experiences job was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+
+
+	/**
+	 * PRIVATE METHODS
+	 */
+	
+	/**
+	 * [__list description]
+	 * @return [type] [description]
+	 */
+	private function __list()
+	{
+		$jobs        = $this->ExperiencesJob->Job->find('list');
+		$experiences = $this->ExperiencesJob->Experience->find('list');
+		$this->set(compact('jobs', 'experiences'));
+	}
+
+
+	private function __findExperiencesJob($id = NULL)
+	{
+		$options = array('conditions' => array('ExperiencesJob.' . $this->ExperiencesJob->primaryKey => $id));
+		$experience = $this->ExperiencesJob->find('first', $options);
+		if (empty($experience)) {
+			$this->Session->setFlash("La Información solicitada no ha sido encontrada.", "flash_error");
+			$this->redirect(array('action'=>'index'));
+		}
+		return $experience;		
 	}
 }
