@@ -39,10 +39,10 @@ class ContactsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Contact->create();
 			if ($this->Contact->save($this->request->data)) {
-				$this->Session->setFlash(__('The contact has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The contact could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		}
 		$this->__list();
@@ -56,19 +56,16 @@ class ContactsController extends AppController {
  * @return void
  */
 	public function admin_edit($id = null) {
-		if (!$this->Contact->exists($id)) {
-			throw new NotFoundException(__('Invalid contact'));
-		}
+		$contact = $this->__findContact($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Contact->save($this->request->data)) {
-				$this->Session->setFlash(__('The contact has been saved'));
+				$this->Session->setFlash("La Información ha sido guardad", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The contact could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		} else {
-			$options = array('conditions' => array('Contact.' . $this->Contact->primaryKey => $id));
-			$this->request->data = $this->Contact->find('first', $options);
+			$this->request->data = $contact;
 		}
 		$this->__list();
 	}
@@ -83,15 +80,13 @@ class ContactsController extends AppController {
  */
 	public function admin_delete($id = null) {
 		$this->Contact->id = $id;
-		if (!$this->Contact->exists()) {
-			throw new NotFoundException(__('Invalid contact'));
-		}
+		$this->__findContact($this->Contact->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Contact->delete()) {
-			$this->Session->setFlash(__('Contact deleted'));
+			$this->Session->setFlash("La Información ha sido eliminada", "flash_info");
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Contact was not deleted'));
+		$this->Session->setFlash("La Información solicitada no ha sido eliminada. Favor intente nuevamente", "flash_error");
 		$this->redirect(array('action' => 'index'));
 	}
 

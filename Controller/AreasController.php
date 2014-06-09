@@ -38,10 +38,10 @@ class AreasController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Area->create();
 			if ($this->Area->save($this->request->data)) {
-				$this->Session->setFlash(__('The area has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The area could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		}
 		$this->__list();
@@ -58,10 +58,10 @@ class AreasController extends AppController {
 		$area = $this->__findArea($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Area->save($this->request->data)) {
-				$this->Session->setFlash(__('The area has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The area could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		} else {
 			$this->request->data = $area;
@@ -82,10 +82,10 @@ class AreasController extends AppController {
 		$this->__findArea($this->Area->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Area->delete()) {
-			$this->Session->setFlash(__('Area deleted'));
+			$this->Session->setFlash("La Información ha sido eliminada", "flash_info");
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Area was not deleted'));
+		$this->Session->setFlash("La Información solicitada no ha sido eliminada. Favor intente nuevamente", "flash_error");
 		$this->redirect(array('action' => 'index'));
 	}
 

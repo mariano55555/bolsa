@@ -1,12 +1,31 @@
 <?php 
-debug($cities);
+//debug($jobs);
 ?>
+<style>
+  span.next a{
+    background: url("images/pager-sprite.png") no-repeat scroll -19px 0px rgb(230, 230, 230);
+    background: none repeat scroll 0 0 #E6E6E6;
+    box-shadow: 0 3px 0 0 #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+  }
+  span.next a:hover{
+    background-color: rgb(0, 198, 255);
+    background: none repeat scroll 0% 0% rgb(0, 198, 255);
+    color: rgb(255, 255, 255);
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+  }
+
+</style>
 
 <!-- Header -->
 <div id="header">
   <div class="inner"> 
     <!-- Logo -->
-    <div id="logo"> <a href="index.html"><img src="images/Logo.png" width="205" height="50"  alt="logo"/></a><a class="menu-hider"></a></div>
+    <div id="logo"> <a href="index.html"><img src="<?php echo $this->webroot; ?>img/esen_header.png"   alt="logo"/></a><a class="menu-hider"></a></div>
     <!-- /Logo -->
     <ul id="navigation">
       <li> <a href="index.html">Home</a></li>
@@ -35,7 +54,7 @@ debug($cities);
 <!-- Content -->
 <div id="content">
   <div id="title">
-    <h1 class="inner">Available Jobs<span id="jobs-counter">(350)</span>
+    <h1 class="inner">Ofertas de empleo<span id="jobs-counter">(<?php echo $totaltrabajos; ?>)</span>
       <ul class="breadcrumb-inner">
         <li> <a href="index.html">Home</a></li>
         <li> <a href="job.html">Job</a></li>
@@ -74,23 +93,10 @@ debug($cities);
                 <div class="filter-container">
                   <div class="major">
                     <ul>
-                      <li class="expanded"> <a>Asia<span>(3218)</span></a>
-                        <ul>
-                          <li><a href="#">Iraq<span>(834)</span></a></li>
-                          <li class="expanded"> <a>Jordan<span>(15218)</span></a>
-                            <ul>
-                              <li><a href="#">Ajloun<span>(834)</span></a></li>
-                              <li><a href="#">Irbid<span>(15218)</span></a></li>
-                              <li><a href="#">Jerash<span>(834)</span></a></li>
-                            </ul>
-                          </li>
-                          <li><a href="#">Saudi Arabia<span>(14902)</span></a></li>
-                        </ul>
-                      </li>
-                      <li><a href="#">Africa<span>(834)</span></a></li>
-                      <li><a href="#">Europe<span>(15218)</span></a></li>
-                      <li><a href="#">North America<span>(14902)</span></a></li>
-                      <li><a href="#">Central America<span>(1347)</span></a></li>
+                      <?php
+                      foreach ($ciudades as $ciudad) { ?>
+                        <li><a href="#"><?php echo $ciudad['nombre']; ?><span>(<?php echo $ciudad['cantidad']; ?>)</span></a></li>
+                      <?php } ?>
                     </ul>
                   </div>
                   <div class="minor hide">
@@ -279,7 +285,7 @@ debug($cities);
         </div>
         <div class="clear"></div>
         <div class="heading-l">
-          <h2> Available Jobs </h2>
+          <h2> Ofertas de empleo </h2>
         </div>
         <div class="clear"></div>
         <div class="page-top-nav-bar jobpage-nav">
@@ -306,10 +312,20 @@ debug($cities);
               <li class="next"><a href="#"></a></li>
             </ul>
           </div>
+          <div class="pager">
+          <?php
+            echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+            echo $this->Paginator->numbers(array('separator' => ''));
+            echo $this->Paginator->next(__('>'), array(), null, array('class' => 'next disabled'));
+          ?>
+          </div>
         </div>
         <div class="clear"></div>
         <div id="job-content-fields">
           <div id="list" class="view_mode">
+            <?php
+            for ($i=0; $i < count($jobs) ; $i++) { 
+            ?>
             <div class="field-container odd box-1">
               <div class="nav-buttons">
                 <ul>
@@ -321,8 +337,8 @@ debug($cities);
               <div class="header-fields">
                 <div class="date">27<span>Jun</span></div>
                 <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
+                  <div class="title"><a href="job.html"><?php echo $jobs[$i]['Job']['name']; ?></a></div>
+                  <div class="company"><?php echo $jobs[$i]['Company']['name']; ?> - <?php echo $jobs[$i]['City']['name'].', '.$jobs[$i]['Country']['name']; ?></div>
                 </div>
                 <ul class="social_media_icons job">
                   <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
@@ -335,863 +351,88 @@ debug($cities);
               </div>
               <div class="body-field">
                 <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                  <p>
+                    <?php echo htmlspecialchars_decode($jobs[$i]['Job']['content']); ?>
+                    <span class="read-more"><a>Read More</a></span>
+                  </p>
                 </div>
                 <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
+                  <li class="pull-left">Puesto: <span><?php echo $jobs[$i]['Job']['name']; ?></span></li>
+                  <?php
+                  if (isset($jobs[$i]['Industry'][0]['name'])) { ?>
+                  <li class="pull-center">Industria: <span><?php echo $jobs[$i]['Industry'][0]['name']; ?></span></li>
+                  <?php } 
+                  if (isset($jobs[$i]['Experience'][0]['name'])) { ?>
+                  <li class="pull-right">Experiencia: <span><?php echo $jobs[$i]['Experience'][0]['name']; ?></span></li>
+                  <?php } ?>
                 </ul>
+
+                <?php
+                if (isset($jobs[$i]['Job']['skills']) && strlen(trim($jobs[$i]['Job']['skills'])) > 0) {
+                  $pieces = explode(",", $jobs[$i]['Job']['skills']);
+                  $total  = count($pieces);
+                ?>
                 <div class="block-fields">
                   <div class="block skills">
-                    <h4>Required Skills</h4>
+                    <h4>Habilidades</h4>
                     <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
+                      <?php if ($total <= 3){ ?>
+                        <?php for ($i=0; $i < count($pieces); $i++) { ?>
+                          <div class = "field roll-with-description hide">
+                            <div class = "roll-button"><span></span></div>
+                            <div class = "roll-field">
+                              <div class = "label"><?php echo $pieces[$i]; ?></div>
+                              <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
+                              <div class = "description">...</div>
+                            </div>
+                          </div>
+                        <?php } ?>
+                      <?php }else{ ?>
+                        <?php for ($i=0; $i < 3; $i++) { ?>
+                          <div class = "field roll-with-description hide">
+                              <div class = "roll-button"><span></span></div>
+                              <div class = "roll-field">
+                                <div class = "label"><?php echo $pieces[$i]; ?></div>
+                                <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
+                                <div class = "description">...</div>
+                              </div>
+                            </div>
+                          <?php } ?>
+                      <?php } ?>
+                      
                       <!-- Cleaner -->
                       <div class="clear"></div>
                       <!-- /Cleaner --> 
                     </div>
                   </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
+                  <?php if($total > 3){ ?>
+                        <div class="block">
+                          <h4>Additional Requirements</h4>
+                          <div class="block-content">
+                            <?php for ($i=3; $i < count($pieces) ; $i++) { ?>
+                                <div class = "tag-field"><?php echo $pieces[$i]; ?></div>
+                            <?php } ?>
+                          </div>
+                          <!-- Cleaner -->
+                          <div class="clear"></div>
+                          <!-- /Cleaner --> 
+                        </div>
+                  <?php } ?>
                 </div>
+                <?php } ?>
                 <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
+                  <div class="apply"><a href="#">Aplicar</a></div>
+                  <div class="full"><a href="#">Aplicar</a></div>
                 </div>
               </div>
             </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
+  
+            <?php
+            }
+            ?>
           </div>
           <div id="cells" class="view_mode" style="display: none;">
+            <?php for ($i=0; $i < count($jobs) ; $i++) { ?>
             <div class="field-container odd box-1">
               <div class="nav-buttons">
                 <ul>
@@ -1200,12 +441,12 @@ debug($cities);
                   <li class="link"><a href="job.html"></a></li>
                 </ul>
               </div>
-              <div class="cells-job-thumb"> <img src="images/job-thumb.jpg"  alt=""/> </div>
+              <div class="cells-job-thumb"> <img src="<?php echo $this->webroot; ?>images/job-thumb.jpg"  alt=""/> </div>
               <div class="header-fields">
                 <div class="date">27<span>Jun</span></div>
                 <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
+                  <div class="title"><a href="job.html"><?php echo $jobs[$i]['Job']['name']; ?></a></div>
+                  <div class="company"><?php echo $jobs[$i]['Company']['name']; ?> - <?php echo $jobs[$i]['City']['name'].', '.$jobs[$i]['Country']['name']; ?></div>
                 </div>
                 <ul class="social_media_icons job">
                   <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
@@ -1218,872 +459,85 @@ debug($cities);
               </div>
               <div class="body-field">
                 <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
+                 <p>
+                    <?php echo htmlspecialchars_decode($jobs[$i]['Job']['content']); ?>
+                    <span class="read-more"><a>Read More</a></span>
+                  </p>
                 </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
+               <ul class="candidate-meta meta-fields">
+                  <li class="pull-left">Puesto: <span><?php echo $jobs[$i]['Job']['name']; ?></span></li>
+                  <?php
+                  if (isset($jobs[$i]['Industry'][0]['name'])) { ?>
+                  <li class="pull-center">Industria: <span><?php echo $jobs[$i]['Industry'][0]['name']; ?></span></li>
+                  <?php } 
+                  if (isset($jobs[$i]['Experience'][0]['name'])) { ?>
+                  <li class="pull-right">Experiencia: <span><?php echo $jobs[$i]['Experience'][0]['name']; ?></span></li>
+                  <?php } ?>
                 </ul>
+                 <?php
+                if (isset($jobs[$i]['Job']['skills']) && strlen(trim($jobs[$i]['Job']['skills'])) > 0) {
+                  $pieces = explode(",", $jobs[$i]['Job']['skills']);
+                  $total  = count($pieces);
+                ?>
                 <div class="block-fields">
                   <div class="block skills">
-                    <h4>Required Skills</h4>
+                    <h4>Habilidades</h4>
                     <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
+                      <?php if ($total <= 3){ ?>
+                        <?php for ($i=0; $i < count($pieces); $i++) { ?>
+                          <div class = "field roll-with-description hide">
+                            <div class = "roll-button"><span></span></div>
+                            <div class = "roll-field">
+                              <div class = "label"><?php echo $pieces[$i]; ?></div>
+                              <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
+                              <div class = "description">...</div>
+                            </div>
+                          </div>
+                        <?php } ?>
+                      <?php }else{ ?>
+                        <?php for ($i=0; $i < 3; $i++) { ?>
+                          <div class = "field roll-with-description hide">
+                              <div class = "roll-button"><span></span></div>
+                              <div class = "roll-field">
+                                <div class = "label"><?php echo $pieces[$i]; ?></div>
+                                <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
+                                <div class = "description">...</div>
+                              </div>
+                            </div>
+                          <?php } ?>
+                      <?php } ?>
+                      
                       <!-- Cleaner -->
                       <div class="clear"></div>
                       <!-- /Cleaner --> 
                     </div>
                   </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
+                  <?php if($total > 3){ ?>
+                        <div class="block">
+                          <h4>Additional Requirements</h4>
+                          <div class="block-content">
+                            <?php for ($i=3; $i < count($pieces) ; $i++) { ?>
+                                <div class = "tag-field"><?php echo $pieces[$i]; ?></div>
+                            <?php } ?>
+                          </div>
+                          <!-- Cleaner -->
+                          <div class="clear"></div>
+                          <!-- /Cleaner --> 
+                        </div>
+                  <?php } ?>
                 </div>
+                <?php } ?>
                 <div class="buttons-field applybtns">
                   <div class="apply"><a href="#">Apply for This Job</a></div>
                   <div class="full"><a href="#">Apply On MotibU</a></div>
                 </div>
               </div>
             </div>
-            <div class="field-container odd box-1">
-              <div class="cells-job-thumb"> <img src="images/job-thumb.jpg"  alt=""/> </div>
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="cells-job-thumb"> <img src="images/job-thumb.jpg"  alt=""/> </div>
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="cells-job-thumb"> <img src="images/job-thumb.jpg"  alt=""/> </div>
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="cells-job-thumb"> <img src="images/job-thumb.jpg"  alt=""/> </div>
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="cells-job-thumb"> <img src="images/job-thumb.jpg"  alt=""/> </div>
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="cells-job-thumb"> <img src="images/job-thumb.jpg"  alt=""/> </div>
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="cells-job-thumb"> <img src="images/job-thumb.jpg"  alt=""/> </div>
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="cells-job-thumb"> <img src="images/job-thumb.jpg"  alt=""/> </div>
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="cells-job-thumb"> <img src="images/job-thumb.jpg"  alt=""/> </div>
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
+            <?php } ?>
+
           </div>
           <div id="table" class="view_mode"  style="display: none;">
+            <?php for ($i=0; $i < count($jobs) ; $i++) { ?>
             <div  class="field-container odd box-1">
               <div class="nav-buttons">
                 <ul>
@@ -2095,8 +549,8 @@ debug($cities);
               <div class="header-fields">
                 <div class="date">27<span>Jun</span></div>
                 <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
+                   <div class="title"><a href="job.html"><?php echo $jobs[$i]['Job']['name']; ?></a></div>
+                  <div class="company"><?php echo $jobs[$i]['Company']['name']; ?> - <?php echo $jobs[$i]['City']['name'].', '.$jobs[$i]['Country']['name']; ?></div>
                 </div>
                 <ul class="social_media_icons job">
                   <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
@@ -2109,1311 +563,99 @@ debug($cities);
               </div>
               <div class="body-field">
                 <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
+                 <?php echo htmlspecialchars_decode($jobs[$i]['Job']['content']); ?>
+                    <span class="read-more"><a>Read More</a></span>
                 </div>
                 <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                  <p><?php echo htmlspecialchars_decode($jobs[$i]['Job']['content']); ?></p>
                 </div>
                 <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
+                  <li class="pull-left">Puesto: <span><?php echo $jobs[$i]['Job']['name']; ?></span></li>
+                  <?php
+                  if (isset($jobs[$i]['Industry'][0]['name'])) { ?>
+                  <li class="pull-center">Industria: <span><?php echo $jobs[$i]['Industry'][0]['name']; ?></span></li>
+                  <?php } 
+                  if (isset($jobs[$i]['Experience'][0]['name'])) { ?>
+                  <li class="pull-right">Experiencia: <span><?php echo $jobs[$i]['Experience'][0]['name']; ?></span></li>
+                  <?php } ?>
                 </ul>
+                <?php
+                if (isset($jobs[$i]['Job']['skills']) && strlen(trim($jobs[$i]['Job']['skills'])) > 0) {
+                  $pieces = explode(",", $jobs[$i]['Job']['skills']);
+                  $total  = count($pieces);
+                ?>
                 <div class="block-fields">
                   <div class="block skills">
-                    <h4>Required Skills</h4>
+                    <h4>Habilidades</h4>
                     <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
+                      <?php if ($total <= 3){ ?>
+                        <?php for ($i=0; $i < count($pieces); $i++) { ?>
+                          <div class = "field roll-with-description hide">
+                            <div class = "roll-button"><span></span></div>
+                            <div class = "roll-field">
+                              <div class = "label"><?php echo $pieces[$i]; ?></div>
+                              <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
+                              <div class = "description">...</div>
+                            </div>
+                          </div>
+                        <?php } ?>
+                      <?php }else{ ?>
+                        <?php for ($i=0; $i < 3; $i++) { ?>
+                          <div class = "field roll-with-description hide">
+                              <div class = "roll-button"><span></span></div>
+                              <div class = "roll-field">
+                                <div class = "label"><?php echo $pieces[$i]; ?></div>
+                                <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
+                                <div class = "description">...</div>
+                              </div>
+                            </div>
+                          <?php } ?>
+                      <?php } ?>
+                      
                       <!-- Cleaner -->
                       <div class="clear"></div>
                       <!-- /Cleaner --> 
                     </div>
                   </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
+                  <?php if($total > 3){ ?>
+                        <div class="block">
+                          <h4>Additional Requirements</h4>
+                          <div class="block-content">
+                            <?php for ($i=3; $i < count($pieces) ; $i++) { ?>
+                                <div class = "tag-field"><?php echo $pieces[$i]; ?></div>
+                            <?php } ?>
+                          </div>
+                          <!-- Cleaner -->
+                          <div class="clear"></div>
+                          <!-- /Cleaner --> 
+                        </div>
+                  <?php } ?>
                 </div>
+                <?php } ?>
                 <div class="buttons-field applybtns">
                   <div class="apply"><a href="#">Apply for This Job</a></div>
                   <div class="full"><a href="#">Apply On MotibU</a></div>
                 </div>
               </div>
             </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="clear"></div>
-            <div class="jab-ad-banner"> <img src="images/banner-ad.png"  alt="ad banner"/> </div>
-            <div class="clear"></div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="clear"></div>
-            <div class="jab-ad-banner"> <img src="images/banner-ad.png"  alt="ad banner"/> </div>
-            <div class="clear"></div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
-            <div class="field-container odd box-1">
-              <div class="nav-buttons">
-                <ul>
-                  <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
-                </ul>
-              </div>
-              <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html">Front-End Developer</a></div>
-                  <div class="company">Envato - Sydney, Australia</div>
-                </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
-              </div>
-              <div class="body-field">
-                <div class="teaser">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Lorem ipsum dolor sit amet, consectetur adipisicing elit.<span class="read-more"><a>Read More</a></span></p>
-                </div>
-                <div class="full-body">
-                  <p>Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div>
-                <ul class="candidate-meta meta-fields">
-                  <li class="pull-left">Job Role: <span>Technology / IT</span></li>
-                  <li class="pull-center">Industry: <span>Themes</span></li>
-                  <li class="pull-right">Career Level: <span>Mid Career</span></li>
-                </ul>
-                <div class="block-fields">
-                  <div class="block skills">
-                    <h4>Required Skills</h4>
-                    <div class="block-content">
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">5 Years of Experience</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "60"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description hide">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">Perfect Written &amp; Spoken English</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
-                          <div class = "description">...</div>
-                        </div>
-                      </div>
-                      <div class = "field roll-with-description show">
-                        <div class = "roll-button"><span></span></div>
-                        <div class = "roll-field">
-                          <div class = "label">3 Foreign Languages</div>
-                          <div class = "progressbar"><span class = "progress-count" data-level = "65"></span></div>
-                          <div class = "description">Preferred languages are Arabic, French &amp; Italian. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi.</div>
-                        </div>
-                      </div>
-                      <!-- Cleaner -->
-                      <div class="clear"></div>
-                      <!-- /Cleaner --> 
-                    </div>
-                  </div>
-                  <div class="block">
-                    <h4>Additional Requirements</h4>
-                    <div class="block-content">
-                      <div class = "tag-field">Work Permit</div>
-                      <div class = "tag-field">5 Years Experience</div>
-                      <div class = "tag-field">MBA</div>
-                      <div class = "tag-field">Magento Certified</div>
-                      <div class = "tag-field">Perfect Written &amp; Spoken English</div>
-                    </div>
-                    <!-- Cleaner -->
-                    <div class="clear"></div>
-                    <!-- /Cleaner --> 
-                  </div>
-                </div>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
-                </div>
-              </div>
-            </div>
+            <?php } ?>
           </div>
         </div>
         <div class="clear"></div>
         <div class="job-page-bot-nav-bar">
+          <p>
+          <?php
+          echo $this->Paginator->counter(array(
+          'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+          ));
+          ?>  </p>
+          <div class="pager">
+          <?php
+            echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+            echo $this->Paginator->numbers(array('separator' => ''));
+            echo $this->Paginator->next(__('>'), array(), null, array('class' => 'next disabled'));
+          ?>
+          </div>
           <div class="pager">
             <ul>
               <li class="prev noactive"><a></a></li>

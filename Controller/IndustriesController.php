@@ -39,10 +39,10 @@ class IndustriesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Industry->create();
 			if ($this->Industry->save($this->request->data)) {
-				$this->Session->setFlash(__('The industry has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The industry could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		}
 		$this->__list();
@@ -59,10 +59,10 @@ class IndustriesController extends AppController {
 		$industry = $this->__findIndustry($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Industry->save($this->request->data)) {
-				$this->Session->setFlash(__('The industry has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The industry could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		} else {
 			$this->request->data = $industry;
@@ -83,10 +83,10 @@ class IndustriesController extends AppController {
 		$this->__findIndustry($this->Industry->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Industry->delete()) {
-			$this->Session->setFlash(__('Industry deleted'));
+			$this->Session->setFlash("La Información ha sido eliminada", "flash_info");
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Industry was not deleted'));
+		$this->Session->setFlash("La Información solicitada no ha sido eliminada. Favor intente nuevamente", "flash_error");
 		$this->redirect(array('action' => 'index'));
 	}
 

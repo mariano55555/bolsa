@@ -35,6 +35,9 @@
 
 	Router::connect('/', array('controller' => 'Users', 'action' => 'home'));
 
+	Router::connect('/admin/Dashboard', array('controller' => 'Users', 'action' => 'dashboard', 'admin' => true));
+	Router::connect('/admin/dashboard', array('controller' => 'Users', 'action' => 'dashboard', 'admin' => true));
+	
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on

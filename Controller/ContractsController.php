@@ -38,10 +38,10 @@ class ContractsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Contract->create();
 			if ($this->Contract->save($this->request->data)) {
-				$this->Session->setFlash(__('The contract has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The contract could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		}
 		$this->__list();
@@ -58,10 +58,10 @@ class ContractsController extends AppController {
 		$contract = $this->__findContract($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Contract->save($this->request->data)) {
-				$this->Session->setFlash(__('The contract has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The contract could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		} else {
 			$this->request->data = $contract;
@@ -82,10 +82,10 @@ class ContractsController extends AppController {
 		$this->__findContract($this->Contract->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Contract->delete()) {
-			$this->Session->setFlash(__('Contract deleted'));
+			$this->Session->setFlash("La Información ha sido eliminada", "flash_info");
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Contract was not deleted'));
+		$this->Session->setFlash("La Información solicitada no ha sido eliminada. Favor intente nuevamente", "flash_error");
 		$this->redirect(array('action' => 'index'));
 	}
 

@@ -21,7 +21,7 @@
                  </span>
             </header>
         <div class="panel-body">
-          <?php echo $this->Html->link(__('<i class="fa fa-shopping-cart"></i> Nuevo area'), 
+          <?php echo $this->Html->link(__('<i class="fa fa-shopping-cart"></i> Nueva area'), 
                 array('action' => 'add'), 
                 array('escape' => false, "class"=>"btn btn-info")
                 );

@@ -14,12 +14,14 @@
 			'/js/admin/iCheck/skins/square/blue',
 			'admin/clndr',
 			'admin/style',
+			'gritter/jquery.gritter',
 			'admin/style-responsive',
 			));
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 	?>
+	<script src="<?php echo $this->webroot; ?>js/jquery-1.11.0.min.js"></script>
 </head>
 <body class="sticky-header">
 
@@ -43,13 +45,12 @@
     </div>
     <!--footer section start-->
         <footer>
-            2014 &copy; Klick on Fresh
+            <?php echo date("Y"); ?>&copy; ESEN
         </footer>
     <!--footer section end-->
 	<?php // echo $this->element('sql_dump'); ?>
 	<?php
 	echo $this->Html->script(array(
-			'jquery-1.11.0.min',
 			'admin/jquery-ui-1.9.2.custom.min',
 			'admin/jquery-migrate-1.2.1.min',
 			'admin/bootstrap.min',
@@ -61,6 +62,7 @@
 			'admin/sparkline/sparkline-init',
 			'admin/iCheck/jquery.icheck',
 			'admin/icheck-init',
+			'gritter/jquery.gritter.min',
 			/*'admin/flot-chart/jquery.flot',
 			'admin/flot-chart/jquery.flot.tooltip',
 			'admin/flot-chart/jquery.flot.resize',

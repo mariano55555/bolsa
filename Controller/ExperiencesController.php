@@ -39,10 +39,10 @@ class ExperiencesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Experience->create();
 			if ($this->Experience->save($this->request->data)) {
-				$this->Session->setFlash(__('The experience has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The experience could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		}
 		$this->__list();
@@ -59,10 +59,10 @@ class ExperiencesController extends AppController {
 		$experience = $this->__findExperience($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Experience->save($this->request->data)) {
-				$this->Session->setFlash(__('The experience has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The experience could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		} else {
 			$this->request->data = $experience;
@@ -83,10 +83,10 @@ class ExperiencesController extends AppController {
 		$experience = $this->__findExperience($this->Experience->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Experience->delete()) {
-			$this->Session->setFlash(__('Experience deleted'));
+			$this->Session->setFlash("La Información ha sido eliminada", "flash_info");
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Experience was not deleted'));
+		$this->Session->setFlash("La Información solicitada no ha sido eliminada. Favor intente nuevamente", "flash_error");
 		$this->redirect(array('action' => 'index'));
 	}
 

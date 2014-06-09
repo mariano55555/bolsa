@@ -38,10 +38,10 @@ class SubscriptionsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Subscription->create();
 			if ($this->Subscription->save($this->request->data)) {
-				$this->Session->setFlash(__('The subscription has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The subscription could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		}
 		$this->__list();
@@ -58,10 +58,10 @@ class SubscriptionsController extends AppController {
 		$subscription = $this->__findSubscription($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Subscription->save($this->request->data)) {
-				$this->Session->setFlash(__('The subscription has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The subscription could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		} else {
 			$this->request->data = $subscription;
@@ -82,10 +82,10 @@ class SubscriptionsController extends AppController {
 		$subscription = $this->__findSubscription($this->Subscription->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Subscription->delete()) {
-			$this->Session->setFlash(__('Subscription deleted'));
+			$this->Session->setFlash("La Información ha sido eliminada", "flash_info");
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Subscription was not deleted'));
+		$this->Session->setFlash("La Información solicitada no ha sido eliminada. Favor intente nuevamente", "flash_error");
 		$this->redirect(array('action' => 'index'));
 	}
 
@@ -120,10 +120,10 @@ class SubscriptionsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Subscription->create();
 			if ($this->Subscription->save($this->request->data)) {
-				$this->Session->setFlash(__('The subscription has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The subscription could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		}
 		$this->__list();
@@ -140,10 +140,10 @@ class SubscriptionsController extends AppController {
 		$subscription = $this->__findSubscription($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Subscription->save($this->request->data)) {
-				$this->Session->setFlash(__('The subscription has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The subscription could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		} else {
 			
@@ -165,10 +165,10 @@ class SubscriptionsController extends AppController {
 		$this->__findSubscription($this->Subscription->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Subscription->delete()) {
-			$this->Session->setFlash(__('Subscription deleted'));
+			$this->Session->setFlash("La Información ha sido eliminada", "flash_info");
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Subscription was not deleted'));
+		$this->Session->setFlash("La Información solicitada no ha sido eliminada. Favor intente nuevamente", "flash_error");
 		$this->redirect(array('action' => 'index'));
 	}
 

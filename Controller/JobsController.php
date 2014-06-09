@@ -7,15 +7,67 @@ App::uses('AppController', 'Controller');
  */
 class JobsController extends AppController {
 
+	public $components = array('Paginator');
+	public $uses       = array('Job', 'Country');
+    public $paginate   = array(
+        'limit' => 1,
+        'conditions' => array(
+        	'Job.active' => 1
+        	),
+        'order' => array(
+            'Job.created' => 'desc'
+        )
+    );
+
 /**
  * index method
  *
  * @return void
  */
 	public function index() {
-		$this->Job->recursive = 0;
-		$this->set('jobs', $this->paginate());
-		$this->__list();
+		//$this->Job->recursive = 0;
+		$this->Paginator->settings = $this->paginate;
+	    // similar to findAll(), but fetches paged results
+		$jobs       = $this->Paginator->paginate('Job');
+	    for ($i=0; $i < count($jobs) ; $i++) { 
+	    	$jobs[$i]['Country']['name'] =  $this->Country->field("name", array('Country.id' => $jobs[$i]['City']['country_id'] ));
+	    	if (isset($jobs[$i]['City']['id'])) {
+	    	 	$ciudadesid[][$jobs[$i]['City']['id']] = $jobs[$i]['City']['name'];
+	    	 } 
+	    }
+	    $this->set('jobs', $jobs);
+
+	    //CALCULOS DE BUSQUEDAS
+	    $data = $this->Job->find("all", array('conditions' => array('Job.active' => 1)));
+	    $ciudadesid = array();
+	    for ($i=0; $i < count($data) ; $i++) { 
+	    	if (isset($data[$i]['City']['id'])) {
+	    		if (in_array($data[$i]['City']['name'], $ciudadesid)) {
+	    		}else{
+	    			$ciudadesid[$data[$i]['City']['id']] = $data[$i]['City']['name'];
+	    		}
+	    	 } 
+	    }
+	    //debug($ciudadesid);
+	    $ciudades = array();
+	    for ($i=0; $i < count($data) ; $i++) { 
+	    	if (isset($data[$i]['City']['id'])) {
+		    	$contador = 0;
+		    	foreach ($ciudadesid as $key => $value) {
+		    		if ($key == $data[$i]['City']['id']) {
+						$ciudades[$i]['id']       = $key;
+						$ciudades[$i]['nombre']   = $data[$i]['City']['name'];
+						$contador ++;
+		    		}
+		    	}
+		    	//aca poner que ondas
+		    	$ciudades[$i]['cantidad'] = $contador;
+	    	}
+	    }
+		//debug($ciudades);
+		$totaltrabajos = count($data);
+		$this->set(compact('ciudades', 'totaltrabajos'));
+
 	}
 
 /**
@@ -39,10 +91,10 @@ class JobsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Job->create();
 			if ($this->Job->save($this->request->data)) {
-				$this->Session->setFlash(__('The job has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The job could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada Favor intente nuevamente", "flash_error");
 			}
 		}
 		$this->__list();
@@ -82,10 +134,10 @@ class JobsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Job->create();
 			if ($this->Job->save($this->request->data)) {
-				$this->Session->setFlash(__('The job has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The job could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		}
 		$this->__list();
@@ -102,10 +154,10 @@ class JobsController extends AppController {
 		$job = $this->__findJob($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Job->save($this->request->data)) {
-				$this->Session->setFlash(__('The job has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The job could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		} else {
 			$this->request->data = $job;
@@ -126,10 +178,10 @@ class JobsController extends AppController {
 		$this->__findJob($this->Job->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Job->delete()) {
-			$this->Session->setFlash(__('Job deleted'));
+			$this->Session->setFlash("La Información ha sido eliminada", "flash_info");
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Job was not deleted'));
+		$this->Session->setFlash("La Información solicitada no ha sido eliminada. Favor intente nuevamente", "flash_error");
 		$this->redirect(array('action' => 'index'));
 	}
 

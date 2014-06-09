@@ -11,12 +11,11 @@ class UsersController extends AppController {
 
 public function login()
 {
-	$this->layout = "admin";
+	$this->layout = "login";
 	if ($this->request->is('post')) {
+		debug($this->request->data);
         if ($this->Auth->login()) {
             return $this->redirect($this->Auth->redirectUrl());
-            // Prior to 2.3 use
-            // `return $this->redirect($this->Auth->redirect());`
         } else {
             $this->Session->setFlash(
                 __('Username or password is incorrect'),
@@ -35,6 +34,10 @@ public function logout()
 	return $this->redirect($this->Auth->logout());
 }
 
+public function admin_dashboard()
+{
+	# code...
+}
 
 public function home()
 {
@@ -72,10 +75,10 @@ public function home()
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		}
 		$this->__list();
@@ -92,10 +95,10 @@ public function home()
 		$user = $this->__findUser($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		} else {
 			
@@ -117,10 +120,10 @@ public function home()
 		$this->__findUser($this->User->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->User->delete()) {
-			$this->Session->setFlash(__('User deleted'));
+			$this->Session->setFlash("La Información ha sido eliminada", "flash_info");
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('User was not deleted'));
+		$this->Session->setFlash("La Información solicitada no ha sido eliminada. Favor intente nuevamente", "flash_error");
 		$this->redirect(array('action' => 'index'));
 	}
 

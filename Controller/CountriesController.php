@@ -38,10 +38,10 @@ class CountriesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Country->create();
 			if ($this->Country->save($this->request->data)) {
-				$this->Session->setFlash(__('The country has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The country could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		}
 	}
@@ -57,10 +57,10 @@ class CountriesController extends AppController {
 		$country = $this->__findCountry($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Country->save($this->request->data)) {
-				$this->Session->setFlash(__('The country has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The country could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		} else {
 			$this->request->data = $country;
@@ -80,10 +80,10 @@ class CountriesController extends AppController {
 		$this->__findCountry($this->Country->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Country->delete()) {
-			$this->Session->setFlash(__('Country deleted'));
+			$this->Session->setFlash("La Información ha sido eliminada", "flash_info");
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Country was not deleted'));
+		$this->Session->setFlash("La Información solicitada no ha sido eliminada. Favor intente nuevamente", "flash_error");
 		$this->redirect(array('action' => 'index'));
 	}
 

@@ -29,7 +29,7 @@
                 <table  class="display table table-bordered table-striped" id="dynamic-table">
                     <thead>
                         <tr>
-                            <td>>Contrato</td>
+                            <td>Contrato</td>
                             <th class="hidden-phone">Creado</th>
                             <th class="hidden-phone">Modificado</th>
                             <th class="hidden-phone">Estado</th>

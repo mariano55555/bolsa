@@ -14,6 +14,8 @@ function onChangeTag(input,tag) {
 $(function() {
 
     $('#tags_1').tagsInput({width:'auto'});
+    $('#tags_3').tagsInput({width:'auto'});
+    $('#tags_4').tagsInput({width:'auto'});
     $('#tags_2').tagsInput({
         width: '250',
         onChange: function(elem, elem_tags)

@@ -39,10 +39,10 @@ class CompaniesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Company->create();
 			if ($this->Company->save($this->request->data)) {
-				$this->Session->setFlash(__('The company has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The company could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		}
 	}
@@ -58,10 +58,10 @@ class CompaniesController extends AppController {
 		$company = $this->__findCompany($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Company->save($this->request->data)) {
-				$this->Session->setFlash(__('The company has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The company could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		} else {
 			$this->request->data = $company;
@@ -81,10 +81,10 @@ class CompaniesController extends AppController {
 		$this->__findCompany($this->Company->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Company->delete()) {
-			$this->Session->setFlash(__('Company deleted'));
+			$this->Session->setFlash("La Información ha sido eliminada", "flash_info");
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Company was not deleted'));
+		$this->Session->setFlash("La Información solicitada no ha sido eliminada. Favor intente nuevamente", "flash_error");
 		$this->redirect(array('action' => 'index'));
 	}
 

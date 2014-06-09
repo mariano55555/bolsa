@@ -39,10 +39,10 @@ class TagsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Tag->create();
 			if ($this->Tag->save($this->request->data)) {
-				$this->Session->setFlash(__('The tag has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The tag could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		}
 	}
@@ -58,10 +58,10 @@ class TagsController extends AppController {
 		$tag = $this->__findTag($id);
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Tag->save($this->request->data)) {
-				$this->Session->setFlash(__('The tag has been saved'));
+				$this->Session->setFlash("La Información ha sido guardada", "flash_info");
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The tag could not be saved. Please, try again.'));
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente", "flash_error");
 			}
 		} else {
 			$this->request->data = $tag;
@@ -81,10 +81,10 @@ class TagsController extends AppController {
 		$this->__findTag($this->Tag->id);
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Tag->delete()) {
-			$this->Session->setFlash(__('Tag deleted'));
+			$this->Session->setFlash("La Información ha sido eliminada", "flash_info");
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Tag was not deleted'));
+		$this->Session->setFlash("La Información solicitada no ha sido eliminada. Favor intente nuevamente", "flash_error");
 		$this->redirect(array('action' => 'index'));
 	}
 
