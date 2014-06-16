@@ -7429,3 +7429,398 @@ Stack Trace:
 #1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
 #2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2014-06-09 16:27:05 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/js/
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:27:05 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/js/.js
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:27:07 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user4.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:27:07 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user5.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:27:07 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user1.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:27:07 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user3.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:27:07 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user2.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:28:33 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user4.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:28:33 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user5.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:28:33 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user2.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:28:33 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user1.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:28:33 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user3.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:28:54 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user2.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:28:55 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user4.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:28:55 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user3.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:28:55 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user1.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:28:55 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user5.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:29:40 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user1.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:29:40 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user3.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:29:40 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user4.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:29:40 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user5.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:29:40 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user2.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:32:29 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user2.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:32:29 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user3.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:32:29 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user1.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:32:29 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user5.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:32:29 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user4.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:33:17 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user1.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:33:18 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user2.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:33:18 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user5.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:33:18 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user3.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:33:18 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/admin/images/photos/user4.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-09 16:50:39 Error: [MissingActionException] Action UsersController::admin_images() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_images',
+)
+Request URL: /jobsearch/admin/users/images/photos/user4.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-09 16:50:40 Error: [MissingActionException] Action UsersController::admin_images() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_images',
+)
+Request URL: /jobsearch/admin/users/images/photos/user5.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-09 16:50:40 Error: [MissingActionException] Action UsersController::admin_images() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_images',
+)
+Request URL: /jobsearch/admin/users/images/photos/user1.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-09 16:50:40 Error: [MissingActionException] Action UsersController::admin_images() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_images',
+)
+Request URL: /jobsearch/admin/users/images/photos/user2.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-09 16:50:40 Error: [MissingActionException] Action UsersController::admin_images() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_images',
+)
+Request URL: /jobsearch/admin/users/images/photos/user3.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-09 16:57:08 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/sb-ad.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-09 16:57:08 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/Logo.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-09 16:57:11 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/map-marker.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-17 00:35:19 Error: [MissingControllerException] Controller class Job.htmlController could not be found.
+Exception Attributes: array (
+  'class' => 'Job.htmlController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/job.html
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-17 01:03:54 Error: Fatal Error (4): syntax error, unexpected end of file in [C:\xampp\htdocs\jobsearch\View\Jobs\index.ctp, line 694]
+2014-06-17 01:03:54 Error: [FatalErrorException] syntax error, unexpected end of file
+Request URL: /jobsearch/jobs
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(184): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 694)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 694, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(927): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 694, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(900): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
