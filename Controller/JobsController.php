@@ -25,6 +25,7 @@ class JobsController extends AppController {
  * @return void
  */
 	public function index() {
+		$this->set('title_for_layout', 'Ofetas de empleo');
 		//$this->Job->recursive = 0;
 		$this->Paginator->settings = $this->paginate;
 	    // similar to findAll(), but fetches paged results

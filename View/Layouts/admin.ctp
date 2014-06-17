@@ -71,6 +71,8 @@
 			'admin/flot-chart/jquery.flot.stack',
 			'admin/flot-chart/jquery.flot.time',
 			'admin/main-chart',*/
+			'plugins/highcharts/highcharts',
+			'plugins/highcharts/exporting',
 			'admin/scripts'
 			));
 	echo $this->fetch('script');

@@ -28,23 +28,22 @@
     <div id="logo"> <a href="index.html"><img src="<?php echo $this->webroot; ?>img/esen_header.png"   alt="logo"/></a><a class="menu-hider"></a></div>
     <!-- /Logo -->
     <ul id="navigation">
-      <li> <a href="index.html">Home</a></li>
-      <li class="first expanded current"><a href="jobs.html">Jobs</a>
+      <li> <a href="index.html">Inicio</a></li>
+      <li class="first expanded current"><a href="jobs.html">Empleos</a>
         <ul class="submenu">
           <li><a href="jobs.html">Job listing</a></li>
           <li><a href="job.html">Job Details</a></li>
         </ul>
       </li>
-      <li class="first expanded"><a href="candidates-listing.html">Candidates</a>
+      <li class="first expanded"><a href="candidates-listing.html">Candidatos</a>
         <ul class="submenu">
           <li><a href="candidates-listing.html">Candidate Listing (with sidebar)</a></li>
           <li><a href="candidates-listing-no-sidebar.html">Candidate listing (without)</a></li>
           <li><a href="candidate.html">Candidate</a></li>
         </ul>
       </li>
-      <li><a href="partners.html">Partners</a></li>
-      <li><a href="about-us.html">About Us</a></li>
-      <li><a href="contacts.html">Contact</a></li>
+      <li><a href="partners.html">Empresas</a></li>
+      <li><a href="contacts.html">Contactanos</a></li>
     </ul>
   </div>
 </div>
@@ -94,18 +93,38 @@
                   <div class="major">
                     <ul>
                       <?php
-                      foreach ($ciudades as $ciudad) { ?>
-                        <li><a href="#"><?php echo $ciudad['nombre']; ?><span>(<?php echo $ciudad['cantidad']; ?>)</span></a></li>
-                      <?php } ?>
+                      if (count($ciudades) <= 4) {
+                          foreach ($ciudades as $ciudad) { ?>
+                            <li><a href="#"><?php echo $ciudad['nombre']; ?><span>(<?php echo $ciudad['cantidad']; ?>)</span></a></li>
+                    <?php }
+                       }else{
+                          $i = 1;
+                           foreach ($ciudades as $ciudad) { 
+                                if ($i <= 4) { ?>
+                                   <li><a href="#"><?php echo $ciudad['nombre']; ?><span>(<?php echo $ciudad['cantidad']; ?>)</span></a></li>
+                               <?php }
+                            $i++;
+                          }
+                      } ?>
                     </ul>
                   </div>
-                  <div class="minor hide">
-                    <ul>
-                      <li><a href="#">South America<span>(5834)</span></a></li>
-                      <li><a href="#">Oceania<span>(6020)</span></a></li>
-                    </ul>
-                    <div class="minor-label">See More</div>
-                  </div>
+                  <?php
+                  if (count($ciudades) > 4) {
+                  ?>
+                    <div class="minor hide">
+                      <ul>
+                        <?php
+                          for ($i=4; $i < count($ciudades); $i++) { ?>
+                              <li><a href="#"><?php echo $ciudades[$i]['nombre']; ?><span>(<?php echo $ciudades[$i]['cantidad']; ?>)</span></a></li>
+                        <?php
+                          }
+                        ?>
+                      </ul>
+                      <div class="minor-label">Ver m&aacute;s</div>
+                    </div>
+                  <?php
+                  }
+                  ?>
                 </div>
                 <div class="show-hide-button"><span></span></div>
               </div>
@@ -255,12 +274,14 @@
             </form>
           </div>
         </div>
-        <div id="advertising" class="block border">
+
+        <!--COLOCAR UN BANNER ACA -->
+        <!--<div id="advertising" class="block border">
           <div class="block-content"> <img src="images/sb-ad.jpg"  alt="banner ad"/> 
-            <!--<div class="advertising-test">300x250<br/>
-              Ad Banner</div>--> 
+            <div class="advertising-test">300x250<br/>
+              Ad Banner</div>
           </div>
-        </div>
+        </div>-->
       </div>
       <!-- /Content Left --> 
       
