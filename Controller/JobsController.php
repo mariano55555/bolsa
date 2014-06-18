@@ -19,6 +19,15 @@ class JobsController extends AppController {
         )
     );
 
+
+
+public function test()
+{
+	$this->layout ="test";
+}
+
+
+
 /**
  * index method
  *
@@ -133,6 +142,50 @@ class JobsController extends AppController {
 		$this->set(compact('ciudades', 'industrias','totaltrabajos', 'contratos', 'experiencias', 'areas'));
 
 	}
+
+
+
+	public function search($seccion = NULL, $id = NULL)
+	{
+
+		$jobs1 = $this->Job->find("all", array('contain' => 'City', 'conditions' => array('Job.active' => 1)));
+		$jobs2 = $this->Job->find("all", array('contain' => 'Industry', 'conditions' => array('Job.active' => 1)));
+		debug($jobs2);
+		switch ($seccion) {
+			case 'ciudad':
+				foreach ($jobs1 as $job) {
+					if ($job['City']['id'] == $id) {
+						$jobs[]	 = $job;
+					}
+				}
+				$this->set(compact('jobs'));
+				break;
+			case 'industria':
+				foreach ($jobs2 as $job) {
+					for ($i=0; $i < count($jobs2) ; $i++) { 
+						# code...
+					}
+				}
+				break;
+			case 'area':
+				
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+
+
+	}
+
+
+
+
+
+
+
+
 
 /**
  * view method
@@ -253,6 +306,12 @@ class JobsController extends AppController {
 
 	//CUSTOM
 
+	public function contactanos()
+	{
+
+		
+
+	}
 
 
 

@@ -34,6 +34,10 @@
                                 <label for="ProductName" class="col-lg-2 col-sm-2 control-label">Tel&eacute;fono</label>
                                 <?php echo $this->Form->input('phone', array("class"=>"form-control", 'required' => 'true', 'div' => array('class' => 'col-lg-6'))); ?>
                             </div>
+                             <div class="form-group">
+                                <label for="ProductName" class="col-lg-2 col-sm-2 control-label">Email</label>
+                                <?php echo $this->Form->input('email', array("class"=>"form-control", 'required' => 'true', 'div' => array('class' => 'col-lg-6'))); ?>
+                            </div>
                             <div class="form-group">
                             	<label for="CategoryName" class="col-lg-2 col-sm-2 control-label">Activo</label>
                             	<?php echo $this->Form->input('active', array('checked' => true, "class"=>"js-switch")); ?>

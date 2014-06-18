@@ -79,13 +79,13 @@
                       <?php
                       if (count($ciudades) <= 4) {
                           foreach ($ciudades as $ciudad) { ?>
-                            <li><a href="#"><?php echo $ciudad['nombre']; ?><span>(<?php echo $ciudad['cantidad']; ?>)</span></a></li>
+                            <li><a href="<?php echo $this->webroot; ?>Jobs/search/ciudad/<?php echo $ciudad['id']; ?>"><?php echo $ciudad['nombre']; ?><span>(<?php echo $ciudad['cantidad']; ?>)</span></a></li>
                     <?php }
                        }else{
                           $i = 1;
                            foreach ($ciudades as $ciudad) { 
                                 if ($i <= 4) { ?>
-                                   <li><a href="#"><?php echo $ciudad['nombre']; ?><span>(<?php echo $ciudad['cantidad']; ?>)</span></a></li>
+                                   <li><a href="<?php echo $this->webroot; ?>Jobs/search/ciudad/<?php echo $ciudad['id']; ?>"><?php echo $ciudad['nombre']; ?><span>(<?php echo $ciudad['cantidad']; ?>)</span></a></li>
                                <?php }
                             $i++;
                           }
@@ -99,7 +99,7 @@
                       <ul>
                         <?php
                           for ($i=4; $i < count($ciudades); $i++) { ?>
-                              <li><a href="#"><?php echo $ciudades[$i]['nombre']; ?><span>(<?php echo $ciudades[$i]['cantidad']; ?>)</span></a></li>
+                              <li><a href="<?php echo $this->webroot; ?>Jobs/search/ciudad/<?php echo $ciudades[$i]['id']; ?>"><?php echo $ciudades[$i]['nombre']; ?><span>(<?php echo $ciudades[$i]['cantidad']; ?>)</span></a></li>
                         <?php
                           }
                         ?>
@@ -122,13 +122,13 @@
                       <?php
                       if (count($industrias) <= 4) {
                           foreach ($industrias as $industria) { ?>
-                            <li><a href="#"><?php echo $industria['nombre']; ?><span>(<?php echo $industria['cantidad']; ?>)</span></a></li>
+                            <li><a href="<?php echo $this->webroot; ?>Jobs/search/industria/<?php echo $industria['id']; ?>"><?php echo $industria['nombre']; ?><span>(<?php echo $industria['cantidad']; ?>)</span></a></li>
                     <?php }
                        }else{
                           $i = 1;
                            foreach ($industrias as $industria) { 
                                 if ($i <= 4) { ?>
-                                   <li><a href="#"><?php echo $industria['nombre']; ?><span>(<?php echo $industria['cantidad']; ?>)</span></a></li>
+                                   <li><a href="<?php echo $this->webroot; ?>Jobs/search/industria/<?php echo $industria['id']; ?>"><?php echo $industria['nombre']; ?><span>(<?php echo $industria['cantidad']; ?>)</span></a></li>
                                <?php }
                             $i++;
                           }
@@ -142,7 +142,7 @@
                       <ul>
                         <?php
                           for ($i=4; $i < count($industrias); $i++) { ?>
-                              <li><a href="#"><?php echo $industrias[$i]['nombre']; ?><span>(<?php echo $industrias[$i]['cantidad']; ?>)</span></a></li>
+                              <li><a href="<?php echo $this->webroot; ?>Jobs/search/industria/<?php echo $industrias[$i]['id']; ?>"><?php echo $industrias[$i]['nombre']; ?><span>(<?php echo $industrias[$i]['cantidad']; ?>)</span></a></li>
                         <?php
                           }
                         ?>
@@ -165,13 +165,13 @@
                       <?php
                       if (count($areas) <= 4) {
                           foreach ($areas as $area) { ?>
-                            <li><a href="#"><?php echo $area['nombre']; ?><span>(<?php echo $area['cantidad']; ?>)</span></a></li>
+                            <li><a href="<?php echo $this->webroot; ?>Jobs/search/area/<?php echo $area['id']; ?>"><?php echo $area['nombre']; ?><span>(<?php echo $area['cantidad']; ?>)</span></a></li>
                     <?php }
                        }else{
                           $i = 1;
                            foreach ($areas as $area) { 
                                 if ($i <= 4) { ?>
-                                   <li><a href="#"><?php echo $area['nombre']; ?><span>(<?php echo $area['cantidad']; ?>)</span></a></li>
+                                   <li><a href="<?php echo $this->webroot; ?>Jobs/search/area/<?php echo $area['id']; ?>"><?php echo $area['nombre']; ?><span>(<?php echo $area['cantidad']; ?>)</span></a></li>
                                <?php }
                             $i++;
                           }
@@ -185,7 +185,7 @@
                       <ul>
                         <?php
                           for ($i=4; $i < count($areas); $i++) { ?>
-                              <li><a href="#"><?php echo $areas[$i]['nombre']; ?><span>(<?php echo $areas[$i]['cantidad']; ?>)</span></a></li>
+                              <li><a href="<?php echo $this->webroot; ?>Jobs/search/area/<?php echo $areas[$i]['id']; ?>"><?php echo $areas[$i]['nombre']; ?><span>(<?php echo $areas[$i]['cantidad']; ?>)</span></a></li>
                         <?php
                           }
                         ?>
@@ -255,11 +255,11 @@
                     </div>
                   </div>
                   <div class="clear"></div>
-                  <div id="saved-search-select">
+                  <!--<div id="saved-search-select">
                     <select class="select">
                       <option selected="selected" value="No Searches Saved Yet">No hay b&uacute;squedas guardadas</option>
                     </select>
-                    <a href="#">Guardar mi b&uacute;squeda</a> </div>
+                    <a href="#">Guardar mi b&uacute;squeda</a> </div>-->
                 </div>
               </div>
               <input type="submit" value="Buscar" id="filter-job-page-submit"/>
@@ -433,7 +433,7 @@
                   <?php } ?>
                 </div>
                 <?php } 
-                debug($jobs);
+                //debug($jobs);
                 ?>
                 <div class="buttons-field applybtns">
                   <div class="apply"><a href="<?php echo $this->webroot; ?>users/apply/<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar</a></div>
@@ -499,22 +499,22 @@
                     <h4>Habilidades</h4>
                     <div class="block-content">
                       <?php if ($total <= 3){ ?>
-                        <?php for ($i=0; $i < count($pieces); $i++) { ?>
+                        <?php for ($a=0; $a < count($pieces); $a++) { ?>
                           <div class = "field roll-with-description hide">
                             <div class = "roll-button"><span></span></div>
                             <div class = "roll-field">
-                              <div class = "label"><?php echo $pieces[$i]; ?></div>
+                              <div class = "label"><?php echo $pieces[$a]; ?></div>
                               <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
                               <div class = "description">...</div>
                             </div>
                           </div>
                         <?php } ?>
                       <?php }else{ ?>
-                        <?php for ($i=0; $i < 3; $i++) { ?>
+                        <?php for ($a=0; $a < 3; $a++) { ?>
                           <div class = "field roll-with-description hide">
                               <div class = "roll-button"><span></span></div>
                               <div class = "roll-field">
-                                <div class = "label"><?php echo $pieces[$i]; ?></div>
+                                <div class = "label"><?php echo $pieces[$a]; ?></div>
                                 <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
                                 <div class = "description">...</div>
                               </div>
@@ -529,10 +529,10 @@
                   </div>
                   <?php if($total > 3){ ?>
                         <div class="block">
-                          <h4>Additional Requirements</h4>
+                          <h4>Requerimientos adicionales</h4>
                           <div class="block-content">
-                            <?php for ($i=3; $i < count($pieces) ; $i++) { ?>
-                                <div class = "tag-field"><?php echo $pieces[$i]; ?></div>
+                            <?php for ($a=3; $i < count($pieces) ; $a++) { ?>
+                                <div class = "tag-field"><?php echo $pieces[$a]; ?></div>
                             <?php } ?>
                           </div>
                           <!-- Cleaner -->
@@ -543,8 +543,8 @@
                 </div>
                 <?php } ?>
                 <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
+                  <div class="apply"><a href="<?php echo $this->webroot; ?>users/apply/<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar</a></div>
+                  <div class="full"><a href="<?php echo $this->webroot; ?>users/apply/<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar</a></div>
                 </div>
               </div>
             </div>

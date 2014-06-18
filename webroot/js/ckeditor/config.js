@@ -36,5 +36,8 @@ CKEDITOR.editorConfig = function( config ) {
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 
-	config.extraPlugins = 'colorbutton,panelbutton';
+	config.extraPlugins = 'imagebrowser,filebrowser,colorbutton,panelbutton';
+
+	//config.extraPlugins = "imagebrowser";
+	config.imageBrowser_listUrl = "/ckeditor-imagebrowser/demo/images/images_list.json";
 };

@@ -9,6 +9,7 @@ class JobsUsersController extends AppController {
 
 
 
+
 /**
  * admin_index method
  *

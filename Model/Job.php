@@ -12,7 +12,7 @@ App::uses('AppModel', 'Model');
  * @property User $User
  */
 class Job extends AppModel {
-	public $actsAs = array('WhoDidIt');
+	public $actsAs = array('WhoDidIt', 'Containable');
 /**
  * Display field
  *

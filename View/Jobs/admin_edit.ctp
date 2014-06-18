@@ -14,10 +14,10 @@
   echo $this->Html->script('admin/jquery-multi-select/js/jquery.quicksearch', array('block' => 'script'));
   echo $this->Html->script('admin/bootstrap-inputmask/bootstrap-inputmask.min', array('block' => 'script'));
   echo $this->Html->script('admin/jquery-tags-input/jquery.tagsinput', array('block' => 'script'));
-  echo $this->Html->script('ckeditor/ckeditor', array('block' => 'script'));
   echo $this->Html->script('admin/tagsinput-init', array('block' => 'script'));
   echo $this->Html->script('admin/multi-select-init', array('block' => 'script'));
   echo $this->Html->script('admin/customadmin', array('block' => 'customscript'));
+  echo $this->Html->script('ckeditor____/ckeditor', array('block' => 'script'));
   echo $this->BreadCrumb->trail('Trabajos', array('../dashboard' => 'Dashboard', '../../jobs' => 'Trabajos'), 'Nuevo trabajo'); 
   ?>
 <div class="col-lg-12">
@@ -45,7 +45,7 @@
 
                             <div class="form-group">
                                 <label for="ProductName" class="col-lg-2 col-sm-2 control-label">Descripci&oacute;n</label>
-                                <?php echo $this->Form->input('content', array("class"=>"form-control ckeditor", 'required' => 'true', 'div' => array('class' => 'col-lg-9'))); ?>
+                                <?php echo $this->Form->input('content', array("class"=>"form-control", 'required' => 'true', "id" =>"editor1" ,'div' => array('class' => 'col-lg-9'))); ?>
                             </div>
 
                             <div class="form-group">
@@ -98,9 +98,10 @@
                             	<label for="CategoryName" class="col-lg-2 col-sm-2 control-label">Activo</label>
                             	<?php echo $this->Form->input('active', array("class"=>"js-switch")); ?>
                         	</div>
+                        
 							<?php
 							$options = array(
-							    'label' => 'Crear',
+							    'label' => 'Editar',
 							    'class' => 'btn btn-primary',
 							    'div' => array(
 							        'class' => 'col-lg-offset-2 col-lg-10',
@@ -113,3 +114,4 @@
                 </section>
             </div>
         <!-- page heading end-->
+

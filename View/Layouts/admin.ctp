@@ -51,7 +51,7 @@
 	<?php // echo $this->element('sql_dump'); ?>
 	<?php
 	echo $this->Html->script(array(
-			'admin/jquery-ui-1.9.2.custom.min',
+			'jquery-ui-1.10.4.custom.min',
 			'admin/jquery-migrate-1.2.1.min',
 			'admin/bootstrap.min',
 			'admin/modernizr.min',
@@ -63,14 +63,6 @@
 			'admin/iCheck/jquery.icheck',
 			'admin/icheck-init',
 			'gritter/jquery.gritter.min',
-			/*'admin/flot-chart/jquery.flot',
-			'admin/flot-chart/jquery.flot.tooltip',
-			'admin/flot-chart/jquery.flot.resize',
-			'admin/flot-chart/jquery.flot.pie.resize',
-			'admin/flot-chart/jquery.flot.selection',
-			'admin/flot-chart/jquery.flot.stack',
-			'admin/flot-chart/jquery.flot.time',
-			'admin/main-chart',*/
 			'plugins/highcharts/highcharts',
 			'plugins/highcharts/exporting',
 			'admin/scripts'
@@ -78,5 +70,14 @@
 	echo $this->fetch('script');
 	echo $this->fetch('customscript');
 	?>
+
+	<script>
+var roxyFileman = '/fileman/dev.html?integration=ckeditor';     
+$(function(){
+  CKEDITOR.replace('editor1',{filebrowserBrowseUrl:roxyFileman, filebrowserUploadUrl:roxyFileman,
+     filebrowserUploadUrl:roxyFileman, filebrowserImageBrowseUrl:roxyFileman+'&type=image',
+     filebrowserImageUploadUrl:roxyFileman+'&type=image'});
+});
+</script>
 </body>
 </html>
