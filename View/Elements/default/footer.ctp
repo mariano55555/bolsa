@@ -3,44 +3,34 @@
     <section class="row-fluid">
       <section class="inner">
         <div id="site-description">
-          <h3><img src="images/Logo.png" width="205" height="50"  alt=""/></h3>
+          <h3><img src="<?php echo $this->webroot; ?>img/esen_header.png" width="80" height="75"  alt=""/></h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Praesent sodales velit quis augue. Cras suscipit.</p>
         </div>
         <div id="footer-menu">
           <div id="nav-menu" class="footer-menu span3">
-            <h2>Navigation</h2>
+            <h2>Mapa</h2>
             <div class="left">
               <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="job-listing-1.html">Jobs</a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="job-listing-1.html">Empleos</a></li>
                 <li><a href="partners.html">Partners</a></li>
                 <li><a href="about-us.html">About Us</a></li>
               </ul>
             </div>
             <div class="right">
               <ul>
-                <li><a href="contacts.html">Contact Us</a></li>
-                <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
-                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="contacts.html">Contactanos</a></li>
+                <li><a href="terms-and-conditions.html">Terminos de codici&oacute;n</a></li>
+                <li><a href="privacy-policy.html">Politica de privacidad</a></li>
               </ul>
             </div>
           </div>
           <div id="fol-menu" class="footer-menu span3">
-            <h2>Follow Us</h2>
+            <h2>Siguenos</h2>
             <ul>
-              <li><a href="#">Blog</a></li>
               <li><a href="#">Twitter</a></li>
               <li><a href="#">Facebook</a></li>
               <li><a href="#">Youtube</a></li>
-            </ul>
-          </div>
-          <div id="job-menu" class="footer-menu span3">
-            <h2>Popular Jobs</h2>
-            <ul>
-              <li><a href="#">Web Developer</a></li>
-              <li><a href="#">Web Designer</a></li>
-              <li><a href="#">UX Engineer</a></li>
-              <li><a href="#">Account Manager</a></li>
             </ul>
           </div>
         </div>
@@ -54,7 +44,7 @@
   <div class="inner">
     <div class="row-fluid"> 
       <!-- Copyright Text -->
-      <div id="copyright-text">Copyright 2013 <a href="http://uouapps.com/careers">Career</a> | All Rights Reserved | Design by <a href="http://uouapps.com/">UOU Apps</a></div>
+      <div id="copyright-text">Copyright <?php echo date("Y"); ?> <a href="http://uouapps.com/careers">ESEN</a> | Derechos reservados</div>
       <!-- /Copyright Text --> 
       <!-- Copyright Social Link -->
       <div id="copyright-link">

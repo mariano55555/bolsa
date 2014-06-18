@@ -55,8 +55,8 @@
   <div id="title">
     <h1 class="inner">Ofertas de empleo<span id="jobs-counter">(<?php echo $totaltrabajos; ?>)</span>
       <ul class="breadcrumb-inner">
-        <li> <a href="index.html">Home</a></li>
-        <li> <a href="job.html">Job</a></li>
+        <li> <a href="<?php echo $this->webroot; ?>">Inicio</a></li>
+        <li> <a href="#">Empleos</a></li>
       </ul>
     </h1>
   </div>
@@ -68,23 +68,7 @@
       <!-- Content Left -->
       <div class="content-left">
         <div id="search-filter" class="block background">
-          <h2 class="title-1">Buscar:</h2>
-          <div class="block-content">
-            <form id="search-job-page" action="http://uouapps.com/careers/post">
-              <label>I am looking for a</label>
-              <select id="search-select" class="select">
-                <option selected="selected" value="Job">Job</option>
-                <option value="Something Else 1">Something Else 1</option>
-                <option value="Something Else 2">Something Else 2</option>
-                <option value="Something Else 3">Something Else 3</option>
-              </select>
-              <label>in</label>
-              <input type="text" placeholder="Location" class="textfield-with-callback"/>
-              <input type="text" placeholder="Industry / Role" class="textfield-with-callback"/>
-              <input type="submit" value="Search" id="search-job-page-submit"/>
-            </form>
-          </div>
-          <h2 class="title-1">Results Filtering</h2>
+          <h2 class="title-1">Filtrar</h2>
           <div class="block-content">
             <div class="filter-category">
               <h3>Por ciudad</h3>
@@ -131,24 +115,43 @@
             </div>
             <div class="filter-category">
               <h3>Por industria</h3>
-              <div class="filter-content show">
+             <div class="filter-content show">
                 <div class="filter-container">
                   <div class="major">
                     <ul>
-                      <li><a href="#">Administration<span>(34)</span></a></li>
-                      <li><a href="#">Manufacturing<span>(142)</span></a></li>
-                      <li><a href="#">Healthcare &amp; Science<span>(67)</span></a></li>
-                      <li><a href="#">Media &amp; Creative<span>(24)</span></a></li>
-                      <li><a href="#">Transportation<span>(113)</span></a></li>
+                      <?php
+                      if (count($industrias) <= 4) {
+                          foreach ($industrias as $industria) { ?>
+                            <li><a href="#"><?php echo $industria['nombre']; ?><span>(<?php echo $industria['cantidad']; ?>)</span></a></li>
+                    <?php }
+                       }else{
+                          $i = 1;
+                           foreach ($industrias as $industria) { 
+                                if ($i <= 4) { ?>
+                                   <li><a href="#"><?php echo $industria['nombre']; ?><span>(<?php echo $industria['cantidad']; ?>)</span></a></li>
+                               <?php }
+                            $i++;
+                          }
+                      } ?>
                     </ul>
                   </div>
-                  <div class="minor hide">
-                    <ul>
-                      <li><a href="#">Administration<span>(34)</span></a></li>
-                      <li><a href="#">Manufacturing<span>(142)</span></a></li>
-                    </ul>
-                    <div class="minor-label">See More</div>
-                  </div>
+                  <?php
+                  if (count($industrias) > 4) {
+                  ?>
+                    <div class="minor hide">
+                      <ul>
+                        <?php
+                          for ($i=4; $i < count($industrias); $i++) { ?>
+                              <li><a href="#"><?php echo $industrias[$i]['nombre']; ?><span>(<?php echo $industrias[$i]['cantidad']; ?>)</span></a></li>
+                        <?php
+                          }
+                        ?>
+                      </ul>
+                      <div class="minor-label">Ver m&aacute;s</div>
+                    </div>
+                  <?php
+                  }
+                  ?>
                 </div>
                 <div class="show-hide-button"><span></span></div>
               </div>
@@ -156,23 +159,42 @@
             <div class="filter-category">
               <h3>Por tipo</h3>
               <div class="filter-content show">
-                <div class="filter-container">
+                                <div class="filter-container">
                   <div class="major">
                     <ul>
-                      <li><a href="#">Banking/Finance Jobs<span>(581)</span></a></li>
-                      <li><a href="#">Administration Jobs<span>(406)</span></a></li>
-                      <li><a href="#">Art/Design/Creative Jobs<span>(176)</span></a></li>
-                      <li><a href="#">Customer Service Jobs<span>(334)</span></a></li>
-                      <li><a href="#">Education/Training Jobs<span>(180)</span></a></li>
+                      <?php
+                      if (count($areas) <= 4) {
+                          foreach ($areas as $area) { ?>
+                            <li><a href="#"><?php echo $area['nombre']; ?><span>(<?php echo $area['cantidad']; ?>)</span></a></li>
+                    <?php }
+                       }else{
+                          $i = 1;
+                           foreach ($areas as $area) { 
+                                if ($i <= 4) { ?>
+                                   <li><a href="#"><?php echo $area['nombre']; ?><span>(<?php echo $area['cantidad']; ?>)</span></a></li>
+                               <?php }
+                            $i++;
+                          }
+                      } ?>
                     </ul>
                   </div>
-                  <div class="minor hide">
-                    <ul>
-                      <li><a href="#">Banking/Finance Jobs<span>(581)</span></a></li>
-                      <li><a href="#">Administration Jobs<span>(406)</span></a></li>
-                    </ul>
-                    <div class="minor-label">See More</div>
-                  </div>
+                  <?php
+                  if (count($areas) > 4) {
+                  ?>
+                    <div class="minor hide">
+                      <ul>
+                        <?php
+                          for ($i=4; $i < count($areas); $i++) { ?>
+                              <li><a href="#"><?php echo $areas[$i]['nombre']; ?><span>(<?php echo $areas[$i]['cantidad']; ?>)</span></a></li>
+                        <?php
+                          }
+                        ?>
+                      </ul>
+                      <div class="minor-label">Ver m&aacute;s</div>
+                    </div>
+                  <?php
+                  }
+                  ?>
                 </div>
                 <div class="show-hide-button"><span></span></div>
               </div>
@@ -181,69 +203,39 @@
               <div class="filter-category">
                 <h3>Tipo de contrato</h3>
                 <div class="filter-content">
-                  <div class="checkbox-field">
-                    <input id="contact_type_choice_1" type="checkbox" value="1"/>
-                    <label for="contact_type_choice_1">Full-Time</label>
-                  </div>
-                  <div class="checkbox-field">
-                    <input id="contact_type_choice_2" type="checkbox" value="2"/>
-                    <label for="contact_type_choice_2">Part-Time</label>
-                  </div>
-                  <div class="checkbox-field">
-                    <input id="contact_type_choice_3" type="checkbox" value="3"/>
-                    <label for="contact_type_choice_3">Freelance</label>
-                  </div>
-                  <div class="checkbox-field">
-                    <input id="contact_type_choice_4" type="checkbox" value="4"/>
-                    <label for="contact_type_choice_4">Internship</label>
-                  </div>
+                  <?php foreach ($contratos as $key => $value) { ?>
+                      <div class="checkbox-field">
+                        <input id="contact_type_choice_<?php echo $key; ?>" type="checkbox" value="<?php echo $key; ?>"/>
+                        <label for="contact_type_choice_<?php echo $key; ?>"><?php echo $value; ?></label>
+                      </div>  
+                  <?php } ?>
                 </div>
               </div>
               <div class="filter-category">
                 <h3>Experiencia laboral</h3>
                 <div class="filter-content">
                   <div class="checkbox-field">
-                    <input id="experience_choice_1" type="checkbox" value="1"/>
-                    <label for="experience_choice_1">All</label>
+                    <input id="experience_choice_a" type="checkbox" value="1"/>
+                    <label for="experience_choice_a">Todos</label>
                   </div>
-                  <div class="checkbox-field">
-                    <input id="experience_choice_2" type="checkbox" value="2"/>
-                    <label for="experience_choice_2">Not Applicable</label>
-                  </div>
-                  <div class="checkbox-field">
-                    <input id="experience_choice_3" type="checkbox" value="3"/>
-                    <label for="experience_choice_3">Mid-Senior Level</label>
-                  </div>
-                  <div class="checkbox-field">
-                    <input id="experience_choice_4" type="checkbox" value="4"/>
-                    <label for="experience_choice_4">Entry Level</label>
-                  </div>
-                  <div class="checkbox-field">
-                    <input id="experience_choice_5" type="checkbox" value="5"/>
-                    <label for="experience_choice_5">Associate</label>
-                  </div>
-                  <div class="checkbox-field">
-                    <input id="experience_choice_6" type="checkbox" value="6"/>
-                    <label for="experience_choice_6">Director</label>
-                  </div>
-                  <div class="checkbox-field">
-                    <input id="experience_choice_7" type="checkbox" value="7"/>
-                    <label for="experience_choice_7">Internship</label>
-                  </div>
-                  <div class="checkbox-field">
-                    <input id="experience_choice_8" type="checkbox" value="8"/>
-                    <label for="experience_choice_8">Executive</label>
-                  </div>
+                  <?php
+                  foreach ($experiencias as $key => $value) { ?>
+                    <div class="checkbox-field">
+                      <input id="experience_choice_<?php echo $key; ?>" type="checkbox" value="<?php echo $key; ?>"/>
+                      <label for="experience_choice_<?php echo $key; ?>"><?php echo $value; ?></label>
+                    </div>
+                  <?php }
+                  ?>
                 </div>
               </div>
               <div class="filter-category">
-                <h3>D&iacute;s publicados</h3>
+                <h3>D&iacute;as publicados</h3>
                 <div class="filter-content">
                   <div class="dayprogressbar-mover">
                     <div class="bar"></div>
                     <div class="clear"></div>
-                    <div class="begin"> <span class="count">0</span> <span class="label">Days</span> </div>
-                    <div class="end"> <span class="count">90</span> <span class="label">Days</span> </div>
+                    <div class="begin"> <span class="count">0</span> <span class="label">d&iacute;as</span> </div>
+                    <div class="end"> <span class="count">90</span> <span class="label">d&iacute;as</span> </div>
                   </div>
                   <div class="clear"></div>
                 </div>
@@ -257,20 +249,20 @@
                     <div class="begin">
                       <input class="count" type="text" count="300" onblur="$(this).removeClass('active')" onfocus="$(this).addClass('active')"/>
                     </div>
-                    <div class="sepor">to</div>
+                    <div class="sepor">a</div>
                     <div class="end">
-                      <input class="count" type="text" count="5000" onblur="$(this).removeClass('active')" onfocus="$(this).addClass('active')"/>
+                      <input class="count" type="text" count="1000" onblur="$(this).removeClass('active')" onfocus="$(this).addClass('active')"/>
                     </div>
                   </div>
                   <div class="clear"></div>
                   <div id="saved-search-select">
                     <select class="select">
-                      <option selected="selected" value="No Searches Saved Yet">No Searches Saved Yet</option>
+                      <option selected="selected" value="No Searches Saved Yet">No hay b&uacute;squedas guardadas</option>
                     </select>
-                    <a href="#">Save My Search</a> </div>
+                    <a href="#">Guardar mi b&uacute;squeda</a> </div>
                 </div>
               </div>
-              <input type="submit" value="Search" id="filter-job-page-submit"/>
+              <input type="submit" value="Buscar" id="filter-job-page-submit"/>
             </form>
           </div>
         </div>
@@ -314,10 +306,11 @@
           <div class="page-sorter">
             <div class="sorter-select">
               <select class="select">
-                <option selected="selected" value="Sort By">- Sort By -</option>
-                <option value="Sort Criterion 1">Sort Criterion 1</option>
-                <option value="Sort Criterion 2">Sort Criterion 2</option>
-                <option value="Sort Criterion 3">Sort Criterion 3</option>
+                <option selected="selected" value="Sort By">- Odenar por -</option>
+                <option value="Sort Criterion 1">M&aacute;s reciente</option>
+                <option value="Sort Criterion 2">M&aacute;s antiguo</option>
+                <option value="Sort Criterion 3">Mayor Salario</option>
+                <option value="Sort Criterion 3">Menor Salario</option>
               </select>
             </div>
           </div>
@@ -344,15 +337,13 @@
         <div class="clear"></div>
         <div id="job-content-fields">
           <div id="list" class="view_mode">
-            <?php
-            for ($i=0; $i < count($jobs) ; $i++) { 
-            ?>
+            <?php for ($i=0; $i < count($jobs); $i++) { ?>
             <div class="field-container odd box-1">
               <div class="nav-buttons">
                 <ul>
                   <li class="show-hide"><a></a></li>
                   <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
+                  <li class="link"><a href="<?php echo $this->webroot; ?>jobs/<?php echo $jobs[$i]['Job']['id']; ?>"></a></li>
                 </ul>
               </div>
               <div class="header-fields">
@@ -374,7 +365,7 @@
                 <div class="teaser">
                   <p>
                     <?php echo htmlspecialchars_decode($jobs[$i]['Job']['content']); ?>
-                    <span class="read-more"><a>Read More</a></span>
+                    <span class="read-more"><a>Leer m&aacute;s</a></span>
                   </p>
                 </div>
                 <ul class="candidate-meta meta-fields">
@@ -389,6 +380,7 @@
                 </ul>
 
                 <?php
+                
                 if (isset($jobs[$i]['Job']['skills']) && strlen(trim($jobs[$i]['Job']['skills'])) > 0) {
                   $pieces = explode(",", $jobs[$i]['Job']['skills']);
                   $total  = count($pieces);
@@ -398,22 +390,22 @@
                     <h4>Habilidades</h4>
                     <div class="block-content">
                       <?php if ($total <= 3){ ?>
-                        <?php for ($i=0; $i < count($pieces); $i++) { ?>
+                        <?php for ($z=0; $z < count($pieces); $z++) { ?>
                           <div class = "field roll-with-description hide">
                             <div class = "roll-button"><span></span></div>
                             <div class = "roll-field">
-                              <div class = "label"><?php echo $pieces[$i]; ?></div>
+                              <div class = "label"><?php echo $pieces[$z]; ?></div>
                               <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
                               <div class = "description">...</div>
                             </div>
                           </div>
                         <?php } ?>
                       <?php }else{ ?>
-                        <?php for ($i=0; $i < 3; $i++) { ?>
+                        <?php for ($a=0; $a < 3; $a++) { ?>
                           <div class = "field roll-with-description hide">
                               <div class = "roll-button"><span></span></div>
                               <div class = "roll-field">
-                                <div class = "label"><?php echo $pieces[$i]; ?></div>
+                                <div class = "label"><?php echo $pieces[$a]; ?></div>
                                 <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
                                 <div class = "description">...</div>
                               </div>
@@ -430,8 +422,8 @@
                         <div class="block">
                           <h4>Additional Requirements</h4>
                           <div class="block-content">
-                            <?php for ($i=3; $i < count($pieces) ; $i++) { ?>
-                                <div class = "tag-field"><?php echo $pieces[$i]; ?></div>
+                            <?php for ($a=3; $i < count($pieces) ; $a++) { ?>
+                                <div class = "tag-field"><?php echo $pieces[$a]; ?></div>
                             <?php } ?>
                           </div>
                           <!-- Cleaner -->
@@ -440,10 +432,12 @@
                         </div>
                   <?php } ?>
                 </div>
-                <?php } ?>
+                <?php } 
+                debug($jobs);
+                ?>
                 <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Aplicar</a></div>
-                  <div class="full"><a href="#">Aplicar</a></div>
+                  <div class="apply"><a href="<?php echo $this->webroot; ?>users/apply/<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar</a></div>
+                  <div class="full"><a href="<?php echo $this->webroot; ?>users/apply/<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar</a></div>
                 </div>
               </div>
             </div>
@@ -654,8 +648,8 @@
                 </div>
                 <?php } ?>
                 <div class="buttons-field applybtns">
-                  <div class="apply"><a href="#">Apply for This Job</a></div>
-                  <div class="full"><a href="#">Apply On MotibU</a></div>
+                  <div class="apply"><a href="<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar</a></div>
+                  <div class="full"><a href="#">Aplicar</a></div>
                 </div>
               </div>
             </div>

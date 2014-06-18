@@ -7824,3 +7824,56 @@ Stack Trace:
 #3 C:\xampp\cakephp\lib\Cake\Core\App.php(900): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2014-06-18 01:17:21 Error: [MissingConnectionException] Database connection "Mysql" is missing, or could not be created.
+Exception Attributes: array (
+  'class' => 'Mysql',
+  'message' => 'SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+',
+  'enabled' => true,
+)
+Request URL: /jobsearch/jobs
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(260): Mysql->connect()
+#1 C:\xampp\cakephp\lib\Cake\Model\ConnectionManager.php(105): DboSource->__construct(Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Model.php(3479): ConnectionManager::getDataSource('default')
+#3 C:\xampp\cakephp\lib\Cake\Model\Model.php(1128): Model->setDataSource('default')
+#4 C:\xampp\cakephp\lib\Cake\Model\Model.php(3501): Model->setSource('jobs')
+#5 C:\xampp\cakephp\lib\Cake\Model\Model.php(1357): Model->getDataSource()
+#6 C:\xampp\cakephp\lib\Cake\Model\Model.php(1449): Model->schema()
+#7 C:\xampp\htdocs\jobsearch\Model\Behavior\WhoDidItBehavior.php(48): Model->hasField('created_by')
+#8 C:\xampp\cakephp\lib\Cake\Model\BehaviorCollection.php(145): WhoDidItBehavior->setup(Object(Job), Array)
+#9 C:\xampp\cakephp\lib\Cake\Model\BehaviorCollection.php(66): BehaviorCollection->load('WhoDidIt', Array)
+#10 C:\xampp\cakephp\lib\Cake\Model\Model.php(747): BehaviorCollection->init('Job', Array)
+#11 [internal function]: Model->__construct(Array)
+#12 C:\xampp\cakephp\lib\Cake\Utility\ClassRegistry.php(168): ReflectionClass->newInstance(Array)
+#13 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(738): ClassRegistry::init(Array)
+#14 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(367): Controller->loadModel('Job')
+#15 C:\xampp\cakephp\lib\Cake\Controller\Component\PaginatorComponent.php(270): Controller->__isset('Job')
+#16 C:\xampp\cakephp\lib\Cake\Controller\Component\PaginatorComponent.php(135): PaginatorComponent->_getObject('Job')
+#17 C:\xampp\htdocs\jobsearch\Controller\JobsController.php(32): PaginatorComponent->paginate('Job')
+#18 [internal function]: JobsController->index()
+#19 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(JobsController), Array)
+#20 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#21 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#22 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#23 {main}
+2014-06-18 03:17:14 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\htdocs\jobsearch\View\Jobs\index.ctp, line 397]
+2014-06-18 03:17:14 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/jobs
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\htdocs...', 397)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\htdocs...', 397, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\htdocs...', 397, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-18 03:18:29 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\htdocs\jobsearch\View\Jobs\index.ctp, line 402]
+2014-06-18 03:18:29 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/jobs
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\htdocs...', 402)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\htdocs...', 402, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\htdocs...', 402, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}

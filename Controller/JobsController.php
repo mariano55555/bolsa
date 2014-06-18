@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
 class JobsController extends AppController {
 
 	public $components = array('Paginator');
-	public $uses       = array('Job', 'Country');
+	public $uses       = array('Job', 'Country', 'Contract', 'Experience');
     public $paginate   = array(
         'limit' => 1,
         'conditions' => array(
@@ -29,7 +29,9 @@ class JobsController extends AppController {
 		//$this->Job->recursive = 0;
 		$this->Paginator->settings = $this->paginate;
 	    // similar to findAll(), but fetches paged results
-		$jobs       = $this->Paginator->paginate('Job');
+		$jobs = $this->Paginator->paginate('Job');
+
+
 	    for ($i=0; $i < count($jobs) ; $i++) { 
 	    	$jobs[$i]['Country']['name'] =  $this->Country->field("name", array('Country.id' => $jobs[$i]['City']['country_id'] ));
 	    	if (isset($jobs[$i]['City']['id'])) {
@@ -41,6 +43,7 @@ class JobsController extends AppController {
 	    //CALCULOS DE BUSQUEDAS
 	    $data = $this->Job->find("all", array('conditions' => array('Job.active' => 1)));
 	    $ciudadesid = array();
+	    //POR CIUDAD
 	    for ($i=0; $i < count($data) ; $i++) { 
 	    	if (isset($data[$i]['City']['id'])) {
 	    		if (in_array($data[$i]['City']['name'], $ciudadesid)) {
@@ -49,7 +52,27 @@ class JobsController extends AppController {
 	    		}
 	    	 } 
 	    }
-	    //debug($ciudadesid);
+	    //POR INDUSTRIA
+	    $industriasid = array();
+	    for ($i=0; $i < count($data) ; $i++) { 
+	    	for ($j=0; $j < count($data[$i]['Industry']) ; $j++) { 
+	    		if (in_array($data[$i]['Industry'][$j]['name'], $industriasid)) {
+	    		}else{
+	    			$industriasid[$data[$i]['Industry'][$j]['id']] = $data[$i]['Industry'][$j]['name'];	
+	    		}
+	    	}
+	    }
+	    //POR AREA
+	    $areasid = array();
+	    for ($i=0; $i < count($data) ; $i++) { 
+	    	for ($j=0; $j < count($data[$i]['Area']) ; $j++) { 
+	    		if (in_array($data[$i]['Area'][$j]['name'], $areasid)) {
+	    		}else{
+	    			$areasid[$data[$i]['Area'][$j]['id']] = $data[$i]['Area'][$j]['name'];	
+	    		}
+	    	}
+	    }
+
 	    $ciudades = array();
 	    for ($i=0; $i < count($data) ; $i++) { 
 	    	if (isset($data[$i]['City']['id'])) {
@@ -65,9 +88,49 @@ class JobsController extends AppController {
 		    	$ciudades[$i]['cantidad'] = $contador;
 	    	}
 	    }
-		//debug($ciudades);
+
+	    $industrias = array();
+	    for ($i=0; $i < count($data) ; $i++) { 
+	    	for ($j=0; $j < count($data[$i]['Industry']) ; $j++) { 
+	    			 if (isset($data[$i]['Industry'][$j]['id'])) {
+				    	$contador = 0;
+				    	foreach ($industriasid as $key => $value) {
+				    		if ($key == $data[$i]['Industry'][$j]['id']) {
+								$industrias[$i]['id']       = $key;
+								$industrias[$i]['nombre']   = $data[$i]['Industry'][$j]['name'];
+								$contador ++;
+				    		}
+				    	}
+				    	//aca poner que ondas
+				    	$industrias[$i]['cantidad'] = $contador;
+			    	}
+	    	}
+	    }
+	    $areas = array();
+	    for ($i=0; $i < count($data) ; $i++) { 
+	    	for ($j=0; $j < count($data[$i]['Area']) ; $j++) { 
+	    			 if (isset($data[$i]['Area'][$j]['id'])) {
+				    	$contador = 0;
+				    	foreach ($areasid as $key => $value) {
+				    		if ($key == $data[$i]['Area'][$j]['id']) {
+								$areas[$i]['id']       = $key;
+								$areas[$i]['nombre']   = $data[$i]['Area'][$j]['name'];
+								$contador ++;
+				    		}
+				    	}
+				    	//aca poner que ondas
+				    	$areas[$i]['cantidad'] = $contador;
+			    	}
+	    	}
+	    }
+
+	    //TIPO DE CONTRACTO
+	    $contratos = $this->Contract->find("list", array('conditions' => array('Contract.active' => 1)));
+	    //TIPO DE EXPERIENCIA
+	    $experiencias = $this->Experience->find("list", array('conditions' => array('Experience.active' => 1)));
+		//debug($areas);
 		$totaltrabajos = count($data);
-		$this->set(compact('ciudades', 'totaltrabajos'));
+		$this->set(compact('ciudades', 'industrias','totaltrabajos', 'contratos', 'experiencias', 'areas'));
 
 	}
 
