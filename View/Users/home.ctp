@@ -84,33 +84,19 @@
       <!-- Content Center -->
       <div class="content-center frontpage">
         <div class="heading-l">
-          <h2> Find A Job Per </h2>
+          <h2> Encuentra un empleo </h2>
         </div>
         <div id="explore" class="non-title-border">
           <div class="block-content">
             <ul class="tabs">
-              <li class="first"><a href="#map">Map</a></li>
-              <li><a href="#industry">Industry</a></li>
-              <li><a href="#type">Type</a></li>
-              <li class="last"><a href="#country">Country</a></li>
+              <li class="first"><a href="#map">Mapa</a></li>
+              <li><a href="#industry">Industria</a></li>
+              <li><a href="#type">Tipo</a></li>
+              <li class="last"><a href="#country">Pa&iacute;s</a></li>
             </ul>
             <div id="map" class="box-1">
               <div class="map-wrapper">
               <div class="map-container" id="centerMap"></div>
-              </div>
-              
-              <div class="region">
-                <label>Select Region</label>
-                <select class="select">
-                  <option selected="selected" value="nothing">- Select -</option>
-                  <option value="Asia">Asia</option>
-                  <option value="Africa">Africa</option>
-                  <option value="Europe">Europe</option>
-                  <option value="North America">North America</option>
-                  <option value="Central America">Central America</option>
-                  <option value="South America">South America</option>
-                  <option value="Oceania">Oceania</option>
-                </select>
               </div>
               <div class="clear"></div>
               <div class="region-menu">
@@ -254,80 +240,34 @@
             </div>
             <div id="country"  class="box-1">
               <div class="scroll-container">
-                <div class="left">
-                  <ul>
-                    <li><a href="#"><img src="content/flag-icons/Afghanistan.png" alt="Flag" height="24" width="24"/>Afghanistan<span>(7)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/African%20Union.png" alt="Flag" height="24" width="24"/>African Union<span>(6)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Aland.png" alt="Flag" height="24" width="24"/>Aland<span>(2)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Albania.png" alt="Flag" height="24" width="24"/>Albania<span>(7)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Alderney.png" alt="Flag" height="24" width="24"/>Alderney<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Algeria.png" alt="Flag" height="24" width="24"/>Algeria<span>(4)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/American%20Samoa.png" alt="Flag" height="24" width="24"/>American Samoa<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Andorra.png" height="24" alt="Flag" width="24"/>Andorra<span>(5)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Angola.png" alt="Flag" height="24" width="24"/>Angola<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Anguilla.png" alt="Flag" height="24" width="24"/>Anguilla<span>(8)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Antarctica.png" alt="Flag" height="24" width="24"/>Antarctica<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Antigua%20Barbuda.png" alt="Flag" height="24" width="24"/>Antigua &amp; Barbuda<span>(6)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Arab%20League.png" alt="Flag" height="24" width="24"/>Arab League<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Argentina.png" alt="Flag" height="24" width="24"/>Argentina<span>(2)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Armenia.png" alt="Flag" height="24" width="24"/>Armenia<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Aruba.png" alt="Flag" height="24" width="24"/>Aruba<span>(8)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/ASEAN.png" alt="Flag" height="24" width="24"/>ASEAN<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Afghanistan.png" alt="Flag" height="24" width="24"/>Afghanistan<span>(7)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/African%20Union.png" alt="Flag" height="24" width="24"/>African Union<span>(6)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Aland.png" alt="Flag" height="24" width="24"/>Aland<span>(2)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Albania.png" alt="Flag" height="24" width="24"/>Albania<span>(7)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Alderney.png" alt="Flag" height="24" width="24"/>Alderney<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Algeria.png" alt="Flag" height="24" width="24"/>Algeria<span>(4)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/American%20Samoa.png" alt="Flag" height="24" width="24"/>American Samoa<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Andorra.png" alt="Flag" height="24" width="24"/>Andorra<span>(5)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Angola.png" alt="Flag" height="24" width="24"/>Angola<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Anguilla.png" alt="Flag" height="24" width="24"/>Anguilla<span>(8)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Antarctica.png" alt="Flag" height="24" width="24"/>Antarctica<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Antigua%20Barbuda.png" alt="Flag" height="24" width="24"/>Antigua &amp; Barbuda<span>(6)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Arab%20League.png" alt="Flag" height="24" width="24"/>Arab League<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Argentina.png" alt="Flag" height="24" width="24"/>Argentina<span>(2)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Armenia.png" alt="Flag" height="24" width="24"/>Armenia<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Aruba.png" alt="Flag" height="24" width="24"/>Aruba<span>(8)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/ASEAN.png" alt="Flag" height="24" width="24"/>ASEAN<span>(3)</span></a></li>
-                  </ul>
+                 <div class="left">
+                     <ul>
+                <?php if (isset($parte[0])) { 
+                        for ($i=0; $i < count($parte[0]) ; $i++) {  ?>
+                   <li>
+                      <a href="#">
+                        <img src="content/flag-icons/<?php echo $parte[0][$i]['nombre']; ?>.png" alt="Flag" height="24" width="24"/><?php echo $parte[0][$i]['nombre']; ?>
+                        <span>(<?php echo $parte[0][$i]['cantidad']; ?>)</span>
+                      </a>
+                    </li>
+                <?php }
+                    } 
+                  ?>
+                   </ul>
                 </div>
                 <div class="right">
                   <ul>
-                    <li><a href="#"><img src="content/flag-icons/Kenya.png" alt="Flag" height="24" width="24"/>Kenya<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Kiribati.png" alt="Flag" height="24" width="24"/>Kiribati<span>(4)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Kosovo.png" alt="Flag" height="24" width="24"/>Kosovo<span>(2)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Kuwait.png" alt="Flag" height="24" width="24"/>Kuwait<span>(6)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Kyrgyzstan.png" alt="Flag" height="24" width="24"/>Kyrgyzstan<span>(1)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Laos.png" alt="Flag" height="24" width="24"/>Laos<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Latvia.png" alt="Flag" height="24" width="24"/>Latvia<span>(4)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Lebanon.png" alt="Flag" height="24" width="24"/>Lebanon<span>(2)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Lesotho.png" alt="Flag" height="24" width="24"/>Lesotho<span>(5)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Liberia.png" alt="Flag" height="24" width="24"/>Liberia<span>(7)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Libya.png" alt="Flag" height="24" width="24"/>Libya<span>(1)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Liechtenstein.png" alt="Flag" height="24" width="24"/>Liechtenstein<span>(6)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Lithuania.png" alt="Flag" height="24" width="24"/>Lithuania<span>(2)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Luxembourg.png" alt="Flag" height="24" width="24"/>Luxembourg<span>(8)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Macao.png" alt="Flag" height="24" width="24"/>Macao<span>(5)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Macedonia.png" alt="Flag" height="24" width="24"/>Macedonia<span>(2)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Madagascar.png" alt="Flag" height="24" width="24"/>Madagascar<span>(1)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Kenya.png" alt="Flag" height="24" width="24"/>Kenya<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Kiribati.png" alt="Flag" height="24" width="24"/>Kiribati<span>(4)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Kosovo.png" alt="Flag" height="24" width="24"/>Kosovo<span>(2)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Kuwait.png" alt="Flag" height="24" width="24"/>Kuwait<span>(6)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Kyrgyzstan.png" alt="Flag" height="24" width="24"/>Kyrgyzstan<span>(1)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Laos.png" alt="Flag" height="24" width="24"/>Laos<span>(3)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Latvia.png" alt="Flag" height="24" width="24"/>Latvia<span>(4)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Lebanon.png" alt="Flag" height="24" width="24"/>Lebanon<span>(2)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Lesotho.png" alt="Flag" height="24" width="24"/>Lesotho<span>(5)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Liberia.png" alt="Flag" height="24" width="24"/>Liberia<span>(7)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Libya.png" alt="Flag" height="24" width="24"/>Libya<span>(1)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Liechtenstein.png" alt="Flag" height="24" width="24"/>Liechtenstein<span>(6)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Lithuania.png" alt="Flag" height="24" width="24"/>Lithuania<span>(2)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Luxembourg.png" alt="Flag" height="24" width="24"/>Luxembourg<span>(8)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Macao.png" alt="Flag" height="24" width="24"/>Macao<span>(5)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Macedonia.png" alt="Flag" height="24" width="24"/>Macedonia<span>(2)</span></a></li>
-                    <li><a href="#"><img src="content/flag-icons/Madagascar.png" alt="Flag" height="24" width="24"/>Madagascar<span>(1)</span></a></li>
+                <?php if (isset($parte[1])) { 
+                        for ($i=0; $i < count($parte[1]) ; $i++) {  ?>
+                   <li>
+                      <a href="#">
+                        <img src="content/flag-icons/<?php echo $parte[1][$i]['nombre']; ?>.png" alt="Flag" height="24" width="24"/><?php echo $parte[1][$i]['nombre']; ?>
+                        <span>(<?php echo $parte[1][$i]['cantidad']; ?>)</span>
+                      </a>
+                    </li>
+                <?php }
+                    } 
+                  ?>
                   </ul>
                 </div>
                 <div class="clear"></div>
@@ -345,173 +285,34 @@
         
         <div class="clear"></div>
         <!--Latest Jobs Block-->
+        <?php //debug($latest); ?>
         <div id="latest-job">
           <div class="heading-l">
-            <h2> Latest Jobs </h2>
+            <h2> Ultimas ofertas de empleo </h2>
           </div>
           <div class="latest-job-wrapper">
             <div class="block-content dott-flexslider box-1">
               <ul class="slides">
-                <li>
-                  <div class="company-logo"><a href="#"><img src="<?php echo $this->webroot; ?>images/job-thumb.jpg"  alt=""/></a>
-                    <div class="nav-buttons">
-                      <ul>
-                        <li class="search"><a><i class="fa fa-search"></i></a></li>
-                        <li class="link"><a href="job.html"><i class="fa fa-link"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="company-text">
-                    <div class="title"><a href="#">Front-End Developer at Envato</a>
-                      <div class="location">Sydney, Australia</div>
-                    </div>
-                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. <a>Read More</a></div>
-                  </div>
-                </li>
-                <li>
-                  <div class="company-logo"><a href="#"><img src="<?php echo $this->webroot; ?>images/job-thumb.jpg"  alt=""/></a>
-                    <div class="nav-buttons">
-                      <ul>
-                        <li class="search"><a><i class="fa fa-search"></i></a></li>
-                        <li class="link"><a href="job.html"><i class="fa fa-link"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="company-text">
-                    <div class="title"><a href="#">Front-End Developer at Envato</a>
-                      <div class="location">Sydney, Australia</div>
-                    </div>
-                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. <a>Read More</a></div>
-                  </div>
-                </li>
-                <li>
-                  <div class="company-logo"><a href="#"><img src="<?php echo $this->webroot; ?>images/job-thumb.jpg"  alt=""/></a>
-                    <div class="nav-buttons">
-                      <ul>
-                        <li class="search"><a><i class="fa fa-search"></i></a></li>
-                        <li class="link"><a href="job.html"><i class="fa fa-link"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="company-text">
-                    <div class="title"><a href="#">Front-End Developer at Envato</a>
-                      <div class="location">Sydney, Australia</div>
-                    </div>
-                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. <a>Read More</a></div>
-                  </div>
-                </li>
-                <li>
-                  <div class="company-logo"><a href="#"><img src="<?php echo $this->webroot; ?>images/job-thumb.jpg"  alt=""/></a>
-                    <div class="nav-buttons">
-                      <ul>
-                        <li class="search"><a><i class="fa fa-search"></i></a></li>
-                        <li class="link"><a href="job.html"><i class="fa fa-link"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="company-text">
-                    <div class="title"><a href="#">Front-End Developer at Envato</a>
-                      <div class="location">Sydney, Australia</div>
-                    </div>
-                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. <a>Read More</a></div>
-                  </div>
-                </li>
-                <li>
-                  <div class="company-logo"><a href="#"><img src="<?php echo $this->webroot; ?>images/job-thumb.jpg"  alt=""/></a>
-                    <div class="nav-buttons">
-                      <ul>
-                        <li class="search"><a><i class="fa fa-search"></i></a></li>
-                        <li class="link"><a href="job.html"><i class="fa fa-link"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="company-text">
-                    <div class="title"><a href="#">Front-End Developer at Envato</a>
-                      <div class="location">Sydney, Australia</div>
-                    </div>
-                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. <a>Read More</a></div>
-                  </div>
-                </li>
-                <li>
-                  <div class="company-logo"><a href="#"><img src="<?php echo $this->webroot; ?>images/job-thumb.jpg"  alt=""/></a>
-                    <div class="nav-buttons">
-                      <ul>
-                        <li class="search"><a><i class="fa fa-search"></i></a></li>
-                        <li class="link"><a href="job.html"><i class="fa fa-link"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="company-text">
-                    <div class="title"><a href="#">Front-End Developer at Envato</a>
-                      <div class="location">Sydney, Australia</div>
-                    </div>
-                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. <a>Read More</a></div>
-                  </div>
-                </li>
-                <li>
-                  <div class="company-logo"><a href="#"><img src="<?php echo $this->webroot; ?>images/job-thumb.jpg"  alt=""/></a>
-                    <div class="nav-buttons">
-                      <ul>
-                        <li class="search"><a><i class="fa fa-search"></i></a></li>
-                        <li class="link"><a href="job.html"><i class="fa fa-link"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="company-text">
-                    <div class="title"><a href="#">Front-End Developer at Envato</a>
-                      <div class="location">Sydney, Australia</div>
-                    </div>
-                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. <a>Read More</a></div>
-                  </div>
-                </li>
-                <li>
-                  <div class="company-logo"><a href="#"><img src="<?php echo $this->webroot; ?>images/job-thumb.jpg"  alt=""/></a>
-                    <div class="nav-buttons">
-                      <ul>
-                        <li class="search"><a><i class="fa fa-search"></i></a></li>
-                        <li class="link"><a href="job.html"><i class="fa fa-link"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="company-text">
-                    <div class="title"><a href="#">Front-End Developer at Envato</a>
-                      <div class="location">Sydney, Australia</div>
-                    </div>
-                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. <a>Read More</a></div>
-                  </div>
-                </li>
-                <li>
-                  <div class="company-logo"><a href="#"><img src="<?php echo $this->webroot; ?>images/job-thumb.jpg"  alt=""/></a>
-                    <div class="nav-buttons">
-                      <ul>
-                        <li class="search"><a><i class="fa fa-search"></i></a></li>
-                        <li class="link"><a href="job.html"><i class="fa fa-link"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="company-text">
-                    <div class="title"><a href="#">Front-End Developer at Envato</a>
-                      <div class="location">Sydney, Australia</div>
-                    </div>
-                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. <a>Read More</a></div>
-                  </div>
-                </li>
-                <li>
-                  <div class="company-logo"><a href="#"><img src="<?php echo $this->webroot; ?>images/job-thumb.jpg"  alt=""/></a>
-                    <div class="nav-buttons">
-                      <ul>
-                        <li class="search"><a><i class="fa fa-search"></i></a></li>
-                        <li class="link"><a href="job.html"><i class="fa fa-link"></i></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="company-text">
-                    <div class="title"><a href="#">Front-End Developer at Envato</a>
-                      <div class="location">Sydney, Australia</div>
-                    </div>
-                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. <a>Read More</a></div>
-                  </div>
-                </li>
+                <?php foreach ($latest as $job) { ?>
+                    <li>
+                      <div class="company-logo">
+                        <!--<a href="#"><img src="<?php echo $this->webroot; ?>images/job-thumb.jpg"  alt=""/></a>-->
+                        <a href="#"><img src="<?php echo $this->webroot; ?>img/esen_header.png"  alt=""/></a>
+                        <div class="nav-buttons">
+                          <ul>
+                            <li class="search"><a><i class="fa fa-search"></i></a></li>
+                            <li class="link"><a href="job.html"><i class="fa fa-link"></i></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="company-text">
+                        <div class="title"><a href="#"><?php echo $job['Job']['name']; ?></a>
+                          <div class="location"><?php echo $job['City']['name'].', '.$job['City']['country']; ?></div>
+                        </div>
+                        <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. <a href="#">Leer m&aacute;s</a></div>
+                      </div>
+                    </li>
+                <?php } ?>
               </ul>
             </div>
           </div>
@@ -521,7 +322,7 @@
         <!--Partners Block-->
         <div id="partners">
           <div class="heading-l">
-            <h2> Our Partners </h2>
+            <h2> Empresas </h2>
           </div>
           <div class="block-content box-1">
             <section class="row-fluid">
@@ -601,15 +402,20 @@
           </div>
         </div>
         <div id="advertising" class="block border">
-          <div class="block-content"> <img src="<?php echo $this->webroot; ?>images/sb-ad.jpg"  alt="sidebarad"/> 
-            <!-- <div class="advertising-test">300x250<br/>
-              Ad Banner</div>--> 
+          <div class="block-content"> 
+          <img src="<?php  echo $this->webroot; ?>images/sb-ad.jpg"  alt="sidebarad"/> 
+            
           </div>
+        
         </div>
         <div id="poll" class="block background">
           <h2 class="title-1">5 Tips to pass your interview!</h2>
-          <!--<iframe width="260" height="150" src="http://www.youtube.com/embed/wqGfDdJDONI?wmode=transparent" frameborder="0" allowfullscreen></iframe>-->
-          <div class="ad-wrapper"> <img src="<?php echo $this->webroot; ?>images/sb-video.jpg"  alt="sb-video"/> </div>
+          <!--<iframe width="260" height="150" src="https://www.youtube.com/watch?v=SpbMt7ehgeo" frameborder="0" allowfullscreen></iframe>-->
+          <video width="280" height="190" controls>
+            <source src="<?php echo $this->webroot; ?>video/intro.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!--<div class="ad-wrapper"> <img src="<?php echo $this->webroot; ?>images/sb-video.jpg"  alt="sb-video"/> </div>-->
           <h2 class="title-1">The Poll</h2>
           <div class="block-content">
             <form id="poll-form" action="http://uouapps.com/careers/index.html">
@@ -689,7 +495,7 @@
       <div class="inner">
         <section class="row-fluid">
           <section class="span12 storyblock">
-            <h2>Success Stories</h2>
+            <h2>Historias de &eacute;xito</h2>
             <div class="block-content butt-flexslider">
               <ul class="slides">
                 <li class="user-avatar"> <a href="#"><img src="content/users-avatar/user-1.jpg" alt="User" height="114" width="114"/>

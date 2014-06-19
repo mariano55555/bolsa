@@ -41,7 +41,53 @@ public function admin_dashboard()
 
 public function home()
 {
-	# code...
+	$this->loadModel("Job");
+	$this->loadModel("Country");
+	$latest = $this->Job->find("all", array(
+						'conditions' => array('Job.active' => 1), //array of conditions
+						'order'      => array('Job.created DESC'),
+						'contain'    => array('City'),
+						'limit'      => 5 //int
+					));
+	$all = $this->Job->find("all", array(
+						'conditions' => array('Job.active' => 1), //array of conditions
+						'order'      => array('Job.created DESC'),
+						'contain'    => array('City')
+					));
+	for ($i=0; $i < count($latest) ; $i++) { 
+		$latest[$i]['City']['country'] =  $this->Country->field('name', array('Country.id' => $latest[$i]['City']['country_id']));
+	}
+
+	for ($i=0; $i < count($all) ; $i++) { 
+		$all[$i]['City']['country'] =  $this->Country->field('name', array('Country.id' => $all[$i]['City']['country_id']));
+	}
+
+	//ECONTRAR LA CANTIDAD DE EMPLEOS POR PAIS
+	$paisesid = array();
+	for ($i=0; $i < count($all) ; $i++) { 
+		if (in_array($all[$i]['City']['country_id'] , $paisesid)) {
+		}else{
+			$paisesid[$all[$i]['City']['country_id']] = $all[$i]['City']['country'];
+		}
+	}
+
+
+
+	$a = 0;
+	foreach ($paisesid as $key => $value) {
+			$contador             = 0;
+			$paises[$a]['id']     = $key;
+			$paises[$a]['nombre'] = $value;
+			for ($i=0; $i < count($all) ; $i++) {
+				if ($key == $all[$i]['City']['country_id']) {
+						$contador ++;
+		    		}
+			}
+			$paises[$a]['cantidad'] = $contador;
+			$a++;
+	}
+	$parte =  array_chunk($paises, ceil(count($paises) / 2));
+	$this->set(compact('latest', 'all', 'paises', 'parte'));
 }
 
 /**

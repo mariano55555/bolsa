@@ -8863,3 +8863,71 @@ Stack Trace:
 #1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
 #2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2014-06-19 19:38:09 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fild' at line 1
+Request URL: /jobsearch/
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('fild', Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(670): DboSource->execute('fild', Array, Array)
+#3 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(612): DboSource->fetchAll('fild', Array, Array)
+#4 C:\xampp\cakephp\lib\Cake\Model\Model.php(800): DboSource->query('fild', Array, Object(Country))
+#5 C:\xampp\htdocs\jobsearch\Controller\UsersController.php(53): Model->__call('fild', Array)
+#6 C:\xampp\htdocs\jobsearch\Controller\UsersController.php(53): Country->fild('name', Array)
+#7 [internal function]: UsersController->home()
+#8 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(486): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#10 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#11 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2014-06-19 19:39:28 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fild' at line 1
+Request URL: /jobsearch/
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(460): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(426): DboSource->_execute('fild', Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(670): DboSource->execute('fild', Array, Array)
+#3 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(612): DboSource->fetchAll('fild', Array, Array)
+#4 C:\xampp\cakephp\lib\Cake\Model\Model.php(800): DboSource->query('fild', Array, Object(Country))
+#5 C:\xampp\htdocs\jobsearch\Controller\UsersController.php(53): Model->__call('fild', Array)
+#6 C:\xampp\htdocs\jobsearch\Controller\UsersController.php(53): Country->fild('name', Array)
+#7 [internal function]: UsersController->home()
+#8 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(486): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#9 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#10 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#11 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2014-06-19 20:00:14 Error: [MissingControllerException] Controller class Job.htmlController could not be found.
+Exception Attributes: array (
+  'class' => 'Job.htmlController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/job.html
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-19 20:01:42 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/images/esen_header.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-19 20:01:43 Error: [MissingControllerException] Controller class ImagesController could not be found.
+Exception Attributes: array (
+  'class' => 'ImagesController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/images/esen_header.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-19 23:14:42 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/ie-spacer.gif
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
