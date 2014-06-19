@@ -284,16 +284,16 @@
           <div class="hide-map-button"><span>Hide Map</span></div>
           <div class="show-map-button"><span>Show Map</span></div>
           <ul class="map-markers">
-            <li class="marker1">New York City, United States</li>
-            <li class="marker2">Brooklyn, United States</li>
-            <li class="marker3">Newark, United States</li>
-            <li class="marker4">Queens, United States</li>
-            <li class="marker5">Bayonne, United States</li>
-            <li class="marker6">Mineola, United States</li>
-            <li class="marker7">Kearny, United States</li>
-            <li class="marker8">Secaucus, United States</li>
-            <li class="marker9">Bronx, United States</li>
-            <li class="marker10">Linden, United States</li>
+            <li class ="marker1">New York City, United States</li>
+            <li class ="marker2">Brooklyn, United States</li>
+            <li class ="marker3">Newark, United States</li>
+            <li class ="marker4">Queens, United States</li>
+            <li class ="marker5">Bayonne, United States</li>
+            <li class ="marker6">Mineola, United States</li>
+            <li class ="marker7">Kearny, United States</li>
+            <li class ="marker8">Secaucus, United States</li>
+            <li class ="marker9">Bronx, United States</li>
+            <li class ="marker10">Linden, United States</li>
           </ul>
         </div>
         <div class="clear"></div>
