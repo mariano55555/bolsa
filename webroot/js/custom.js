@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+    /*
+    *  DRAW MAP WITH GOOGLE API V3
+   
 
 
     /* ---------------------------------------------------------------------- */
@@ -307,20 +310,20 @@ $(document).ready(function () {
     /* ---------------------------------------------------------------------- */
     /*	Google Map in contact's
     /* ---------------------------------------------------------------------- */
-    var $map = $('#contact-map');
+    var $map      = $('#contact-map');
     var $address1 = $("#first-address").html();
     var $address2 = $("#second-address").html();
 
     $map.gMap({
         address: $address1,
-        zoom: 10,
+        zoom: 16,
         scaleControl: true,
         scrollwheel: false,
         markers: [{
             address: $address1,
             html: $address1,
             icon: {
-                image: "images/map-marker.png",
+                image: "../images/map-marker.png",
                 iconsize: [36, 42],
                 iconanchor: [18, 42]
             }
@@ -328,12 +331,14 @@ $(document).ready(function () {
             address: $address2,
             html: $address2,
             icon: {
-                image: "images/map-marker.png",
+                image: "../images/map-marker.png",
                 iconsize: [36, 42],
                 iconanchor: [18, 42]
             }
         }]
     });
+
+
     /* ---------------------------------------------------------------------- */
     /*	Explore block
     /* ---------------------------------------------------------------------- */
@@ -476,11 +481,11 @@ $(document).ready(function () {
     /* ---------------------------------------------------------------------- */
     /*	Google Map on job page
     /* ---------------------------------------------------------------------- */
-    var mapcontainer = $("#map-container");
-    var showbutton = mapcontainer.find(".show-map-button");
-    var hidebutton = mapcontainer.find(".hide-map-button");
+    var mapcontainer   = $("#map-container");
+    var showbutton     = mapcontainer.find(".show-map-button");
+    var hidebutton     = mapcontainer.find(".hide-map-button");
     var mapincontainer = mapcontainer.find(".map");
-    var mapheight = mapincontainer.css('height');
+    var mapheight      = mapincontainer.css('height');
 
     showbutton.css('display', 'none');
     hidebutton.css('display', 'block');
@@ -613,7 +618,7 @@ $(document).ready(function () {
     /*----------------------------------------------*/
     /* Function for change viewmode
 	/*----------------------------------------------*/
-    $('.mode').live('click', function () {
+    $('.mode').on('click', function () {
         var self = $(this);
         var mode = $(this).children().attr('class');
         $('.view_mode').fadeOut(500);
@@ -745,7 +750,7 @@ function centeringImages() {
 /*
  * function for story block
  * */
-$('.user-avatar a').live('mouseenter', function () {
+$('.user-avatar a').on('mouseenter', function () {
     if ($(window).width() < 480) {
         return;
     }
@@ -770,10 +775,10 @@ function showStory(index) {
     $('.story_block .before').css('left', first + ind * index);
     $('.story_block').show();
 }
-$('.user-avatar a').live('mouseleave', function () {
+$('.user-avatar a').on('mouseleave', function () {
     $('.effect,.story_block').hide();
 })
-$('.story_block').live('mouseenter', function () {
+$('.story_block').on('mouseenter', function () {
     $('.story_block').show();
 })
 
@@ -806,7 +811,7 @@ $(document).ready(function () {
     /*if($(window).width()<480){return;}
 	$(window).resize(function(){
 		centeringImages();
-		if ($(window).width() > 763) 
+		if ($(window).width() > 763)
 		 setEqualHeight($("#documents,#equal-height1,#equal-height2"));
 	});	*/
 });

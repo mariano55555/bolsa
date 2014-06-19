@@ -403,6 +403,7 @@ form#contact div#send input { height: 40px; }
 div#map-container { background: none repeat scroll 0 0 #FFFFFF; -webkit-box-shadow: 0 0 5px #ddd; box-shadow: 0 0 5px #ddd; -moz-box-shadow: 0 0 5px #ddd; margin-bottom: 22px; max-width: 605px; padding: 5px; position: relative; }
 div#map-container ul.map-markers { display: none; }
 div#contact-map { height: 320px; }
+div#map-canvas { height: 320px !important; }
 div#contacts div.left, div#contacts div.right { width: 268px; float: left; }
 div#contacts h3 { font-size: 15px; width: 90%; color: #4d4d4d; font-family: 'Roboto Condensed', sans-serif; }
 div#contacts div.contact-field span { display: block; float: left; line-height: 21px; color: #666666; font-size: 14px; }

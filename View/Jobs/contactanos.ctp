@@ -1,3 +1,4 @@
+
 <!-- Header -->
 <div id="header">
   <div class="inner"> 
@@ -17,13 +18,17 @@
 <!-- Content -->
 <div id="content">
   <div id="title">
-    <h1 class="inner title-2">Contact Us
+    <h1 class="inner title-2">Contactanos
       <ul class="breadcrumb-inner">
-        <li> <a href="index.html">Home</a></li>
-        <li> <a href="contacts.html">Contact Us</a></li>
+        <li> <a href="index.html">Inicio</a></li>
+        <li> <a href="contacts.html">Contactanos</a></li>
       </ul>
     </h1>
   </div>
+
+
+
+
   <div class="inner"> 
     
     <!-- Content Inner -->
@@ -31,25 +36,46 @@
       
       <!-- Content Center -->
       <div class="content-center">
-        <div id="map-container">
-          <div id="contact-map" class="map box-1"></div>
+             <div id="map-container">
+         <?php
+              // Override any of the following default options to customize your map
+              $map_options123 = array('id' => 'map_canvas', 
+                'width' => '605px',
+                'height' => '320px',
+                //'class'=>"map box-1",
+                'style' => '',
+                'zoom' => 15,
+                'type' => 'ROADMAP',
+                'custom' => null,
+                'localize' => false,
+                'latitude' => 13.655337,
+                'longitude' => -89.286099,
+                'marker' => true,
+                'markerTitle' => 'This is my position',
+                'markerIcon' => 'http://google-maps-icons.googlecode.com/files/home.png',
+                'markerShadow' => 'http://google-maps-icons.googlecode.com/files/shadow.png',
+                'infoWindow' => true,
+                'windowText' => 'My Position'
+              );
+            echo $this->GoogleMap->map($map_options123); 
+             ?>
         </div>
         <div id="contacts" class="block post-box box-1 contact-address">
           <div class="block-content">
-            <div class="left">
-              <h3 class="title-3">Headquarters</h3>
-              <div class="contact-field"><span class="label">Address:</span><span id="first-address" class="count">New York City, United States</span></div>
-              <div class="contact-field"><span class="label">Phone:</span><span class="count">+1 123-456-7890</span></div>
+            <div >
+              <h3 class="title-3">ESEN</h3>
+              <div class="contact-field"><span class="label">Address:</span><span id="first-address" class="count" style="width:70%">Km.12 ½ carretera al Puerto de La Libertad, calle nueva a Comasagua, Santa Tecla La Libertad, El Salvador</span></div>
+              <div class="contact-field"><span class="label">Phone:</span><span class="count" style="width:70%">(503) 2234-9292 / 2234-927 </span></div>
               <div class="contact-field"><span class="label">E-mail:</span><span class="count"><a>email@example.com</a></span></div>
-              <div class="contact-field"><span class="label">Website:</span><span class="count"><a>www.example.com</a></span></div>
+              <div class="contact-field"><span class="label">Website:</span><span class="count"><a href="http://www.esen.edu.sv" target ="_blank">www.esen.edu.sv</a></span></div>
             </div>
-            <div class="right">
+            <!--<div class="right">
               <h3 class="title-3">Secondary Office</h3>
               <div class="contact-field"><span class="label">Address:</span><span id="second-address" class="count">Brooklyn, United States</span></div>
               <div class="contact-field"><span class="label">Phone:</span><span class="count">+1 123-456-7890</span></div>
               <div class="contact-field"><span class="label">E-mail:</span><span class="count"><a>email@example.com</a></span></div>
               <div class="contact-field"><span class="label">Website:</span><span class="count"><a>www.example.com</a></span></div>
-            </div>
+            </div>-->
           </div>
         </div>
       </div>
@@ -58,20 +84,16 @@
       <!-- Content Right -->
       <div class="content-right">
         <div class="block background">
-          <h2 class="title-1">Send Us a Message</h2>
+          <h2 class="title-1">Contactanos</h2>
           <div class = "block-content">
             <form id = "contact" action="http://uouapps.com/careers/post">
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue.</p>
-              <div id = "about">
-                <input title="Your Name" type="text" name="name" class="textfield" placeholder="Name"/>
-                <input title="Your E-Mail" type="text" name="email" class="textfield" placeholder="E-mail"/>
-                <input title="Your WebSite" type="text" name="website" class="textfield" placeholder="WebSite"/>
-              </div>
+            
               <div id = "mess">
-                <textarea title="Your Message" name="message" cols="30" rows="6" class="textarea" onclick="this.value='';" onfocus="$(this).addClass('active');" onblur="$(this).removeClass('active');">How can I help you?</textarea>
+                <textarea title="Your Message" name="message" cols="30" rows="6" class="textarea" onclick="this.value='';" onfocus="$(this).addClass('active');" onblur="$(this).removeClass('active');">¿Cómo podemos ayudarte?</textarea>
               </div>
               <div id = "send">
-                <button class="btn blue">Send Message</button>
+                <button class="btn blue">Enviar mensaje</button>
               </div>
             </form>
           </div>
@@ -86,5 +108,3 @@
     <!-- /Content Inner --> 
     
   </div>
-</div>
-<!-- /Content --> 

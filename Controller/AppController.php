@@ -5,7 +5,7 @@ App::uses('CakeEmail', 'Network/Email');
 App::uses('Controller', 'Controller');
 
 class AppController extends Controller {
-	public $helpers = array('Form', 'Html','Js', 'Time');
+	public $helpers = array('Form', 'Html','Js', 'Time', 'GoogleMap');
 	public $components = array('Session',
 								'Cookie',
 								'RequestHandler',

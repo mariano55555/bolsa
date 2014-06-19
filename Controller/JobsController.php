@@ -308,7 +308,7 @@ public function test()
 
 	public function contactanos()
 	{
-
+		//$this->layout ="test";
 		
 
 	}

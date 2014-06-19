@@ -8573,3 +8573,293 @@ Stack Trace:
 #1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest), Object(CakeResponse))
 #2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2014-06-19 03:22:28 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/map-marker.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 03:25:20 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/map-marker.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 03:27:20 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/map-marker.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 03:27:45 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/map-marker.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 03:27:58 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/map-marker.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 03:58:46 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/gmap_pin_orange.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 03:58:47 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/gmap_pin_grey.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 03:58:47 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/gmap_pin.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 04:01:56 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/gmap_pin.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 04:01:56 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/gmap_pin_grey.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 04:01:56 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/gmap_pin_orange.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 04:01:56 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/map-marker.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 04:02:17 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/map-marker.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 04:02:40 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/map-marker.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 04:04:13 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/map-marker.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 04:30:42 Error: [MissingActionException] Action JobsController::www.esen.edu.sv() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'www.esen.edu.sv',
+)
+Request URL: /jobsearch/jobs/www.esen.edu.sv
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 04:48:20 Error: [MissingHelperException] Helper class GoogleMapHelper could not be found.
+Exception Attributes: array (
+  'class' => 'GoogleMapHelper',
+  'plugin' => false,
+)
+Request URL: /jobsearch/jobs/contactanos
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\View\View.php(886): HelperCollection->load('GoogleMap', Array)
+#1 C:\xampp\cakephp\lib\Cake\View\View.php(354): View->loadHelpers()
+#2 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(1241): View->__construct(Object(JobsController))
+#3 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(940): Controller->_getViewObject()
+#4 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#5 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#6 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2014-06-19 04:48:20 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/cake.power.gif
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-19 04:48:21 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/cake.icon.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-19 04:49:06 Error: [MissingHelperException] Helper class GoogleMapHelper could not be found.
+Exception Attributes: array (
+  'class' => 'GoogleMapHelper',
+  'plugin' => false,
+)
+Request URL: /jobsearch/jobs/contactanos
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\View\View.php(886): HelperCollection->load('GoogleMap', Array)
+#1 C:\xampp\cakephp\lib\Cake\View\View.php(354): View->loadHelpers()
+#2 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(1241): View->__construct(Object(JobsController))
+#3 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(940): Controller->_getViewObject()
+#4 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#5 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#6 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2014-06-19 04:49:06 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/cake.power.gif
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-19 04:49:08 Error: [MissingHelperException] Helper class GoogleMapHelper could not be found.
+Exception Attributes: array (
+  'class' => 'GoogleMapHelper',
+  'plugin' => false,
+)
+Request URL: /jobsearch/jobs/contactanos
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\View\View.php(886): HelperCollection->load('GoogleMap', Array)
+#1 C:\xampp\cakephp\lib\Cake\View\View.php(354): View->loadHelpers()
+#2 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(1241): View->__construct(Object(JobsController))
+#3 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(940): Controller->_getViewObject()
+#4 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#5 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#6 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#7 {main}
+2014-06-19 04:49:08 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/cake.power.gif
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-19 05:28:58 Error: [MissingActionException] Action JobsController::jobs() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'jobs',
+)
+Request URL: /jobsearch/jobs/jobs
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 05:29:08 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/map-marker.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-19 05:29:23 Error: [MissingActionException] Action JobsController::images() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'images',
+)
+Request URL: /jobsearch/jobs/images/map-marker.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}

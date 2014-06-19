@@ -21,9 +21,9 @@
 			'jquery.scrollbar'
 			));
 		echo $this->Html->script(array(
-			"jquery.1.7.2.min",
+			'jquery-1.11.0.min',
 			"jquery-ui.1.7.2.min",
-			'http://maps.google.com/maps/api/js?sensor=false',
+			'http://maps.google.com/maps/api/js?sensor=true',
 			'jquery.combosex.min',
 			'jquery.flexslider-min',
 			'jquery.mousewheel',
@@ -44,7 +44,7 @@
 	<div id="container">
 		<?php echo $this->Element('default/topheader'); ?>
 		<?php //echo $this->Element('default/header'); ?>
-		<div id="content1">
+		<div id="content">
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
