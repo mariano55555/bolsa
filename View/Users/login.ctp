@@ -19,14 +19,14 @@
                     <!--<label for="username">Username:</label>-->
                     <div class="input-icon">
                         <i class="icon-user"></i>
-                        <input type="text" name="data[User][carnet]" class="form-control" placeholder="Carnet" autofocus="autofocus" required/>
+                        <input type="text" name="data[User][carnet]" class="form-control" id="carnet" placeholder="Carnet" autofocus="autofocus" required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <!--<label for="password">Password:</label>-->
                     <div class="input-icon">
                         <i class="icon-lock"></i>
-                        <input type="password" name="data[User][password]" class="form-control" placeholder="Password" required />
+                        <input type="password" name="data[User][password]" class="form-control" id = "password" placeholder="Password" required />
                     </div>
                 </div>
                 <!-- /Input Fields -->
@@ -61,7 +61,7 @@
                 <div class="form-group">
                     <div class="input-icon">
                         <i class="icon-ok"></i>
-                        <input type="password" name="data[User][password_confirmation]" id="registrorepassword" class="form-control" placeholder="Confirmar Password" required />
+                        <input type="password" name="data[User][password_confirmation]" id="registrorepasswordconfirmacion" class="form-control" placeholder="Confirmar Password" required />
                     </div>
                 </div>
                 <div class="form-group">
@@ -101,7 +101,7 @@
                         <!--<label for="email">Email:</label>-->
                         <div class="input-icon">
                             <i class="icon-user"></i>
-                            <input type="text" name="data[User][carnet]" class="form-control" placeholder="Ingresar carnet" required/>
+                            <input type="text" name="data[User][carnet]" id="restartcarnet" class="form-control" placeholder="Ingresar carnet" required/>
                         </div>
                     </div>
                     <!-- /Input Fields -->

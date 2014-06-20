@@ -268,4 +268,20 @@ public function home()
 			}
 		}
 	}
+	public function validate_pass()
+	{
+		if($this->request->is('ajax'))
+		{
+			$this->layout = "ajax";
+			$this->request->data['User']['password_confirmation'] = $this->request->data['password_confirmation'];
+			$this->request->data['User']['password']              = $this->request->data['password'];
+			$this->User->set($this->data);
+			if ($this->User->validates()) {
+				$this->autoRender = FALSE;
+			}else{
+				$error = $this->validateErrors($this->User);
+				$this->set('error', $error['password_confirmation']);
+			}
+		}
+	}
 }

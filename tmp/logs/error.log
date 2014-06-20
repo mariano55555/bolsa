@@ -9132,3 +9132,375 @@ Stack Trace:
 #3 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
 #4 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #5 {main}
+2014-06-20 16:11:38 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-3.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 16:11:38 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-2.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 16:11:38 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/flag-icons/Estados%20Unidos.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 16:11:38 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/flag-icons/El%20Salvador.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 16:11:39 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-1.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 16:11:39 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/flag-icons/Colombia.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 16:11:39 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-4.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 16:11:39 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-5.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:02:34 Error: [MissingActionException] Action UsersController::validar_pass() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'validar_pass',
+)
+Request URL: /jobsearch/Users/validar_pass
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:36:21 Error: [MissingControllerException] Controller class Contacts.htmlController could not be found.
+Exception Attributes: array (
+  'class' => 'Contacts.htmlController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/contacts.html
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 22:36:43 Error: [MissingActionException] Action UsersController::contactanos() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'contactanos',
+)
+Request URL: /jobsearch/users/contactanos
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:03 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/flag-icons/Colombia.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:03 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/flag-icons/Estados%20Unidos.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:04 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-2.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:04 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-1.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:04 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-3.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:04 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/flag-icons/El%20Salvador.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:05 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-4.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:05 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-5.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:05 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/flag-icons/El%20Salvador.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:06 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/flag-icons/Estados%20Unidos.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:06 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/flag-icons/Colombia.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:06 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-2.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:06 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-1.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:06 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-3.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:07 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-1.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:08 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-3.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:08 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-5.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:08 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-4.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:41:08 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-2.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:42:30 Error: [MissingActionException] Action UsersController::validar_pass() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'validar_pass',
+)
+Request URL: /jobsearch/Users/validar_pass
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 22:44:44 Error: [MissingActionException] Action JobsController::3() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => '3',
+)
+Request URL: /jobsearch/jobs/3
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 23:04:46 Error: [MissingActionException] Action UsersController::validar_pass() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'validar_pass',
+)
+Request URL: /jobsearch/Users/validar_pass
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-20 23:04:55 Error: [MissingActionException] Action UsersController::validar_pass() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'validar_pass',
+)
+Request URL: /jobsearch/Users/validar_pass
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}

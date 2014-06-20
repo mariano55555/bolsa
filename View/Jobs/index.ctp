@@ -199,7 +199,11 @@
                 <div class="show-hide-button"><span></span></div>
               </div>
             </div>
-            <form id="filter-job-page" action="http://uouapps.com/careers/post">
+          </div>
+        </div>
+        <div id="search-filter" class="block background">
+          <h2 class="title-1">Buscar</h2>
+           <form id="filter-job-page" action="#">
               <div class="filter-category">
                 <h3>Tipo de contrato</h3>
                 <div class="filter-content">
@@ -264,7 +268,6 @@
               </div>
               <input type="submit" value="Buscar" id="filter-job-page-submit"/>
             </form>
-          </div>
         </div>
 
         <!--COLOCAR UN BANNER ACA -->

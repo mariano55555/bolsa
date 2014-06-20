@@ -89,8 +89,12 @@ class User extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'longitud' => array(
-				'rule' => 'longitud',
+				'rule' => array('longitud'),
 				'message' => "El canet debe de tener una longitud de 8 digitos"
+			),
+			'numeric' => array(
+				'rule' => array('numeric'),
+				'message' => "Solo se admiten numeros."
 			)
 		),
 		'email' => array(
@@ -202,7 +206,7 @@ class User extends AppModel {
 		return false;
 	}
 
-	public function length($data)
+	public function longitud($data)
 	{
 		if (strlen($this->data['User']['carnet']) < 8 || strlen($this->data['User']['carnet']) > 8)
 		{

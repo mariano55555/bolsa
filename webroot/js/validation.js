@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	
+	// VALIDAR FORMULARIO DE REGISTRO
+
 	var app = $('#content1').attr('url');
 	$('#registrocarnet').blur(function() {
 		/* Act on the event */
@@ -13,14 +16,15 @@ $(document).ready(function() {
 		$.post(
 			app +'Users/validar_registro', 
 			{field: 'password', value: $(this).val() },
-			handlePasswordValidation
+			handlePassworRegistrodValidation
 		);
 	});
-	$('#registropasswordconfirmacion').blur(function() {
+	$('#registrorepasswordconfirmacion').blur(function() {
 		/* Act on the event */
+		console.log($('#password').val());
 		$.post(
-			app +'Users/validar_registro', 
-			{field: 'password_confirmation', value: $(this).val() },
+			app +'Users/validate_pass', 
+			{password_confirmation: $(this).val(),  password: $('#registropassword').val() },
 			handleRepasswordValidation
 		);
 	});
@@ -47,9 +51,9 @@ $(document).ready(function() {
 			$('#registrocarnet-notEmpty').remove();
 		}
 	}
-	function handlePasswordValidation(error) {
+	function handlePassworRegistrodValidation(error) {
 		if (error.length > 0) {
-			if ($('#registopasswordt-notEmpty').length == 0) 
+			if ($('#registopassword-notEmpty').length == 0) 
 			{
 				$('#registropassword').after('<div id="registropassword-notEmpty">' + error + '</div>');
 			}else{
@@ -62,15 +66,15 @@ $(document).ready(function() {
 	}
 	function handleRepasswordValidation(error) {
 		if (error.length > 0) {
-			if ($('#registropasswordconfirmacion-notEmpty').length == 0) 
+			if ($('#registrorepasswordconfirmacion-notEmpty').length == 0) 
 			{
-				$('#registropasswordconfirmacion').after('<div id="registropasswordconfirmacion-notEmpty">' + error + '</div>');
+				$('#registrorepasswordconfirmacion').after('<div id="registrorepasswordconfirmacion-notEmpty">' + error + '</div>');
 			}else{
-				$('#registropasswordconfirmacion-notEmpty').remove();	
-				$('#registropasswordconfirmacion').after('<div id="registropasswordconfirmacion-notEmpty">' + error + '</div>');
+				$('#registrorepasswordconfirmacion-notEmpty').remove();	
+				$('#registrorepasswordconfirmacion').after('<div id="registrorepasswordconfirmacion-notEmpty">' + error + '</div>');
 			}
 		} else{
-			$('#registropasswordconfirmacion-notEmpty').remove();
+			$('#registrorepasswordconfirmacion-notEmpty').remove();
 		}
 	}
 
@@ -87,4 +91,56 @@ $(document).ready(function() {
 			$('#registrophone-notEmpty').remove();
 		}
 	}
+
+
+
+
+
+
+	// VALIDAR FORMULARIO DE LOGIN
+	$('#carnet').blur(function() {
+		/* Act on the event */
+		$.post(
+			app +'Users/validar_registro', 
+			{field: 'carnet', value: $(this).val() },
+			handleCarnetValidation
+		);
+	});
+	$('#password').blur(function() {
+		/* Act on the event */
+		$.post(
+			app +'Users/validar_registro', 
+			{field: 'password', value: $(this).val() },
+			handlePasswordValidation
+		);
+	});
+	function handleCarnetValidation(error) {
+		if (error.length > 0) {
+			if ($('#carnet-notEmpty').length == 0) 
+			{
+				$('#carnet').after('<div id="carnet-notEmpty">' + error + '</div>');
+			}else{
+				$('#carnet-notEmpty').remove();	
+				$('#carnet').after('<div id="carnet-notEmpty">' + error + '</div>');
+			}
+		} else{
+			$('#carnet-notEmpty').remove();
+		}
+	}
+	function handlePasswordValidation(error) {
+		if (error.length > 0) {
+			if ($('#password-notEmpty').length == 0) 
+			{
+				$('#password').after('<div id="password-notEmpty">' + error + '</div>');
+			}else{
+				$('#password-notEmpty').remove();	
+				$('#password').after('<div id="password-notEmpty">' + error + '</div>');
+			}
+		} else{
+			$('#password-notEmpty').remove();
+		}
+	}
+
+
+
 });
