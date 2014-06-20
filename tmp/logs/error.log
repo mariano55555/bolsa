@@ -8931,3 +8931,204 @@ Request URL: /jobsearch/img/ie-spacer.gif
 Stack Trace:
 #0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2014-06-20 04:01:05 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/js/highmaps/maps/custom/central-america.js
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 04:09:35 Error: [MissingControllerException] Controller class JobsearchController could not be found.
+Exception Attributes: array (
+  'class' => 'JobsearchController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch//jobsearch/js/highmaps/maps/countries/us/ni-all.js?_=1403230172753
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 04:09:59 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/js/highmaps/maps/countries/us/ni-all.js?_=1403230197084
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 04:10:36 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/js/highmaps/maps/countries/us/sv-all.js?_=1403230230645
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 04:10:45 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/js/highmaps/maps/countries/us/sv-all.js?_=1403230230645
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 04:11:00 Error: [MissingControllerException] Controller class WebrootController could not be found.
+Exception Attributes: array (
+  'class' => 'WebrootController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/webroot/js/highmaps/maps/countries/us/sv-all.js?_=1403230230645
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 04:11:09 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/js/highmaps/maps/countries/us/sv-all.js
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 04:14:07 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/js/highmaps/maps/countries/us/sv-all.js?_=1403230444085
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 04:14:23 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/js/highmaps/maps/countries/sv-all.js?_=1403230460843
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 04:25:58 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/js/highmaps/maps/countries/us/hn-all.js?_=1403231155015
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 04:29:38 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/js/highmaps/maps/countries/us/ni-all.js?_=1403231373637
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 04:41:40 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/js/highmaps/maps/countries/sv/sv-all.js?_=1403232095366
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 04:41:52 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/js/highmaps/maps/countries/sv/sv-all.js?_=1403232095366
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 04:46:14 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/js/highmaps/maps/countries/sv/hn-all.js?_=1403232354225
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 04:47:32 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/js/highmaps/maps/countries/ca/hn-all.js?_=1403232436045
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 06:01:43 Error: [MissingControllerException] Controller class InicioController could not be found.
+Exception Attributes: array (
+  'class' => 'InicioController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 06:01:46 Error: [MissingControllerException] Controller class InicioController could not be found.
+Exception Attributes: array (
+  'class' => 'InicioController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 06:01:59 Error: [MissingControllerException] Controller class InicioController could not be found.
+Exception Attributes: array (
+  'class' => 'InicioController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 06:02:03 Error: [MissingControllerException] Controller class InicioController could not be found.
+Exception Attributes: array (
+  'class' => 'InicioController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 06:02:12 Error: [MissingControllerException] Controller class InicioController could not be found.
+Exception Attributes: array (
+  'class' => 'InicioController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 06:02:31 Error: [MissingControllerException] Controller class InicioController could not be found.
+Exception Attributes: array (
+  'class' => 'InicioController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-20 06:37:08 Error: [MissingViewException] View file "C:\xampp\htdocs\jobsearch\View\Users\registro.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'C:\\xampp\\htdocs\\jobsearch\\View\\Users\\registro.ctp',
+)
+Request URL: /jobsearch/users/registro
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\View\View.php(468): View->_getViewFileName(NULL)
+#1 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(954): View->render(NULL, NULL)
+#2 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#3 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}

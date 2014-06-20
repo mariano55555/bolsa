@@ -51,5 +51,10 @@
 		<?php echo $this->Element('default/footer'); ?>
 	</div>
 	<?php //echo $this->element('sql_dump'); ?>
+	<script src="<?php echo $this->webroot; ?>js/highmaps/highmaps.js"></script>
+	<script src="<?php echo $this->webroot; ?>js/highmaps/modules/data.js"></script>
+	<script src="<?php echo $this->webroot; ?>js/highmaps/modules/drilldown.js"></script>
+	<!--<script src="http://code.highcharts.com/mapdata/countries/sv/sv-all.js"></script>-->
+	<script src="<?php echo $this->webroot; ?>js/highmaps/maps/central-america.js"></script>
 </body>
 </html>

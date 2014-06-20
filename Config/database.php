@@ -9,4 +9,12 @@ class DATABASE_CONFIG {
 		'password' => '',
 		'database' => 'jobsearch',
 	);
+	public $ccesen = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' => 'localhost',
+		'login' => 'root',
+		'password' => '',
+		'database' => 'ccesen',
+	);
 }

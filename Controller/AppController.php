@@ -12,15 +12,7 @@ class AppController extends Controller {
 								'Redirect',
 								'Logs',
 								'Auth' => array(
-									'loginRedirect' => array('controller' => 'Users', 'action' => 'home'),
-									'logoutRedirect' => array('controller' => 'Users', 'action' => 'login'),
-									'authError' => "No tienes privilegios para acceder a esta sección",
-									'authenticate' => array(
-							            'Form' => array(
-							                'fields' => array('username' => 'carnet')
-							            )
-							        ),
-									'authorize' => array('Controller')
+									'authorize' => array('Controller'),
 								)
 	);
 

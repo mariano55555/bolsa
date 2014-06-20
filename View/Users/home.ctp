@@ -29,7 +29,7 @@
     <div class="inner">
         <!-- Panel 3 -->
         <div id="login-panel">
-          <div class="left">
+          <div class="left" style ="width: 100%">
             <div class="first">
               <div class="counter">
                 <ul id="counter">
@@ -55,7 +55,7 @@
               
             </div>
           </div>
-          <div class="right">
+          <!--<div class="right">
             <div class="first">
               <div class="badge"></div>
               <div id="post-job-buttom"><a>Post a Job</a></div>
@@ -69,7 +69,7 @@
                 </form>
                  </div>
             </div>
-          </div>
+          </div>-->
         </div>
         <!-- /Panel 3 --> 
     </div>
@@ -96,23 +96,24 @@
             </ul>
             <div id="map" class="box-1">
               <div class="map-wrapper">
-              <div class="map-container" id="centerMap"></div>
+              <!--<div class="map-container" id="centerMap"></div>-->
+              <div id="container123" style="height: 400px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
               </div>
               <div class="clear"></div>
               <div class="region-menu">
                 <div class="left">
                   <ul>
-                    <li><a href="#">Asia<span class="count">(3218)</span></a></li>
-                    <li><a href="#">Africa<span class="count">(834)</span></a></li>
-                    <li><a href="#">Europe<span class="count">(15218)</span></a></li>
-                    <li><a href="#">North America<span class="count">(14902)</span></a></li>
+                    <li><a href="#">El Salvador<span class="count">(1347)</span></a></li>
+                    <li><a href="#">Honduras<span class="count">(5834)</span></a></li>
+                    <li><a href="#">Belice<span class="count">(14902)</span></a></li>
+                    <li><a href="#">Panamá<span class="count">(14902)</span></a></li>
                   </ul>
                 </div>
                 <div class="left">
                   <ul>
-                    <li><a href="#">Central America<span class="count">(1347)</span></a></li>
-                    <li><a href="#">South America<span class="count">(5834)</span></a></li>
-                    <li><a href="#">Oceania<span class="count">(6020)</span></a></li>
+                    <li><a href="#">Guatemala<span class="count">(14902)</span></a></li>
+                    <li><a href="#">Nicaragua<span class="count">(14902)</span></a></li>
+                    <li><a href="#">Costa Rica<span class="count">(14902)</span></a></li>
                   </ul>
                 </div>
                 <div class="clear"></div>
@@ -578,3 +579,209 @@
   </section>
 <!---</div>-->
 <!-- /Footer -->
+
+
+  <script type="text/javascript">
+$(function () {
+
+    /*
+    TODO:
+    - Check data labels after drilling. Label rank? New positions?
+    - Not US Mainland text
+    - Separators
+    */
+//http://code.highcharts.com/mapdata/custom/central-america.js
+    var data = Highcharts.geojson(Highcharts.maps['custom/central-america']);
+    console.log(data);  
+    // Set drilldown pointers
+    $.each(data, function (i) {
+        this.drilldown = this.properties['hc-key'];
+        //this.value = i; // Non-random bogus data
+        if (this.name === "El Salvador") {
+            this.value = 2;          
+        }else if (this.name === "Honduras") {
+            this.value = 2;
+        }else if (this.name === "Belize") {
+            this.value = 2;
+        }else if (this.name === "Guatemala") {
+            this.value = 2;
+        }else if (this.name === "Panama") {
+            this.value = 2;
+        }else if (this.name === "Nicaragua") {
+            this.value = 2;
+        }else{
+          //Es Costa Rica
+            this.value = 2;
+        }
+    });
+
+
+    var data1 = [
+        {
+            "name": "El Salvador",
+            "value": 7
+        },
+        {
+            "name": "Belize",
+            "value": 7
+        },
+        {
+            "name": "Panama",
+            "value": 9
+        },
+        {
+            "name": "Nicaragua",
+            "value": 5
+        },
+        {
+            "name": "Honduras",
+            "value": 6
+        },
+        {
+            "name": "Costa Rica",
+            "value": 8
+        },
+        {
+            "name": "Guatemala",
+            "value": 8
+        }
+    ];
+
+
+    // Some responsiveness
+    var small = $('#container123').width() < 400;
+
+    // Instanciate the map
+    $('#container123').highcharts('Map', {
+        chart : {
+            events: {
+                drilldown: function (e) {
+                    
+                    if (!e.seriesOptions) {
+                        var chart = this,
+                            mapKey = 'countries/ca/' + e.point.drilldown + '-all';
+
+
+                        // Show the spinner
+                        chart.showLoading('<i class="icon-spinner icon-spin icon-3x"></i>'); // Font Awesome spinner
+
+                        // Handle error, the timeout is cleared on success
+                        var fail = setTimeout(function () {
+                            if (!Highcharts.maps[mapKey]) {
+                                chart.showLoading('<i class="icon-frown"></i> Failed loading ' + e.point.name);
+
+                                fail = setTimeout(function () {
+                                    chart.hideLoading();
+                                }, 1000);
+                            }
+                        }, 3000);
+                        // Load the drilldown map
+                        $.getScript('<?php echo $this->webroot; ?>js/highmaps/maps/' + mapKey + '.js', function () {
+
+
+                            var data = Highcharts.geojson(Highcharts.maps[mapKey]);
+                            console.log(data);
+                            // Set a non-random bogus value
+                            $.each(data, function (i) {
+                              <?php $name = "'La Unión'"; ?>
+                              if (this.name === <?php echo $name; ?>) {
+                              this.value = 21;
+                              }else{
+                              this.value = i; 
+                              }
+                                //this.value = i;
+                                console.log(this.value);
+                            });
+
+                            // Hide loading and add series
+                            chart.hideLoading();
+                            clearTimeout(fail);
+                            chart.addSeriesAsDrilldown(e.point, {
+                                name: e.point.name,
+                                data: data,
+                                dataLabels: {
+                                    enabled: true,
+                                    format: '{point.name}'
+                                }
+                            });
+                        })
+                    }
+
+                    
+                    this.setTitle(null, { text: e.point.name });
+                },
+                drillup: function (e) {
+                    this.setTitle(null, { text: 'Centro America' });
+                }
+            }
+        },
+
+        title : {
+            text : 'Centro America'
+        },
+
+        subtitle: {
+            text: 'Centro America',
+            floating: true,
+            align: 'right',
+            y: 50,
+            style: {
+                fontSize: '16px'
+            }
+        },
+
+        legend: small ? {} : {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        colorAxis: {
+            min: 0,
+            minColor: '#E6E7E8',
+            maxColor: '#005645'
+        },
+        
+        mapNavigation: {
+            enabled: true,
+            buttonOptions: {
+                verticalAlign: 'bottom'
+            }
+        },
+
+        plotOptions: {
+            map: {
+                states: {
+                    hover: {
+                        color: '#EEDD66'
+                    }
+                }
+            }
+        },
+        
+        series : [{
+            data : data,
+            name: 'Centro América',
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}'
+            }
+        }], 
+
+        drilldown: {
+            //series: drilldownSeries,
+            activeDataLabelStyle: {
+                color: 'white',
+                textDecoration: 'none'
+            },
+            drillUpButton: {
+                relativeTo: 'spacingBox',
+                position: {
+                    x: 0,
+                    y: 60
+                }
+            }
+        }
+    });
+});
+    </script>

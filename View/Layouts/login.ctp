@@ -18,7 +18,8 @@
 		echo $this->Html->script(array(
 			'jquery-1.11.0.min',
 			'admin/bootstrap.min',
-			'login'
+			'login',
+			'validation'
 			));
 
 		echo $this->fetch('meta');
@@ -35,7 +36,7 @@
 </head>
 <body class="login">
 	<div id="container">
-		<div id="content1">
+		<div id="content1" url = '<?php echo $this->webroot; ?>'>
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>

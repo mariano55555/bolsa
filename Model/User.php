@@ -9,7 +9,7 @@ App::uses('AppModel', 'Model');
  * @property Job $Job
  */
 class User extends AppModel {
-	public $actsAs = array('WhoDidIt');
+	public $actsAs = array('WhoDidIt', 'Containable');
 /**
  * Display field
  *
@@ -40,10 +40,6 @@ class User extends AppModel {
 					//'last' => false, // Stop validation after this rule
 					//'on' => 'create', // Limit validation to 'create' or 'update' operations
 				),
-				'Name Length' => array(
-					'rule' => 'nameLength',
-					'message' => "Escribe al menos un nombre y un apellido"
-					)
 			),
 		'phone' => array(
 			'notempty' => array(
@@ -92,6 +88,10 @@ class User extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'longitud' => array(
+				'rule' => 'longitud',
+				'message' => "El canet debe de tener una longitud de 8 digitos"
+			)
 		),
 		'email' => array(
 			'email' => array(
@@ -202,12 +202,11 @@ class User extends AppModel {
 		return false;
 	}
 
-	public function nameLength($data)
+	public function length($data)
 	{
-		$nombre = explode(" ",$this->data['User']['name']);
-		if (count($nombre) < 2)
+		if (strlen($this->data['User']['carnet']) < 8 || strlen($this->data['User']['carnet']) > 8)
 		{
-			$this->invalidate('name', "Escribe al menos un nombre y un apellido");
+			$this->invalidate('carnet', "El canet debe de tener una longitud de 8 digitos");
 			return false;
 		}
 			return true;

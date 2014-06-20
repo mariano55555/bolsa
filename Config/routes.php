@@ -32,11 +32,13 @@
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
-
-	Router::connect('/', array('controller' => 'Users', 'action' => 'home'));
-
 	Router::connect('/admin/Dashboard', array('controller' => 'Users', 'action' => 'dashboard', 'admin' => true));
 	Router::connect('/admin/dashboard', array('controller' => 'Users', 'action' => 'dashboard', 'admin' => true));
+
+
+	Router::connect('/', array('controller' => 'Users', 'action' => 'login'));
+
+	//Router::connect('inicio', array('controller' => 'Users', 'action' => 'home'));
 	
 
 /**

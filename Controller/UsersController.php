@@ -13,32 +13,83 @@ public function login()
 {
 	$this->layout = "login";
 	if ($this->request->is('post')) {
+		$this->loadModel('AlumniNpeSolicitar');
 		debug($this->request->data);
-        if ($this->Auth->login()) {
-            return $this->redirect($this->Auth->redirectUrl());
-        } else {
-            $this->Session->setFlash(
-                __('Username or password is incorrect'),
-                'default',
-                array(),
-                'auth'
-            );
-        }
-    }
+		$carnetvalidado  = $this->AlumniNpeSolicitar->field('AlumniNpeSolicitar.estado_npe', array('AlumniNpeSolicitar.carnet' => $this->request->data['User']['carnet']));
+		$password        = AuthComponent::password($this->request->data['User']['password']);
+		$validacion      = $this->User->find('all', array(
+									    'conditions' => array(
+														'User.carnet'   => $this->request->data['User']['carnet'],
+														'User.password' => $password,
+									    ), //array of conditions
+									    'contain' => array('Group')
+									));
+
+		if (!empty($validacion)) {
+			if (!empty($carnetvalidado)) {
+				// redirigir y crear sesiones the usuario
+			}else{
+				$this->Session->setFlash("Tu carnet no ha sido validado debido a que no hemos recibido el correspondiente pago.");
+				$this->redirect('/');	
+			}
+		}else{
+			$this->Session->setFlash("Credenciales incorrectas. Intenta nuevamente");
+			$this->redirect('/');
+		}
+
+
+
+		debug($validacion);
+		if (!empty($carnet)) {
+			echo "si existe";
+		}else{
+
+		}
+	}
 
 }
 
-
+/**
+ * [logout description]
+ * @return [type] [description]
+ */
 public function logout()
 {
 	return $this->redirect($this->Auth->logout());
 }
 
+/**
+ * [registro description]
+ * @return [type] [description]
+ */
+
+	public function registro() {
+		if ($this->request->is('post')) {
+			$this->User->create();
+			if ($this->User->save($this->request->data)) {
+				$this->Session->setFlash("La Información ha sido guardada");
+				$this->redirect(array('/'));
+			} else {
+				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente");
+			}
+		}
+		$this->__list();
+	}
+/**
+ * [admin_dashboard description]
+ * @return [type] [description]
+ */
 public function admin_dashboard()
 {
 	# code...
 }
 
+
+
+/**
+ * [home description]
+ * @return [type] [description]
+ */
 public function home()
 {
 	$this->loadModel("Job");
@@ -195,5 +246,26 @@ public function home()
 			$this->redirect(array('action'=>'index'));
 		}
 		return $user;		
+	}
+
+	/**
+	 * Custom methods
+	 */
+	
+
+	public function validar_registro()
+	{
+		if($this->request->is('ajax'))
+		{
+			$this->request->data['User'][$this->request->data['field']] = $this->request->data['value'];
+			$this->User->set($this->data);
+			if ($this->User->validates()) {
+				$this->autoRender = FALSE;
+			}else{
+				//$this->layout = "ajaxtable";
+				$error = $this->validateErrors($this->User);
+				$this->set('error', $error[$this->request->data['field']]);
+			}
+		}
 	}
 }
