@@ -5,7 +5,12 @@
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
-		echo $this->Html->meta('icon');
+		//echo $this->Html->meta('icon');
+		echo $this->Html->meta(
+                    'favicon.ico',
+                    'img/favicon.ico',
+                    array('type' => 'icon')
+                );
 
 		echo $this->Html->css(array(
 			'login/bootstrap.min',
@@ -29,15 +34,15 @@
 	<script>
 	$(document).ready(function(){
 		"use strict";
-
 		Login.init(); // Init login JavaScript
 	});
 	</script>
 </head>
 <body class="login">
+	<?php echo $this->Session->flash(); ?>
+	<?php echo $this->Session->flash('auth'); ?>
 	<div id="container">
 		<div id="content1" url = '<?php echo $this->webroot; ?>'>
-			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
 		</div>
 	</div>

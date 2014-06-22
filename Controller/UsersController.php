@@ -6,6 +6,14 @@ App::uses('AppController', 'Controller');
  * @property User $User
  */
 class UsersController extends AppController {
+public $components = array('CustomSession');
+
+
+
+public function beforeFilter(){
+	parent::beforeFilter();
+	$this->Auth->allow('registro', 'login', 'validate_pass', 'validar_registro');
+}
 
 
 
@@ -15,7 +23,11 @@ public function login()
 	if ($this->request->is('post')) {
 		$this->loadModel('AlumniNpeSolicitar');
 		debug($this->request->data);
-		$carnetvalidado  = $this->AlumniNpeSolicitar->field('AlumniNpeSolicitar.estado_npe', array('AlumniNpeSolicitar.carnet' => $this->request->data['User']['carnet']));
+		$carnetvalidado  = $this->AlumniNpeSolicitar->field('AlumniNpeSolicitar.estado_npe', 
+															array(
+																'AlumniNpeSolicitar.carnet'     => $this->request->data['User']['carnet'],
+																'AlumniNpeSolicitar.estado_npe' => 1
+															));
 		$password        = AuthComponent::password($this->request->data['User']['password']);
 		$validacion      = $this->User->find('all', array(
 									    'conditions' => array(
@@ -27,23 +39,46 @@ public function login()
 
 		if (!empty($validacion)) {
 			if (!empty($carnetvalidado)) {
-				// redirigir y crear sesiones the usuario
+				// CREAR LAS VARIABLES DE AUTENTICACION
+				$nombre  = $this->AlumniNpeSolicitar->field('AlumniNpeSolicitar.nombre', 
+															array(
+																'AlumniNpeSolicitar.carnet'     => $this->request->data['User']['carnet'],
+																'AlumniNpeSolicitar.estado_npe' => 1
+															));
+				$email   = $this->AlumniNpeSolicitar->field('AlumniNpeSolicitar.email', 
+															array(
+																'AlumniNpeSolicitar.carnet'     => $this->request->data['User']['carnet'],
+																'AlumniNpeSolicitar.estado_npe' => 1
+															));
+				$id      = $this->User->field('User.id', array('User.carnet' => $this->request->data['User']['carnet'], 'User.active' => 1));
+				$groupid = $this->User->field('User.group_id', array('User.carnet' => $this->request->data['User']['carnet'], 'User.active' => 1));
+				$phone   = $this->User->field('User.phone', array('User.carnet' => $this->request->data['User']['carnet'], 'User.active' => 1));
+
+				$this->CustomSession->sessionstorage('Auth.User.id', $id);
+				$this->CustomSession->sessionstorage('Auth.User.name', $nombre);
+				$this->CustomSession->sessionstorage('Auth.User.group_id', $groupid);
+				$this->CustomSession->sessionstorage('Auth.User.email', $email);
+				$this->CustomSession->sessionstorage('Auth.User.phone', $phone);
+				$this->CustomSession->sessionstorage('Auth.User.carnet', $this->request->data['User']['carnet']);
+
+				// Actualizar el nombre y correo la primera vez que se loguea.
+				$nombretabla = $this->User->field('User.name', array('User.id' => $id));
+				if (!isset($nombretabla)) {
+					$this->User->id = $id;
+						$data = array('email' => $email, 'name' => $nombre);
+					$this->User->save($data);	
+				}
+				
+				//$this->redirect(array('action' => 'dashboard', 'admin' => true));
+
+				$this->redirect('/Inicio');	
 			}else{
-				$this->Session->setFlash("Tu carnet no ha sido validado debido a que no hemos recibido el correspondiente pago.");
+				$this->Session->setFlash("Tu carnet no ha sido validado en el sistema Alumni.");
 				$this->redirect('/');	
 			}
 		}else{
 			$this->Session->setFlash("Credenciales incorrectas. Intenta nuevamente");
 			$this->redirect('/');
-		}
-
-
-
-		debug($validacion);
-		if (!empty($carnet)) {
-			echo "si existe";
-		}else{
-
 		}
 	}
 
@@ -64,13 +99,27 @@ public function logout()
  */
 
 	public function registro() {
+		$this->autoRender = false;
 		if ($this->request->is('post')) {
-			$this->User->create();
-			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash("La Información ha sido guardada");
-				$this->redirect(array('/'));
-			} else {
-				$this->Session->setFlash("La Información solicitada no ha sido guardada. Favor intente nuevamente");
+			$this->loadModel('AlumniNpeSolicitar');
+			$carnetvalidado  = $this->AlumniNpeSolicitar->field('AlumniNpeSolicitar.estado_npe', 
+																	array(
+																		'AlumniNpeSolicitar.carnet'     => $this->request->data['User']['carnet'],
+																		'AlumniNpeSolicitar.estado_npe' => 1
+																	));
+			if ($carnetvalidado != FALSE ) {
+				$this->User->create();
+				if ($this->User->save($this->request->data)) {
+					$this->__correroregistro('mariano paz', 'mariano.paz.flores@gmail.com', 'mariano', 'mariano', 'abcsdasdasdfa');
+					$this->Session->setFlash("Tu cuenta ha sido registrada.");
+					$this->redirect('/');
+				} else {
+					$this->Session->setFlash("La Información solicitada no ha sido guardada. Corrige los mensajes de error");
+					$this->redirect('/');
+				}
+			}else{
+				$this->Session->setFlash("Debes solicitar tu carnet por medio del sistema Alumni");
+				$this->redirect('/');
 			}
 		}
 		$this->__list();
@@ -284,4 +333,42 @@ public function home()
 			}
 		}
 	}
+
+
+	/**
+	 *  FUNCIONES DE CORREO ELECTRONICO
+	 */
+	
+
+	/**
+	 * [__correroregistro description]
+	 * @param  [type] $nombre   [description]
+	 * @param  [type] $email    [description]
+	 * @param  [type] $username [description]
+	 * @param  [type] $password [description]
+	 * @param  [type] $codigo   [description]
+	 * @return [type]           [description]
+	 */
+	public function __correroregistro($nombre = NULL, $email = NULL, $username = NULL, $password = NULL, $codigo = NULL)
+	{
+				$Email = new CakeEmail('smtp');
+				$Email->template('nuevacuenta', 'layout')
+					  ->emailFormat('html')
+					  ->viewVars(array('usuario' => $username, 'password' => $password, 'nombres' => $nombre, 'codigo' => $codigo))
+					  ->from(array('admision@esen.edu.sv' => 'ESEN'))
+		    		  ->to(array($email))
+		    		  ->subject('Aplicación en línea')
+		    		  ->attachments(array(
+						    'logo.png' => array(
+						        'file' => 'img/esen_header.png',
+						        'mimetype' => 'image/png',
+						        'contentId' => 'milogo'
+						    )
+						))
+		              ->send();	
+	}
+
+
+
+
 }

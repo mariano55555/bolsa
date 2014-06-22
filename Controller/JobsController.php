@@ -148,33 +148,159 @@ public function test()
 	public function search($seccion = NULL, $id = NULL)
 	{
 
-		$jobs1 = $this->Job->find("all", array('contain' => 'City', 'conditions' => array('Job.active' => 1)));
+		
 		$jobs2 = $this->Job->find("all", array('contain' => 'Industry', 'conditions' => array('Job.active' => 1)));
-		debug($jobs2);
+
 		switch ($seccion) {
 			case 'ciudad':
-				foreach ($jobs1 as $job) {
-					if ($job['City']['id'] == $id) {
-						$jobs[]	 = $job;
-					}
-				}
-				$this->set(compact('jobs'));
+				$this->paginate['Job'] = array(
+					'contain'    => array('City'),
+					'conditions' => array('Job.active' => 1, 'Job.city_id' => $id)
+				);
+				$jobs = $this->paginate('Job',array('Job.city_id' => $id));
+				$data = $this->Job->find("all", array('conditions' => array('Job.active' => 1, 'Job.city_id' => $id)));
 				break;
 			case 'industria':
-				foreach ($jobs2 as $job) {
-					for ($i=0; $i < count($jobs2) ; $i++) { 
-						# code...
+				$listadeid = array();
+				$jobs2 = $this->Job->find("all", array('contain' => 'Industry', 'conditions' => array('Job.active' => 1)));
+				for ($i=0; $i < count($jobs2) ; $i++) { 
+					for ($j=0; $j < count($jobs2[$i]['Industry']) ; $j++) { 
+						if ($jobs2[$i]['Industry'][$j]['id'] == $id && !in_array($jobs2[$i]['Job']['id'] ,$listadeid)) {
+							$listadeid[] = $jobs2[$i]['Job']['id'];
+						}
 					}
 				}
+				$this->paginate['Job'] = array(
+					'conditions' => array('Job.active' => 1, 'Job.id' => $listadeid)
+				);
+				$jobs = $this->paginate('Job',array('Job.id' => $listadeid));
+				$data = $this->Job->find("all", array('conditions'=>array('Job.id' => $listadeid)));
 				break;
 			case 'area':
-				
+				$listadeid = array();
+				$jobs2 = $this->Job->find("all", array('contain' => 'Area', 'conditions' => array('Job.active' => 1)));
+				for ($i=0; $i < count($jobs2) ; $i++) { 
+					for ($j=0; $j < count($jobs2[$i]['Area']) ; $j++) { 
+						if ($jobs2[$i]['Area'][$j]['id'] == $id && !in_array($jobs2[$i]['Job']['id'] ,$listadeid)) {
+							$listadeid[] = $jobs2[$i]['Job']['id'];
+						}
+					}
+				}
+				$this->paginate['Job'] = array(
+					'conditions' => array('Job.active' => 1, 'Job.id' => $listadeid)
+				);
+				$jobs = $this->paginate('Job',array('Job.id' => $listadeid));
+				$data = $this->Job->find("all", array('conditions'=>array('Job.id' => $listadeid)));
 				break;
 			
 			default:
-				# code...
+				$this->paginate['Job'] = array(
+					'contain'    => array('City'),
+					'conditions' => array('Job.active' => 1, 'Job.city_id' => $id)
+				);
+				$jobs = $this->paginate('Job',array('Job.city_id' => $id));
+				$data = $this->Job->find("all", array('conditions' => array('Job.active' => 1, 'Job.city_id' => $id)));
 				break;
 		}
+
+		for ($i=0; $i < count($jobs) ; $i++) { 
+	    	$jobs[$i]['Country']['name'] =  $this->Country->field("name", array('Country.id' => $jobs[$i]['City']['country_id'] ));
+	    	if (isset($jobs[$i]['City']['id'])) {
+	    	 	$ciudadesid[][$jobs[$i]['City']['id']] = $jobs[$i]['City']['name'];
+	    	 } 
+	    }
+	    $this->set(compact('jobs', 'seccion'));
+		//CALCULOS DE BUSQUEDAS
+	    
+	    $ciudadesid = array();
+	    //POR CIUDAD
+	    for ($i=0; $i < count($data) ; $i++) { 
+	    	if (isset($data[$i]['City']['id'])) {
+	    		if (in_array($data[$i]['City']['name'], $ciudadesid)) {
+	    		}else{
+	    			$ciudadesid[$data[$i]['City']['id']] = $data[$i]['City']['name'];
+	    		}
+	    	 } 
+	    }
+	    //POR INDUSTRIA
+	    $industriasid = array();
+	    for ($i=0; $i < count($data) ; $i++) { 
+	    	for ($j=0; $j < count($data[$i]['Industry']) ; $j++) { 
+	    		if (in_array($data[$i]['Industry'][$j]['name'], $industriasid)) {
+	    		}else{
+	    			$industriasid[$data[$i]['Industry'][$j]['id']] = $data[$i]['Industry'][$j]['name'];	
+	    		}
+	    	}
+	    }
+	    //POR AREA
+	    $areasid = array();
+	    for ($i=0; $i < count($data) ; $i++) { 
+	    	for ($j=0; $j < count($data[$i]['Area']) ; $j++) { 
+	    		if (in_array($data[$i]['Area'][$j]['name'], $areasid)) {
+	    		}else{
+	    			$areasid[$data[$i]['Area'][$j]['id']] = $data[$i]['Area'][$j]['name'];	
+	    		}
+	    	}
+	    }
+
+	    $ciudades = array();
+	    for ($i=0; $i < count($data) ; $i++) { 
+	    	if (isset($data[$i]['City']['id'])) {
+		    	$contador = 0;
+		    	foreach ($ciudadesid as $key => $value) {
+		    		if ($key == $data[$i]['City']['id']) {
+						$ciudades[$i]['id']       = $key;
+						$ciudades[$i]['nombre']   = $data[$i]['City']['name'];
+						$contador ++;
+		    		}
+		    	}
+		    	//aca poner que ondas
+		    	$ciudades[$i]['cantidad'] = $contador;
+	    	}
+	    }
+
+	    $industrias = array();
+	    for ($i=0; $i < count($data) ; $i++) { 
+	    	for ($j=0; $j < count($data[$i]['Industry']) ; $j++) { 
+	    			 if (isset($data[$i]['Industry'][$j]['id'])) {
+				    	$contador = 0;
+				    	foreach ($industriasid as $key => $value) {
+				    		if ($key == $data[$i]['Industry'][$j]['id']) {
+								$industrias[$i]['id']       = $key;
+								$industrias[$i]['nombre']   = $data[$i]['Industry'][$j]['name'];
+								$contador ++;
+				    		}
+				    	}
+				    	//aca poner que ondas
+				    	$industrias[$i]['cantidad'] = $contador;
+			    	}
+	    	}
+	    }
+	    $areas = array();
+	    for ($i=0; $i < count($data) ; $i++) { 
+	    	for ($j=0; $j < count($data[$i]['Area']) ; $j++) { 
+	    			 if (isset($data[$i]['Area'][$j]['id'])) {
+				    	$contador = 0;
+				    	foreach ($areasid as $key => $value) {
+				    		if ($key == $data[$i]['Area'][$j]['id']) {
+								$areas[$i]['id']       = $key;
+								$areas[$i]['nombre']   = $data[$i]['Area'][$j]['name'];
+								$contador ++;
+				    		}
+				    	}
+				    	//aca poner que ondas
+				    	$areas[$i]['cantidad'] = $contador;
+			    	}
+	    	}
+	    }
+
+	    //TIPO DE CONTRACTO
+	    $contratos = $this->Contract->find("list", array('conditions' => array('Contract.active' => 1)));
+	    //TIPO DE EXPERIENCIA
+	    $experiencias = $this->Experience->find("list", array('conditions' => array('Experience.active' => 1)));
+		//debug($areas);
+		$totaltrabajos = count($data);
+		$this->set(compact('ciudades', 'industrias','totaltrabajos', 'contratos', 'experiencias', 'areas'));
 
 
 	}
@@ -306,11 +432,14 @@ public function test()
 
 	//CUSTOM
 
-	public function contactanos()
+	public function contactanos($sent = NULL)
 	{
-		//$this->layout ="test";
-		
-
+		$this->set('title_for_layout', 'Contáctanos');
+		if ($this->request->is('POST') && !empty($this->request->data['message'])) {
+			$this->__contactanos($this->usuarioAutenticado('name'), $this->usuarioAutenticado('email'), $this->usuarioAutenticado('carnet'), $this->request->data['message'], $this->usuarioAutenticado('phone'));
+			$this->redirect('/Contactanos/sent');
+		}
+		$this->set(compact('sent', $sent));
 	}
 
 
@@ -351,4 +480,38 @@ public function test()
 	}
 
 
+	/**
+	 *  FUNCIONES PARA ENVIARA Y RECIBIR CORREOS....
+	 */
+
+
+
+	/**
+	 * [__contactanos description]
+	 * @param  [type] $nombre  [description]
+	 * @param  [type] $email   [description]
+	 * @param  [type] $carnet  [description]
+	 * @param  [type] $mensaje [description]
+	 * @return [type]          [description]
+	 */
+	public function __contactanos($nombre = NULL, $email = NULL, $carnet = NULL, $mensaje = NULL, $telefono = NULL)
+	{
+				$Email = new CakeEmail('smtp');
+				$Email->template('contactanos', 'layout')
+					  ->emailFormat('html')
+					  ->viewVars(array('nombre' => $nombre, 'email' => $email, 'carnet' => $carnet, 'mensaje' => $mensaje, 'telefono' => $telefono))
+					  ->from(array('jobsearch@esen.edu.sv' => 'ESEN'))
+		    		  ->to(array('mariano.paz.flores@gmail.com'))
+		    		  ->subject('Consulta de usuario')
+		    		  ->attachments(array(
+						    'logo.png' => array(
+						        'file' => 'img/esen_header.png',
+						        'mimetype' => 'image/png',
+						        'contentId' => 'milogo'
+						    )
+						))
+		              ->send();	
+	}
+
 }
+

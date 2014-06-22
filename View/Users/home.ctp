@@ -1,25 +1,7 @@
-<!-- Search -->
-<div id="search">
-  <div class="inner">
-    <form id="search-form" action="http://uouapps.com/careers/index.html" class="search-bar-home">
-      <div class="seach-head"><img src="<?php echo $this->webroot; ?>images/list-ico.png"  alt=""/><span> I am looking for a</span></div>
-      <select id="search-select" class="select">
-        <option selected="selected" value="Candidate">Candidate</option>
-        <option value="Recruiter">Recruiter</option>
-      </select>
-      <label class="in">in</label>
-      <input type="text" placeholder="Location" class="textfield-with-callback"/>
-      <input type="text" placeholder="Industry / Role" class="textfield-with-callback"/>
-      <input type="submit" value="Search" id="search-submit" class="pull-right"/>
-    </form>
-    <div id="more-options"></div>
-    <div class="clear"></div>
-    <!-- Clear Line -->
-    
-    <div id="options"></div>
-  </div>
-</div>
-<!-- /Search --> 
+<?php
+$menu = array('Inicio'=>'#','Empleos'=>'Empleos','Empresas'=>'Empresas','Contáctanos'=>'Contactanos');
+echo $this->Elements->Menu($menu, 'Inicio'); 
+?>
 
 <!-- Content -->
 <div id="content"> 
@@ -52,24 +34,8 @@
                   <input type="submit" value="Sign In" id="login-submit-1"/>
                 </form>
                  </div>
-              
             </div>
           </div>
-          <!--<div class="right">
-            <div class="first">
-              <div class="badge"></div>
-              <div id="post-job-buttom"><a>Post a Job</a></div>
-            </div>
-            <div class="second">
-              <div class="form">
-                <form id="login-2" action="http://uouapps.com/careers/index.html">
-                  <input type="text" placeholder="Email" class="textfield"/>
-                  <input type="password" placeholder="Password" class="textfield"/>
-                  <input type="submit" value="Sign In" id="login-submit-2"/>
-                </form>
-                 </div>
-            </div>
-          </div>-->
         </div>
         <!-- /Panel 3 --> 
     </div>

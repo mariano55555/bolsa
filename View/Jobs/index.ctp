@@ -1,6 +1,14 @@
 <?php 
 //debug($jobs);
 ?>
+<script>
+$(document).ready(function() {
+  $("li.active").wrapInner("<a href='#'></a>");
+  $("li.active a").css( "text-decoration", "none" );
+  $("li.active a").css( "cursor", "default" );
+});
+
+</script>
 <style>
   span.next a{
     background: url("images/pager-sprite.png") no-repeat scroll -19px 0px rgb(230, 230, 230);
@@ -19,35 +27,13 @@
     -webkit-border-radius: 3px 3px 3px 3px;
   }
 
+
 </style>
 
-<!-- Header -->
-<div id="header">
-  <div class="inner"> 
-    <!-- Logo -->
-    <div id="logo"> <a href="index.html"><img src="<?php echo $this->webroot; ?>img/esen_header.png"   alt="logo"/></a><a class="menu-hider"></a></div>
-    <!-- /Logo -->
-    <ul id="navigation">
-      <li> <a href="index.html">Inicio</a></li>
-      <li class="first expanded current"><a href="jobs.html">Empleos</a>
-        <ul class="submenu">
-          <li><a href="jobs.html">Job listing</a></li>
-          <li><a href="job.html">Job Details</a></li>
-        </ul>
-      </li>
-      <li class="first expanded"><a href="candidates-listing.html">Candidatos</a>
-        <ul class="submenu">
-          <li><a href="candidates-listing.html">Candidate Listing (with sidebar)</a></li>
-          <li><a href="candidates-listing-no-sidebar.html">Candidate listing (without)</a></li>
-          <li><a href="candidate.html">Candidate</a></li>
-        </ul>
-      </li>
-      <li><a href="partners.html">Empresas</a></li>
-      <li><a href="contacts.html">Contactanos</a></li>
-    </ul>
-  </div>
-</div>
-<!-- /Header --> 
+<?php
+$menu = array('Inicio'=>'Inicio','Empleos'=>'#','Empresas'=>'Empresas','Contáctanos'=>'Contactanos');
+echo $this->Elements->Menu($menu, 'Empleos'); 
+?>
 
 
 <!-- Content -->
@@ -55,7 +41,7 @@
   <div id="title">
     <h1 class="inner">Ofertas de empleo<span id="jobs-counter">(<?php echo $totaltrabajos; ?>)</span>
       <ul class="breadcrumb-inner">
-        <li> <a href="<?php echo $this->webroot; ?>">Inicio</a></li>
+        <li> <a href="<?php echo $this->webroot; ?>Inicio">Inicio</a></li>
         <li> <a href="#">Empleos</a></li>
       </ul>
     </h1>
@@ -79,13 +65,13 @@
                       <?php
                       if (count($ciudades) <= 4) {
                           foreach ($ciudades as $ciudad) { ?>
-                            <li><a href="<?php echo $this->webroot; ?>Jobs/search/ciudad/<?php echo $ciudad['id']; ?>"><?php echo $ciudad['nombre']; ?><span>(<?php echo $ciudad['cantidad']; ?>)</span></a></li>
+                            <li><a href="<?php echo $this->webroot; ?>filtrar/ciudad/<?php echo $ciudad['id']; ?>"><?php echo $ciudad['nombre']; ?><span>(<?php echo $ciudad['cantidad']; ?>)</span></a></li>
                     <?php }
                        }else{
                           $i = 1;
                            foreach ($ciudades as $ciudad) { 
                                 if ($i <= 4) { ?>
-                                   <li><a href="<?php echo $this->webroot; ?>Jobs/search/ciudad/<?php echo $ciudad['id']; ?>"><?php echo $ciudad['nombre']; ?><span>(<?php echo $ciudad['cantidad']; ?>)</span></a></li>
+                                   <li><a href="<?php echo $this->webroot; ?>filtrar/ciudad/<?php echo $ciudad['id']; ?>"><?php echo $ciudad['nombre']; ?><span>(<?php echo $ciudad['cantidad']; ?>)</span></a></li>
                                <?php }
                             $i++;
                           }
@@ -99,7 +85,7 @@
                       <ul>
                         <?php
                           for ($i=4; $i < count($ciudades); $i++) { ?>
-                              <li><a href="<?php echo $this->webroot; ?>Jobs/search/ciudad/<?php echo $ciudades[$i]['id']; ?>"><?php echo $ciudades[$i]['nombre']; ?><span>(<?php echo $ciudades[$i]['cantidad']; ?>)</span></a></li>
+                              <li><a href="<?php echo $this->webroot; ?>filtrar/ciudad/<?php echo $ciudades[$i]['id']; ?>"><?php echo $ciudades[$i]['nombre']; ?><span>(<?php echo $ciudades[$i]['cantidad']; ?>)</span></a></li>
                         <?php
                           }
                         ?>
@@ -318,23 +304,17 @@
             </div>
           </div>
           <div class="pager">
-            <ul>
-              <li class="prev noactive"><a></a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">6</a></li>
-              <li class="next"><a href="#"></a></li>
-            </ul>
-          </div>
-          <div class="pager">
-          <?php
-            echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-            echo $this->Paginator->numbers(array('separator' => ''));
-            echo $this->Paginator->next(__('>'), array(), null, array('class' => 'next disabled'));
-          ?>
+              <ul>
+              <?php 
+              echo $this->Paginator->prev('<a></a>', array('tag'=>'li', 'escape' => false), null, array('class' => 'prev noactive','tag'=>'li','escape' => false));
+              echo $this->Paginator->numbers(array(
+                  'separator' => '',
+                  'currentClass' => 'active',
+                  'tag' => 'li',
+              ));
+              echo $this->Paginator->next('', array('tag'=>'li'), null, array('class' => 'next disabled noactive','tag'=>'li'));  
+              ?>
+              </ul>
           </div>
         </div>
         <div class="clear"></div>
@@ -421,19 +401,7 @@
                       <!-- /Cleaner --> 
                     </div>
                   </div>
-                  <?php if($total > 3){ ?>
-                        <div class="block">
-                          <h4>Additional Requirements</h4>
-                          <div class="block-content">
-                            <?php for ($a=3; $i < count($pieces) ; $a++) { ?>
-                                <div class = "tag-field"><?php echo $pieces[$a]; ?></div>
-                            <?php } ?>
-                          </div>
-                          <!-- Cleaner -->
-                          <div class="clear"></div>
-                          <!-- /Cleaner --> 
-                        </div>
-                  <?php } ?>
+                  <?php echo "aca la condicional"; ?>
                 </div>
                 <?php } 
                 //debug($jobs);
@@ -530,19 +498,7 @@
                       <!-- /Cleaner --> 
                     </div>
                   </div>
-                  <?php if($total > 3){ ?>
-                        <div class="block">
-                          <h4>Requerimientos adicionales</h4>
-                          <div class="block-content">
-                            <?php for ($a=3; $i < count($pieces) ; $a++) { ?>
-                                <div class = "tag-field"><?php echo $pieces[$a]; ?></div>
-                            <?php } ?>
-                          </div>
-                          <!-- Cleaner -->
-                          <div class="clear"></div>
-                          <!-- /Cleaner --> 
-                        </div>
-                  <?php } ?>
+                    <?php echo "aca la condicional 501"; ?>
                 </div>
                 <?php } ?>
                 <div class="buttons-field applybtns">
@@ -664,26 +620,20 @@
           <p>
           <?php
           echo $this->Paginator->counter(array(
-          'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+          'format' => __('Página {:page} de {:pages}, mostrando {:current} resultados de un total de {:count}, comenzando en {:start}, y terminando en {:end}')
           ));
           ?>  </p>
           <div class="pager">
-          <?php
-            echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-            echo $this->Paginator->numbers(array('separator' => ''));
-            echo $this->Paginator->next(__('>'), array(), null, array('class' => 'next disabled'));
-          ?>
-          </div>
-          <div class="pager">
             <ul>
-              <li class="prev noactive"><a></a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">6</a></li>
-              <li class="next"><a href="#"></a></li>
+            <?php 
+            echo $this->Paginator->prev('<a></a>', array('tag'=>'li', 'escape' => false), null, array('class' => 'prev noactive','tag'=>'li','escape' => false));
+            echo $this->Paginator->numbers(array(
+                'separator' => '',
+                'currentClass' => 'active',
+                'tag' => 'li',
+            ));
+            echo $this->Paginator->next('', array('tag'=>'li'), null, array('class' => 'next disabled noactive','tag'=>'li')); 
+            ?>
             </ul>
           </div>
         </div>

@@ -115,7 +115,7 @@ $(document).ready(function() {
 		);
 	});
 	function handleCarnetValidation(error) {
-		if (error.length > 0) {
+		if (error.length > 0 && error !== 'El carnet ya se encuentra registrado.') {
 			if ($('#carnet-notEmpty').length == 0) 
 			{
 				$('#carnet').after('<div id="carnet-notEmpty">' + error + '</div>');

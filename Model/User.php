@@ -9,7 +9,7 @@ App::uses('AppModel', 'Model');
  * @property Job $Job
  */
 class User extends AppModel {
-	public $actsAs = array('WhoDidIt', 'Containable');
+	public $actsAs = array('Containable');
 /**
  * Display field
  *
@@ -95,12 +95,28 @@ class User extends AppModel {
 			'numeric' => array(
 				'rule' => array('numeric'),
 				'message' => "Solo se admiten numeros."
-			)
+			),
+			'unique' => array(
+				'rule' => array('isUnique'),
+				'message' => 'El carnet ya se encuentra registrado.',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
 		),
 		'email' => array(
 			'email' => array(
 				'rule' => array('email'),
 				'message' => 'Campo email requerido. Ingresa tu cuenta de correo electrónico',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'unique' => array(
+				'rule' => array('isUnique'),
+				'message' => 'El correo electrónico ya se encuentra registrado',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule

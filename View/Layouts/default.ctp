@@ -43,7 +43,6 @@
 <body>
 	<div id="container">
 		<?php echo $this->Element('default/topheader'); ?>
-		<?php //echo $this->Element('default/header'); ?>
 		<div id="content">
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>

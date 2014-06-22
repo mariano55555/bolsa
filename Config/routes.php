@@ -38,6 +38,19 @@
 
 	Router::connect('/', array('controller' => 'Users', 'action' => 'login'));
 
+	Router::connect('/Inicio/*', array('controller' => 'Users', 'action' => 'home'));
+	Router::connect('/inicio/*', array('controller' => 'Users', 'action' => 'home'));
+
+	Router::connect('/Empleos', array('controller' => 'Jobs', 'action' => 'index'));
+	Router::connect('/empleos', array('controller' => 'Jobs', 'action' => 'index'));
+	Router::connect('/Empresas', array('controller' => 'Companies', 'action' => 'index'));
+	Router::connect('/empresas', array('controller' => 'Companies', 'action' => 'index'));
+	Router::connect('/Contactanos/*', array('controller' => 'Jobs', 'action' => 'contactanos'));
+	Router::connect('/contactanos/*', array('controller' => 'Jobs', 'action' => 'contactanos'));
+
+	Router::connect('/filtrar/*', array('controller' => 'Jobs', 'action' => 'search'));
+	Router::connect('/Filtrar/*', array('controller' => 'Jobs', 'action' => 'search'));
+
 	//Router::connect('inicio', array('controller' => 'Users', 'action' => 'home'));
 	
 

@@ -11,16 +11,15 @@
             <h2>Mapa</h2>
             <div class="left">
               <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="job-listing-1.html">Empleos</a></li>
-                <li><a href="partners.html">Partners</a></li>
-                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="<?php echo $this->webroot; ?>Inicio">Inicio</a></li>
+                <li><a href="<?php echo $this->webroot; ?>Empleos">Empleos</a></li>
+                <li><a href="<?php echo $this->webroot; ?>Empleos">Empresas</a></li>
               </ul>
             </div>
             <div class="right">
               <ul>
-                <li><a href="contacts.html">Contactanos</a></li>
-                <li><a href="terms-and-conditions.html">Terminos de codici&oacute;n</a></li>
+                <li><a href="<?php echo $this->webroot; ?>Contactanos">Cont&aacute;ctanos</a></li>
+                <li><a href="terms-and-conditions.html">Terminos y codici&oacute;n</a></li>
                 <li><a href="privacy-policy.html">Politica de privacidad</a></li>
               </ul>
             </div>
@@ -28,9 +27,8 @@
           <div id="fol-menu" class="footer-menu span3">
             <h2>Siguenos</h2>
             <ul>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Facebook</a></li>
-              <li><a href="#">Youtube</a></li>
+              <li><a href="https://www.facebook.com/ESENELSALVADOR?fref=ts" target="_blank">Facebook</a></li>
+              <li><a href="https://www.youtube.com/channel/UCFRoXynQc4Ihy4Uk8xFF2FA" target="_blank">Youtube</a></li>
             </ul>
           </div>
         </div>

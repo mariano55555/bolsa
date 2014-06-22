@@ -9504,3 +9504,986 @@ Stack Trace:
 #1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
 #2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2014-06-21 20:03:46 Error: Fatal Error (1): Call to a member function field() on a non-object in [C:\xampp\htdocs\jobsearch\Controller\UsersController.php, line 70]
+2014-06-21 20:03:46 Error: [FatalErrorException] Call to a member function field() on a non-object
+Request URL: /jobsearch/users/registro
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\xampp\htdocs...', 70)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\xampp\htdocs...', 70, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\xampp\htdocs...', 70, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-21 20:05:31 Error: [MissingViewException] View file "C:\xampp\htdocs\jobsearch\View\Users\registro.ctp" is missing.
+Exception Attributes: array (
+  'file' => 'C:\\xampp\\htdocs\\jobsearch\\View\\Users\\registro.ctp',
+)
+Request URL: /jobsearch/users/registro
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\View\View.php(468): View->_getViewFileName(NULL)
+#1 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(954): View->render(NULL, NULL)
+#2 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(198): Controller->render()
+#3 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-06-21 20:09:01 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`jobsearch`.`users`, CONSTRAINT `fk_users_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+Request URL: /jobsearch/users/registro
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('INSERT INTO `jo...', Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(1012): DboSource->execute('INSERT INTO `jo...')
+#3 C:\xampp\cakephp\lib\Cake\Model\Model.php(1834): DboSource->create(Object(User), Array, Array)
+#4 C:\xampp\htdocs\jobsearch\Controller\UsersController.php(78): Model->save(Array)
+#5 [internal function]: UsersController->registro()
+#6 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#8 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#9 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-06-21 20:38:59 Error: [MissingActionException] Action UsersController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'index',
+)
+Request URL: /jobsearch/Users/
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-21 20:42:00 Error: [MissingActionException] Action UsersController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'index',
+)
+Request URL: /jobsearch/Users
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-21 20:51:08 Error: Fatal Error (4): syntax error, unexpected '*' in [C:\xampp\htdocs\jobsearch\Controller\AppController.php, line 37]
+2014-06-21 20:51:08 Error: [FatalErrorException] syntax error, unexpected '*'
+Request URL: /jobsearch/jobs
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 37)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 37, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 37, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-21 20:56:10 Error: [MissingActionException] Action UsersController::admin_login() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_login',
+)
+Request URL: /jobsearch/admin/users/login
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-21 21:51:53 Error: [SocketException] Invalid email: "mariano.paz@127.0.0.1"
+Request URL: /jobsearch/Users/registro
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Network\Email\CakeEmail.php(569): CakeEmail->_validateEmail('mariano.paz@127...')
+#1 C:\xampp\cakephp\lib\Cake\Network\Email\CakeEmail.php(605): CakeEmail->_setEmail('_from', Array, NULL)
+#2 C:\xampp\cakephp\lib\Cake\Network\Email\CakeEmail.php(365): CakeEmail->_setEmailSingle('_from', Array, NULL, 'From requires o...')
+#3 C:\xampp\cakephp\lib\Cake\Network\Email\CakeEmail.php(1221): CakeEmail->from(Array)
+#4 C:\xampp\cakephp\lib\Cake\Network\Email\CakeEmail.php(1105): CakeEmail->_applyConfig('smtp')
+#5 C:\xampp\cakephp\lib\Cake\Network\Email\CakeEmail.php(346): CakeEmail->config('smtp')
+#6 C:\xampp\htdocs\jobsearch\Controller\UsersController.php(329): CakeEmail->__construct('smtp')
+#7 C:\xampp\htdocs\jobsearch\Controller\UsersController.php(85): UsersController->__correroregistro('mariano paz', 'mariano.paz.flo...', 'mariano', 'mariano', 'abcsdasdasdfa')
+#8 [internal function]: UsersController->registro()
+#9 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#10 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#11 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#12 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2014-06-21 22:22:39 Error: [MissingComponentException] Component class CustomSessionComponent could not be found.
+Exception Attributes: array (
+  'class' => 'CustomSessionComponent',
+  'plugin' => false,
+)
+Request URL: /jobsearch/Users/validar_registro
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Controller\ComponentCollection.php(53): ComponentCollection->load('CustomSession', Array)
+#1 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(643): ComponentCollection->init(Object(UsersController))
+#2 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(186): Controller->constructClasses()
+#3 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-06-21 22:22:46 Error: [MissingComponentException] Component class CustomSessionComponent could not be found.
+Exception Attributes: array (
+  'class' => 'CustomSessionComponent',
+  'plugin' => false,
+)
+Request URL: /jobsearch/Users/validar_registro
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Controller\ComponentCollection.php(53): ComponentCollection->load('CustomSession', Array)
+#1 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(643): ComponentCollection->init(Object(UsersController))
+#2 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(186): Controller->constructClasses()
+#3 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-06-21 22:26:17 Error: [MissingComponentException] Component class CustomSessionComponent could not be found.
+Exception Attributes: array (
+  'class' => 'CustomSessionComponent',
+  'plugin' => false,
+)
+Request URL: /jobsearch/Users/validar_registro
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Controller\ComponentCollection.php(53): ComponentCollection->load('CustomSession', Array)
+#1 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(643): ComponentCollection->init(Object(UsersController))
+#2 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(186): Controller->constructClasses()
+#3 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-06-21 22:26:25 Error: [MissingComponentException] Component class CustomSessionComponent could not be found.
+Exception Attributes: array (
+  'class' => 'CustomSessionComponent',
+  'plugin' => false,
+)
+Request URL: /jobsearch/Users/validar_registro
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Controller\ComponentCollection.php(53): ComponentCollection->load('CustomSession', Array)
+#1 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(643): ComponentCollection->init(Object(UsersController))
+#2 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(186): Controller->constructClasses()
+#3 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-06-21 22:26:25 Error: [MissingComponentException] Component class CustomSessionComponent could not be found.
+Exception Attributes: array (
+  'class' => 'CustomSessionComponent',
+  'plugin' => false,
+)
+Request URL: /jobsearch/Users/login
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Controller\ComponentCollection.php(53): ComponentCollection->load('CustomSession', Array)
+#1 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(643): ComponentCollection->init(Object(UsersController))
+#2 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(186): Controller->constructClasses()
+#3 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#4 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#5 {main}
+2014-06-21 22:41:51 Error: [MissingControllerException] Controller class Jobs.htmlController could not be found.
+Exception Attributes: array (
+  'class' => 'Jobs.htmlController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/jobs.html
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-21 22:42:19 Error: [MissingControllerException] Controller class Jobs.htmlController could not be found.
+Exception Attributes: array (
+  'class' => 'Jobs.htmlController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/jobs.html
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-21 22:52:54 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-1.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-21 22:52:54 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-2.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-21 22:52:55 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-4.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-21 22:52:55 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/flag-icons/El%20Salvador.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-21 22:52:55 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-5.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-21 22:52:55 Error: [MissingActionException] Action UsersController::content() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'content',
+)
+Request URL: /jobsearch/users/content/users-avatar/user-3.jpg
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-22 00:01:59 Error: [MissingActionException] Action JobsController::img() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'img',
+)
+Request URL: /jobsearch/Jobs/img/esen_header.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-22 00:04:05 Error: [MissingActionException] Action JobsController::img() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'img',
+)
+Request URL: /jobsearch/Jobs/img/esen_header.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-22 00:04:47 Error: [SocketException] Invalid email: "email"
+Request URL: /jobsearch/Jobs/contactanos
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Network\Email\CakeEmail.php(569): CakeEmail->_validateEmail('email')
+#1 C:\xampp\cakephp\lib\Cake\Network\Email\CakeEmail.php(439): CakeEmail->_setEmail('_to', Array, NULL)
+#2 C:\xampp\htdocs\jobsearch\Controller\JobsController.php(376): CakeEmail->to(Array)
+#3 C:\xampp\htdocs\jobsearch\Controller\JobsController.php(312): JobsController->__contactanos('nombre', 'email', 'carnet', 'mensaje')
+#4 [internal function]: JobsController->contactanos()
+#5 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(JobsController), Array)
+#6 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#7 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#8 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2014-06-22 00:20:31 Error: [MissingActionException] Action JobsController::img() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'img',
+)
+Request URL: /jobsearch/Jobs/img/esen_header.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-22 00:20:31 Error: [MissingActionException] Action JobsController::img() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'img',
+)
+Request URL: /jobsearch/Jobs/img/esen_header.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-22 00:21:01 Error: [MissingActionException] Action JobsController::img() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'img',
+)
+Request URL: /jobsearch/Jobs/img/esen_header.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-22 00:21:01 Error: [MissingActionException] Action JobsController::img() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'img',
+)
+Request URL: /jobsearch/Jobs/img/esen_header.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-22 00:21:06 Error: [MissingActionException] Action JobsController::img() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'img',
+)
+Request URL: /jobsearch/Jobs/img/esen_header.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-22 00:21:06 Error: [MissingActionException] Action JobsController::img() could not be found.
+Exception Attributes: array (
+  'controller' => 'JobsController',
+  'action' => 'img',
+)
+Request URL: /jobsearch/Jobs/img/esen_header.png
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-22 00:21:14 Error: [MissingControllerException] Controller class ContactanosController could not be found.
+Exception Attributes: array (
+  'class' => 'ContactanosController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/contactanos
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-22 00:49:09 Error: [MissingActionException] Action CompaniesController::index() could not be found.
+Exception Attributes: array (
+  'controller' => 'CompaniesController',
+  'action' => 'index',
+)
+Request URL: /jobsearch/Empresas
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(CompaniesController), Object(CakeRequest))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-22 00:54:03 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 398]
+2014-06-22 00:54:03 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/Jobs/index/page:2
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 398)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 398, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 398, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 00:57:12 Error: Fatal Error (1): Call to a member function prev() on a non-object in [C:\xampp\htdocs\jobsearch\View\Jobs\index.ctp, line 692]
+2014-06-22 00:57:12 Error: [FatalErrorException] Call to a member function prev() on a non-object
+Request URL: /jobsearch/Empleos
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Call to a membe...', 'C:\xampp\htdocs...', 692)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to a membe...', 'C:\xampp\htdocs...', 692, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Call to a membe...', 'C:\xampp\htdocs...', 692, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 01:12:23 Error: Fatal Error (4): syntax error, unexpected 'echo' (T_ECHO) in [C:\xampp\htdocs\jobsearch\View\Jobs\index.ctp, line 696]
+2014-06-22 01:12:23 Error: [FatalErrorException] syntax error, unexpected 'echo' (T_ECHO)
+Request URL: /jobsearch/Empleos
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 696)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 696, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 696, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 01:23:04 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 496]
+2014-06-22 01:23:04 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/Jobs/index/page:2
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 496)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 496, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 496, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 01:23:27 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 752]
+2014-06-22 01:23:27 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/Jobs/index/page:2
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 752)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 752, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 752, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 01:23:57 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 803]
+2014-06-22 01:23:57 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/Jobs/index/page:2
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 803)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 803, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 803, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 01:24:13 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\String.php, line 241]
+2014-06-22 01:24:13 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/Jobs/index/page:2
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 241)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 241, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 241, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 01:25:54 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\String.php, line 214]
+2014-06-22 01:25:54 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/Jobs/index/page:2
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 214)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 214, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 214, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 01:26:53 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\basics.php, line 198]
+2014-06-22 01:26:53 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/Jobs/index/page:2
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 198)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 198, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 198, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 01:36:37 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 395]
+2014-06-22 01:36:37 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/Jobs/index/page:2
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 395)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 395, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 395, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 01:58:21 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'contain' in 'where clause'
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Job`.`i...', Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Job`.`i...', Array, Array)
+#3 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Job`.`i...', false)
+#4 C:\xampp\cakephp\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Job), Array)
+#5 C:\xampp\cakephp\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 C:\xampp\cakephp\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#7 C:\xampp\htdocs\jobsearch\Controller\JobsController.php(156): PaginatorComponent->paginate('Job', Array)
+#8 [internal function]: JobsController->search('ciudad', '1')
+#9 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(JobsController), Array)
+#10 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#11 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#12 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2014-06-22 02:09:23 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 555]
+2014-06-22 02:09:23 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 555)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 555, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 555, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:09:59 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\String.php, line 235]
+2014-06-22 02:09:59 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 235)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 235, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 235, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:10:24 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 803]
+2014-06-22 02:10:24 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 803)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 803, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 803, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:12:13 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 403]
+2014-06-22 02:12:13 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 403)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 403, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 403, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:14:36 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 557]
+2014-06-22 02:14:36 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 557)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 557, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 557, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:15:03 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 293]
+2014-06-22 02:15:03 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 293)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 293, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 293, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:15:28 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 497]
+2014-06-22 02:15:28 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 497)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 497, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 497, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:16:23 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 485]
+2014-06-22 02:16:23 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 485)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 485, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 485, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:21:21 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 544]
+2014-06-22 02:21:21 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 544)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 544, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 544, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:22:32 Error: Fatal Error (4): syntax error, unexpected end of file in [C:\xampp\htdocs\jobsearch\View\Jobs\search.ctp, line 371]
+2014-06-22 02:22:32 Error: [FatalErrorException] syntax error, unexpected end of file
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 371)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 371, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 371, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:23:42 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\basics.php, line 198]
+2014-06-22 02:23:42 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 198)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 198, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 198, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:25:02 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\String.php, line 237]
+2014-06-22 02:25:03 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 237)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 237, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 237, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:26:18 Error: Fatal Error (4): syntax error, unexpected end of file in [C:\xampp\htdocs\jobsearch\View\Jobs\search.ctp, line 388]
+2014-06-22 02:26:18 Error: [FatalErrorException] syntax error, unexpected end of file
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 388)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 388, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 388, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:27:34 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\String.php, line 236]
+2014-06-22 02:27:34 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 236)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 236, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 236, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:27:40 Error: Fatal Error (4): syntax error, unexpected end of file in [C:\xampp\htdocs\jobsearch\View\Jobs\search.ctp, line 389]
+2014-06-22 02:27:40 Error: [FatalErrorException] syntax error, unexpected end of file
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 389)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 389, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 389, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:27:46 Error: Fatal Error (4): syntax error, unexpected end of file in [C:\xampp\htdocs\jobsearch\View\Jobs\search.ctp, line 389]
+2014-06-22 02:27:46 Error: [FatalErrorException] syntax error, unexpected end of file
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 389)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 389, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 389, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:28:08 Error: Fatal Error (4): syntax error, unexpected end of file in [C:\xampp\htdocs\jobsearch\View\Jobs\search.ctp, line 383]
+2014-06-22 02:28:08 Error: [FatalErrorException] syntax error, unexpected end of file
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 383)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 383, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 383, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:28:24 Error: Fatal Error (4): syntax error, unexpected end of file in [C:\xampp\htdocs\jobsearch\View\Jobs\search.ctp, line 380]
+2014-06-22 02:28:24 Error: [FatalErrorException] syntax error, unexpected end of file
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 380)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 380, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 380, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:31:15 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 795]
+2014-06-22 02:31:15 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 795)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 795, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 795, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:37:56 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\String.php, line 199]
+2014-06-22 02:37:56 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 199)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 199, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 199, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:38:19 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 803]
+2014-06-22 02:38:19 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 803)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 803, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 803, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:39:02 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 403]
+2014-06-22 02:39:03 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 403)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 403, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 403, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:39:32 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\String.php, line 241]
+2014-06-22 02:39:32 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 241)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 241, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 241, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:39:44 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\String.php, line 235]
+2014-06-22 02:39:44 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 235)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 235, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 235, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:39:58 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\String.php, line 241]
+2014-06-22 02:39:59 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 241)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 241, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 241, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:42:37 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\String.php, line 236]
+2014-06-22 02:42:37 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 236)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 236, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 236, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:43:20 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 543]
+2014-06-22 02:43:20 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/filtrar/ciudad/1
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 543)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 543, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 543, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:44:15 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Debugger.php, line 553]
+2014-06-22 02:44:15 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/Jobs/index/page:2
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 553)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 553, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 553, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:45:39 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\basics.php, line 198]
+2014-06-22 02:45:39 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/Jobs/index/page:2
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 198)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 198, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(929): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 198, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-22 02:59:56 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Job.industry_id' in 'where clause'
+Request URL: /jobsearch/Jobs/search/industria/3
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Job`.`i...', Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Job`.`i...', Array, Array)
+#3 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Job`.`i...', false)
+#4 C:\xampp\cakephp\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Job), Array)
+#5 C:\xampp\cakephp\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 C:\xampp\cakephp\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#7 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(1080): PaginatorComponent->paginate('Job', Array, Array)
+#8 C:\xampp\htdocs\jobsearch\Controller\JobsController.php(168): Controller->paginate('Job', Array)
+#9 [internal function]: JobsController->search('industria', '3')
+#10 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(JobsController), Array)
+#11 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#12 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#13 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2014-06-22 03:01:18 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Job.industry_id' in 'where clause'
+Request URL: /jobsearch/Jobs/search/industria/3
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Job`.`i...', Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Job`.`i...', Array, Array)
+#3 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Job`.`i...', false)
+#4 C:\xampp\cakephp\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Job), Array)
+#5 C:\xampp\cakephp\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 C:\xampp\cakephp\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#7 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(1080): PaginatorComponent->paginate('Job', Array, Array)
+#8 C:\xampp\htdocs\jobsearch\Controller\JobsController.php(168): Controller->paginate('Job', Array)
+#9 [internal function]: JobsController->search('industria', '3')
+#10 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(JobsController), Array)
+#11 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#12 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#13 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2014-06-22 03:02:34 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Job.industry_id' in 'where clause'
+Request URL: /jobsearch/Jobs/search/industria/3
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Job`.`i...', Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Job`.`i...', Array, Array)
+#3 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Job`.`i...', false)
+#4 C:\xampp\cakephp\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Job), Array)
+#5 C:\xampp\cakephp\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 C:\xampp\cakephp\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#7 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(1080): PaginatorComponent->paginate('Job', Array, Array)
+#8 C:\xampp\htdocs\jobsearch\Controller\JobsController.php(168): Controller->paginate('Job', Array)
+#9 [internal function]: JobsController->search('industria', '3')
+#10 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(JobsController), Array)
+#11 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#12 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#13 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2014-06-22 03:03:02 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Job.industry_id' in 'where clause'
+Request URL: /jobsearch/Jobs/search/industria/3
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Job`.`i...', Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Job`.`i...', Array, Array)
+#3 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Job`.`i...', false)
+#4 C:\xampp\cakephp\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Job), Array)
+#5 C:\xampp\cakephp\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 C:\xampp\cakephp\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#7 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(1080): PaginatorComponent->paginate('Job', Array, Array)
+#8 C:\xampp\htdocs\jobsearch\Controller\JobsController.php(168): Controller->paginate('Job', Array)
+#9 [internal function]: JobsController->search('industria', '3')
+#10 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(JobsController), Array)
+#11 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#12 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#13 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2014-06-22 03:05:07 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Job.industry_id' in 'where clause'
+Request URL: /jobsearch/Jobs/search/industria/3
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Job`.`i...', Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Job`.`i...', Array, Array)
+#3 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Job`.`i...', false)
+#4 C:\xampp\cakephp\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Job), Array)
+#5 C:\xampp\cakephp\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 C:\xampp\cakephp\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#7 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(1080): PaginatorComponent->paginate('Job', Array, Array)
+#8 C:\xampp\htdocs\jobsearch\Controller\JobsController.php(168): Controller->paginate('Job', Array)
+#9 [internal function]: JobsController->search('industria', '3')
+#10 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(JobsController), Array)
+#11 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#12 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#13 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2014-06-22 03:05:48 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Job.industry_id' in 'where clause'
+Request URL: /jobsearch/Jobs/search/industria/3
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Job`.`i...', Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Job`.`i...', Array, Array)
+#3 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Job`.`i...', false)
+#4 C:\xampp\cakephp\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Job), Array)
+#5 C:\xampp\cakephp\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 C:\xampp\cakephp\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#7 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(1080): PaginatorComponent->paginate('Job', Array, Array)
+#8 C:\xampp\htdocs\jobsearch\Controller\JobsController.php(168): Controller->paginate('Job', Array)
+#9 [internal function]: JobsController->search('industria', '3')
+#10 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(JobsController), Array)
+#11 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#12 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#13 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2014-06-22 03:14:50 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Job.industry_id' in 'where clause'
+Request URL: /jobsearch/Jobs/search/industria/3
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Job`.`i...', Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Job`.`i...', Array, Array)
+#3 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Job`.`i...', false)
+#4 C:\xampp\cakephp\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Job), Array)
+#5 C:\xampp\cakephp\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 C:\xampp\cakephp\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#7 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(1080): PaginatorComponent->paginate('Job', Array, Array)
+#8 C:\xampp\htdocs\jobsearch\Controller\JobsController.php(168): Controller->paginate('Job', Array)
+#9 [internal function]: JobsController->search('industria', '3')
+#10 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(JobsController), Array)
+#11 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#12 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#13 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2014-06-22 03:16:32 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Job.industry_id' in 'where clause'
+Request URL: /jobsearch/Jobs/search/industria/3
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Job`.`i...', Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Job`.`i...', Array, Array)
+#3 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Job`.`i...', false)
+#4 C:\xampp\cakephp\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Job), Array)
+#5 C:\xampp\cakephp\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 C:\xampp\cakephp\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#7 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(1080): PaginatorComponent->paginate('Job', Array, Array)
+#8 C:\xampp\htdocs\jobsearch\Controller\JobsController.php(168): Controller->paginate('Job', Array)
+#9 [internal function]: JobsController->search('industria', '3')
+#10 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(JobsController), Array)
+#11 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#12 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#13 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2014-06-22 03:16:54 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Industry.id' in 'where clause'
+Request URL: /jobsearch/Jobs/search/industria/3
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Job`.`i...', Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Job`.`i...', Array, Array)
+#3 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Job`.`i...', false)
+#4 C:\xampp\cakephp\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Job), Array)
+#5 C:\xampp\cakephp\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 C:\xampp\cakephp\lib\Cake\Controller\Component\PaginatorComponent.php(196): Model->find('all', Array)
+#7 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(1080): PaginatorComponent->paginate('Job', Array, Array)
+#8 C:\xampp\htdocs\jobsearch\Controller\JobsController.php(168): Controller->paginate('Job', Array)
+#9 [internal function]: JobsController->search('industria', '3')
+#10 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(JobsController), Array)
+#11 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#12 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#13 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2014-06-22 03:21:08 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Industry.id' in 'where clause'
+Request URL: /jobsearch/Jobs/search/industria/3
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Job`.`i...', Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Job`.`i...', Array, Array)
+#3 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Job`.`i...', false)
+#4 C:\xampp\cakephp\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Job), Array)
+#5 C:\xampp\cakephp\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 C:\xampp\htdocs\jobsearch\Controller\JobsController.php(169): Model->find('all', Array)
+#7 [internal function]: JobsController->search('industria', '3')
+#8 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(JobsController), Array)
+#9 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#11 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2014-06-22 03:21:43 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Job.active' in 'where clause'
+Request URL: /jobsearch/Jobs/search/industria/3
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Industr...', Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Industr...', Array, Array)
+#3 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Industr...', false)
+#4 C:\xampp\cakephp\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Industry), Array)
+#5 C:\xampp\cakephp\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 C:\xampp\htdocs\jobsearch\Controller\JobsController.php(169): Model->find('all', Array)
+#7 [internal function]: JobsController->search('industria', '3')
+#8 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(JobsController), Array)
+#9 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#11 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2014-06-22 03:21:55 Error: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Job.active' in 'where clause'
+Request URL: /jobsearch/Jobs/search/industria/3
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(458): PDOStatement->execute(Array)
+#1 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(424): DboSource->_execute('SELECT `Industr...', Array)
+#2 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(666): DboSource->execute('SELECT `Industr...', Array, Array)
+#3 C:\xampp\cakephp\lib\Cake\Model\Datasource\DboSource.php(1106): DboSource->fetchAll('SELECT `Industr...', false)
+#4 C:\xampp\cakephp\lib\Cake\Model\Model.php(2905): DboSource->read(Object(Industry), Array)
+#5 C:\xampp\cakephp\lib\Cake\Model\Model.php(2877): Model->_readDataSource('all', Array)
+#6 C:\xampp\htdocs\jobsearch\Controller\JobsController.php(169): Model->find('all', Array)
+#7 [internal function]: JobsController->search('industria', '3')
+#8 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(490): ReflectionMethod->invokeArgs(Object(JobsController), Array)
+#9 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(JobsController), Object(CakeRequest))
+#11 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
