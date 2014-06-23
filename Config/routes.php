@@ -45,6 +45,10 @@
 	Router::connect('/empleos', array('controller' => 'Jobs', 'action' => 'index'));
 	Router::connect('/Empresas', array('controller' => 'Companies', 'action' => 'index'));
 	Router::connect('/empresas', array('controller' => 'Companies', 'action' => 'index'));
+
+	Router::connect('/Empresas/perfil/*', array('controller' => 'Companies', 'action' => 'view'));
+	Router::connect('/empresas/perfil/*', array('controller' => 'Companies', 'action' => 'view'));
+
 	Router::connect('/Contactanos/*', array('controller' => 'Jobs', 'action' => 'contactanos'));
 	Router::connect('/contactanos/*', array('controller' => 'Jobs', 'action' => 'contactanos'));
 

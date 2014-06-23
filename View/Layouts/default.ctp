@@ -19,6 +19,8 @@
 			'jquery.combosex',
 			'jquery.flexslider',
 			'jquery.scrollbar'
+			
+			//'admin/style'
 			));
 		echo $this->Html->script(array(
 			'jquery-1.11.0.min',

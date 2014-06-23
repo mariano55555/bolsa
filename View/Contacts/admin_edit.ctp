@@ -32,6 +32,10 @@
                                 <label for="ProductName" class="col-lg-2 col-sm-2 control-label">Empresa</label>
                                 <?php echo $this->Form->input('company_id', array("class"=>"select2-me form-control", 'required' => 'true', 'div' => array('class' => 'col-lg-6'))); ?>
                             </div>
+                             <div class="form-group">
+                                <label for="ProductName" class="col-lg-2 col-sm-2 control-label">Puesto</label>
+                                <?php echo $this->Form->input('puesto', array("class"=>"form-control", 'div' => array('class' => 'col-lg-6'))); ?>
+                            </div>
                             <div class="form-group">
                                 <label for="ProductName" class="col-lg-2 col-sm-2 control-label">Email</label>
                                 <?php echo $this->Form->input('address', array("class"=>"form-control", 'required' => 'true', 'div' => array('class' => 'col-lg-6'))); ?>
@@ -43,7 +47,11 @@
                             <div class="form-group">
                             	<label for="CategoryName" class="col-lg-2 col-sm-2 control-label">Activo</label>
                             	<?php echo $this->Form->input('active', array("class"=>"js-switch")); ?>
-                        	</div>
+                        	   </div>
+                          <div class="form-group">
+                              <label for="CategoryName" class="col-lg-2 col-sm-2 control-label">Mostrar a Alumni</label>
+                              <?php echo $this->Form->input('mostrar', array( "class"=>"js-switch")); ?>
+                          </div>
 							<?php
 							$options = array(
 							    'label' => 'Editar',

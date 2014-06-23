@@ -507,7 +507,14 @@ div.nav-buttons ul li a { background: none repeat scroll 0 0 #2AADDE; border-bot
 .partner div.nav-buttons ul li a { height: 20px; width: 22px; }
 .partner div.nav-buttons ul li { margin-left: 7px !important; width: 20px; }
 div#job-content-fields div.nav-buttons ul li a { background-color: none repeat scroll 0 0 #e6e6e6 !important; border-bottom: 3px solid #cccccc !important; }
-div#job-content-fields div.nav-buttons ul li a:hover { background-color: none repeat scroll 0 0 #2aadde !important; border-bottom: 3px solid #1797C7 !important; }
+
+div#job-content-fields div.nav-buttons ul li a:hover { background-color: none repeat scroll 0 0 #2aadde !important; border-bottom: 3px solid #1797C7 !important}
+div#job-content-fields div.nav-buttons ul li.aplicado a:hover { background-color: none repeat scroll 0 0 #2aadde !important; border-bottom: 3px solid #8A0808 !important; cursor:default;}
+
+li.aplicado a { 
+  background: url("../images/nav-buttons-sprite.png") no-repeat scroll -62px center rgb(209,79,79) !important; 
+}
+
 div.nav-buttons ul li i { color: rgb(255, 255, 255); font-size: 12px; left: 6px; position: relative; top: -2px; }
 div#job-content-fields div.field-container div.nav-buttons ul li.show-hide.hide a, .company-text div.nav-buttons ul li a { background: url("../images/nav-buttons-sprite.png") no-repeat scroll -1px -1px #E6E6E6 }
 div#job-content-fields div.field-container div.nav-buttons ul li.show-hide.show a { background: url("../images/nav-buttons-sprite.png") no-repeat scroll -32px 0px #2aadde; border-bottom: 3px solid #1797C7 !important; }

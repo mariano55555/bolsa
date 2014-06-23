@@ -17,6 +17,131 @@ public function beforeFilter(){
 
 
 
+public function applyajax($id = NULL)
+{
+	
+	
+if(isset($_FILES["FileInput"]) && $_FILES["FileInput"]["error"]== UPLOAD_ERR_OK)
+{
+	############ Edit settings ##############
+	$UploadDirectory	= WWW_ROOT.'\/cv\/'; //specify upload directory ends with / (slash)
+	##########################################
+	
+	/*
+	Note : You will run into errors or blank page if "memory_limit" or "upload_max_filesize" is set to low in "php.ini". 
+	Open "php.ini" file, and search for "memory_limit" or "upload_max_filesize" limit 
+	and set them adequately, also check "post_max_size".
+	*/
+	
+	//check if this is an ajax request
+	if (!isset($_SERVER['HTTP_X_REQUESTED_WITH'])){
+		die();
+	}
+	
+	
+	//Is file size is less than allowed size.
+	if ($_FILES["FileInput"]["size"] > 5242880) {
+		die("File size is too big!");
+	}
+	
+	//allowed file type Server side check
+	switch(strtolower($_FILES['FileInput']['type']))
+		{
+			//allowed file types
+            /*case 'image/png': 
+			case 'image/gif': 
+			case 'image/jpeg': 
+			case 'image/pjpeg':
+			case 'text/plain':
+			case 'text/html': //html file
+			case 'application/x-zip-compressed':*/
+			case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+			case 'application/pdf':
+			case 'application/msword':
+		//	case 'application/vnd.ms-excel':
+				break;
+			default:
+				die('Formato no soportado (Solamente PDF y Word)!'); //output error
+	}
+	
+	$File_Name          = strtolower($_FILES['FileInput']['name']);
+	$File_Ext           = substr($File_Name, strrpos($File_Name, '.')); //get file extention
+	$Random_Number      = rand(0, 9999999999); //Random number to be added to name.
+	$NewFileName 		= $this->usuarioAutenticado('carnet').'_'.$Random_Number.$File_Ext; //new file name
+
+	
+
+	//GUARDAR DENTRO DE LA BASE DE DATOS LA ACCION
+	$jobid  = $_REQUEST['job'];
+	$userid = $this->usuarioAutenticado('id');
+	$this->loadModel('JobsUser');
+	$comprobar = $this->JobsUser->field('id', array('JobsUser.user_id' => $this->usuarioAutenticado('id'), 'JobsUser.job_id' => $jobid));
+
+	// RECUPERAR DATOS PARA EMAIL
+	$this->loadModel('Job');
+	$company = $this->Job->field('company_id', array('Job.id' => $jobid));
+	$plaza   = $this->Job->field('name', array('Job.id' => $jobid));
+	$this->loadModel('Company');
+	//$contacto = $this->Company->find('first', array('contain' => 'Contact' ,'conditions' => array('Company.id' => $company)));
+	$empresa  = $this->Company->field('name', array('id' => $company));
+
+	
+	
+	if(move_uploaded_file($_FILES['FileInput']['tmp_name'], $UploadDirectory.$NewFileName ))
+	{
+		if ($comprobar == false) {
+			$this->JobsUser->create();
+			$data = array('user_id' => $userid, 'job_id' => $jobid, 'created' => date("Y-m-d H:i:s"), 'modified' =>  date("Y-m-d H:i:s"), 'created_by' => $this->usuarioAutenticado('id'), 'modified_by' => $this->usuarioAutenticado('id'));
+			$this->JobsUser->save($data);
+			$this->__correroaplicacionesen($this->usuarioAutenticado('name'), $this->usuarioAutenticado('email'), $this->usuarioAutenticado('phone'),$this->usuarioAutenticado('carnet'), $plaza, $jobid, $empresa, $NewFileName);
+		}
+		die('Has aplicado a la plaza!');
+	}else{
+		die('error subiendo el archivo. Intenta nuevamente o reporta el error!');
+	}
+	
+}
+else
+{
+	die('Something wrong with upload! Is "upload_max_filesize" set correctly?');
+}
+}
+
+public function applydirectly()
+{
+	$this->layout = "ajax";
+	$jobid  = $this->request->data['job'];
+	$userid = $this->request->data['id'];
+
+	$this->loadModel('Job');
+	$company = $this->Job->field('company_id', array('Job.id' => $jobid));
+	$plaza   = $this->Job->field('name', array('Job.id' => $jobid));
+	$this->loadModel('Company');
+	$contacto = $this->Company->find('first', array('contain' => 'Contact' ,'conditions' => array('Company.id' => $company)));
+	$empresa  = $this->Company->field('name', array('id' => $company));
+
+	/**
+	 * guargar el dato en la base...
+	 * 
+	 */
+	
+	$this->loadModel('JobsUser');
+	$comprobar = $this->JobsUser->field('id', array('JobsUser.user_id' => $this->usuarioAutenticado('id'), 'JobsUser.job_id' => $jobid));
+
+	if ($comprobar == false) {
+		$this->JobsUser->create();
+		$data = array('user_id' => $userid, 'job_id' => $jobid, 'created' => date("Y-m-d H:i:s"), 'modified' =>  date("Y-m-d H:i:s"), 'created_by' => $this->usuarioAutenticado('id'), 'modified_by' => $this->usuarioAutenticado('id'));
+		$this->JobsUser->save($data);
+		$this->__correroaplicaciondirecta($this->usuarioAutenticado('name'), $this->usuarioAutenticado('email'), $this->usuarioAutenticado('phone'),$this->usuarioAutenticado('carnet'), $plaza, $jobid, $empresa);
+	}
+	$this->set(compact('contacto'));
+}
+
+
+/**
+ * [login description]
+ * @return [type] [description]
+ */
 public function login()
 {
 	$this->layout = "login";
@@ -359,6 +484,48 @@ public function home()
 		    		  ->to(array($email))
 		    		  ->subject('Aplicación en línea')
 		    		  ->attachments(array(
+						    'logo.png' => array(
+						        'file' => 'img/esen_header.png',
+						        'mimetype' => 'image/png',
+						        'contentId' => 'milogo'
+						    )
+						))
+		              ->send();	
+	}
+
+
+
+	public function __correroaplicaciondirecta($nombre = NULL, $email = NULL, $telefono = NULL, $carnet = NULL, $trabajo = NULL, $idtrabajo = NULL, $empresa = NULL)
+	{
+				$Email = new CakeEmail('smtp');
+				$Email->template('directamente', 'layout')
+					  ->emailFormat('html')
+					  ->viewVars(array('nombre' => $nombre, 'email' => $email, 'telefono' => $telefono, 'carnet' => $carnet,'trabajo' => $trabajo, 'id' => $idtrabajo, 'empresa' => $empresa))
+					  ->from(array('admision@esen.edu.sv' => 'ESEN'))
+		    		  ->to(array('mariano.paz.flores@gmail.com'))
+		    		  ->subject('Alumni ha aplicado directamente a una oferta laboral')
+		    		  ->attachments(array(
+						    'logo.png' => array(
+						        'file' => 'img/esen_header.png',
+						        'mimetype' => 'image/png',
+						        'contentId' => 'milogo'
+						    )
+						))
+		              ->send();	
+	}
+
+
+	public function __correroaplicacionesen($nombre = NULL, $email = NULL, $telefono = NULL, $carnet = NULL, $trabajo = NULL, $idtrabajo = NULL, $empresa = NULL, $cv = NULL)
+	{
+				$Email = new CakeEmail('smtp');
+				$Email->template('aplicacionesen', 'layout')
+					  ->emailFormat('html')
+					  ->viewVars(array('nombre' => $nombre, 'email' => $email, 'telefono' => $telefono, 'carnet' => $carnet,'trabajo' => $trabajo, 'id' => $idtrabajo, 'empresa' => $empresa, 'cv' => $cv))
+					  ->from(array('admision@esen.edu.sv' => 'ESEN'))
+		    		  ->to(array('mariano.paz.flores@gmail.com'))
+		    		  ->subject('Alumni desea aplicar con ESEN')
+		    		  ->attachments(array(
+		    		  	    'cv/'.$cv,
 						    'logo.png' => array(
 						        'file' => 'img/esen_header.png',
 						        'mimetype' => 'image/png',

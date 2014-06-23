@@ -127,13 +127,15 @@ CREATE TABLE IF NOT EXISTS `companies` (
   `modified` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `modified_by` int(11) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla jobsearch.companies: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla jobsearch.companies: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `companies` DISABLE KEYS */;
-INSERT INTO `companies` (`id`, `name`, `active`, `address`, `phone`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-	(1, 'GDS', 1, 'Avenida Las Camelias y Calle Los CastaÃ±os', '2562-5116', '2014-06-05 16:17:39', '2014-06-07 22:11:40', 1, 1);
+INSERT INTO `companies` (`id`, `name`, `active`, `address`, `phone`, `created`, `modified`, `created_by`, `modified_by`, `email`) VALUES
+	(1, 'GDS', 1, 'Avenida Las Camelias y Calle Los CastaÃ±os', '2562-5116', '2014-06-05 16:17:39', '2014-06-07 22:11:40', 1, 1, NULL),
+	(2, 'ADOC', 1, 'ASDFASDFASDFA', '2562-5116', '2014-06-22 10:35:18', '2014-06-22 10:35:20', 1, 1, NULL);
 /*!40000 ALTER TABLE `companies` ENABLE KEYS */;
 
 
@@ -150,6 +152,8 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `modified_by` int(11) DEFAULT NULL,
   `company_id` int(11) NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',
+  `mostrar` tinyint(1) DEFAULT '1',
+  `puesto` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_contacts_companies_idx` (`company_id`),
   CONSTRAINT `fk_contacts_companies` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -157,8 +161,8 @@ CREATE TABLE IF NOT EXISTS `contacts` (
 
 -- Volcando datos para la tabla jobsearch.contacts: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
-INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `created`, `modified`, `created_by`, `modified_by`, `company_id`, `active`) VALUES
-	(1, 'Monica Elizabeth Argueta de Paz', NULL, '7729-0437', '2014-06-09 06:59:18', '2014-06-09 06:59:18', 1, 1, 1, 1);
+INSERT INTO `contacts` (`id`, `name`, `email`, `phone`, `created`, `modified`, `created_by`, `modified_by`, `company_id`, `active`, `mostrar`, `puesto`) VALUES
+	(1, 'Monica Elizabeth Argueta de Paz', NULL, '7729-0437', '2014-06-09 06:59:18', '2014-06-09 06:59:18', 1, 1, 1, 1, 1, 'Recursos Humanos');
 /*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
 
 
@@ -338,11 +342,10 @@ CREATE TABLE IF NOT EXISTS `industries_jobs` (
   CONSTRAINT `fk_industries_jobs_jobs1` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla jobsearch.industries_jobs: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla jobsearch.industries_jobs: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `industries_jobs` DISABLE KEYS */;
 INSERT INTO `industries_jobs` (`id`, `industry_id`, `job_id`, `active`, `created`, `modified`, `created_by`, `modified_by`) VALUES
-	(1, 3, 1, 1, NULL, NULL, NULL, NULL),
-	(2, 1, 2, 1, NULL, NULL, NULL, NULL);
+	(1, 3, 1, 1, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `industries_jobs` ENABLE KEYS */;
 
 
@@ -393,10 +396,12 @@ CREATE TABLE IF NOT EXISTS `jobs_users` (
   KEY `fk_jobs_users_jobs1_idx` (`job_id`),
   CONSTRAINT `fk_jobs_users_jobs1` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_jobs_users_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla jobsearch.jobs_users: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla jobsearch.jobs_users: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `jobs_users` DISABLE KEYS */;
+INSERT INTO `jobs_users` (`id`, `user_id`, `job_id`, `active`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+	(12, 5, 1, 1, '2014-06-23 06:03:31', '2014-06-23 06:03:31', 5, 5);
 /*!40000 ALTER TABLE `jobs_users` ENABLE KEYS */;
 
 
@@ -455,16 +460,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `modified` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `modified_by` int(11) DEFAULT NULL,
-  `group_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `fk_users_groups1_idx` (`group_id`),
   CONSTRAINT `fk_users_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla jobsearch.users: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla jobsearch.users: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `carnet`, `phone`, `active`, `created`, `modified`, `created_by`, `modified_by`, `group_id`) VALUES
-	(1, NULL, 'mariano.paz.flores@gmail.com', 'cc622124d8e78d6943c9b63f4e4dc2773a956be2', '20062643', '77290437', 1, '2014-06-09 01:15:07', '2014-06-09 01:15:07', 1, 1, 1);
+	(5, 'Elia Xiomara Cecilia', 'eliacamposg@gmail.com', 'cc622124d8e78d6943c9b63f4e4dc2773a956be2', '20062643', '77290437', 1, '2014-06-21 22:27:57', '2014-06-21 22:28:05', NULL, NULL, 1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

@@ -45,7 +45,18 @@ public function test()
 	    	$jobs[$i]['Country']['name'] =  $this->Country->field("name", array('Country.id' => $jobs[$i]['City']['country_id'] ));
 	    	if (isset($jobs[$i]['City']['id'])) {
 	    	 	$ciudadesid[][$jobs[$i]['City']['id']] = $jobs[$i]['City']['name'];
-	    	 } 
+	    	 }
+	    	 $aplicado = 0;
+	    	 for ($j=0; $j < count($jobs[$i]['User']) ; $j++) { 
+	    	 	if ($jobs[$i]['User'][$j]['id'] == $this->usuarioAutenticado('id')) {
+	    	 		$aplicado++;
+	    	 	}
+	    	 }
+	    	 if ($aplicado > 0) {
+	    	 	$jobs[$i]['Job']['aplicado'] = 1;
+	    	 }else{
+	    	 	$jobs[$i]['Job']['aplicado'] = 0;
+	    	 }
 	    }
 	    $this->set('jobs', $jobs);
 
@@ -208,6 +219,17 @@ public function test()
 	    	if (isset($jobs[$i]['City']['id'])) {
 	    	 	$ciudadesid[][$jobs[$i]['City']['id']] = $jobs[$i]['City']['name'];
 	    	 } 
+	    	  $aplicado = 0;
+	    	 for ($j=0; $j < count($jobs[$i]['User']) ; $j++) { 
+	    	 	if ($jobs[$i]['User'][$j]['id'] == $this->usuarioAutenticado('id')) {
+	    	 		$aplicado++;
+	    	 	}
+	    	 }
+	    	 if ($aplicado > 0) {
+	    	 	$jobs[$i]['Job']['aplicado'] = 1;
+	    	 }else{
+	    	 	$jobs[$i]['Job']['aplicado'] = 0;
+	    	 }
 	    }
 	    $this->set(compact('jobs', 'seccion'));
 		//CALCULOS DE BUSQUEDAS
@@ -502,7 +524,7 @@ public function test()
 					  ->viewVars(array('nombre' => $nombre, 'email' => $email, 'carnet' => $carnet, 'mensaje' => $mensaje, 'telefono' => $telefono))
 					  ->from(array('jobsearch@esen.edu.sv' => 'ESEN'))
 		    		  ->to(array('mariano.paz.flores@gmail.com'))
-		    		  ->subject('Consulta de usuario')
+		    		  ->subject('Consulta de Alumni')
 		    		  ->attachments(array(
 						    'logo.png' => array(
 						        'file' => 'img/esen_header.png',

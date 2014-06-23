@@ -42,7 +42,6 @@ echo $this->Elements->Menu($menu, 'Contáctanos');
               $map_options123 = array('id' => 'map_canvas', 
                 'width' => '605px',
                 'height' => '320px',
-                //'class'=>"map box-1",
                 'style' => '',
                 'zoom' => 15,
                 'type' => 'ROADMAP',

@@ -11,7 +11,7 @@
 	
 	<p>
 	<img src="cid:milogo" alt="ESEN" title="ESEN">	<br/>
-	Gerencia de Admisi&oacute;n y Comunicaciones<br/>
+	Direcci&oacute;n Estudiantil<br/>
 	Escuela Superior de Econom&iacute;a y Negocios<br/>
 	admision@esen.edu.sv<br/>
 	PBX (503)2234-9292

@@ -8,6 +8,35 @@ App::uses('AppController', 'Controller');
 class CompaniesController extends AppController {
 
 
+
+
+
+/**
+ * [index description]
+ * @return [type] [description]
+ */
+public function index($filter = NULL)
+{
+	$companies = $this->Company->find("all", array('order' => array('Company.created DESC')));
+	$this->set(compact('companies'));
+}
+
+/**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+public function view($id = null) {
+		$company = $this->__findCompany($id);
+		$this->set(compact('company'));
+}
+
+
+
+
+
 /**
  * admin_index method
  *

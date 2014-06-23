@@ -1,5 +1,6 @@
+<script type="text/javascript" src="<?php echo $this->webroot; ?>js/jquery.form.min.js"></script>
 <?php 
-//debug($jobs);
+$meses     = array('Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Nov', 'Dic');
 ?>
 <script>
 $(document).ready(function() {
@@ -11,7 +12,7 @@ $(document).ready(function() {
 </script>
 <style>
   span.next a{
-    background: url("images/pager-sprite.png") no-repeat scroll -19px 0px rgb(230, 230, 230);
+    background: url("/images/pager-sprite.png") no-repeat scroll -19px 0px rgb(230, 230, 230);
     background: none repeat scroll 0 0 #E6E6E6;
     box-shadow: 0 3px 0 0 #CCCCCC;
     border-radius: 3px 3px 3px 3px;
@@ -27,7 +28,11 @@ $(document).ready(function() {
     -webkit-border-radius: 3px 3px 3px 3px;
   }
 
-
+.infobox {
+   color: #4F8A10 !important;
+   background-color:#EDFCED !important;
+   padding:10px !important;
+  }
 </style>
 
 <?php
@@ -245,11 +250,6 @@ echo $this->Elements->Menu($menu, 'Empleos');
                     </div>
                   </div>
                   <div class="clear"></div>
-                  <!--<div id="saved-search-select">
-                    <select class="select">
-                      <option selected="selected" value="No Searches Saved Yet">No hay b&uacute;squedas guardadas</option>
-                    </select>
-                    <a href="#">Guardar mi b&uacute;squeda</a> </div>-->
                 </div>
               </div>
               <input type="submit" value="Buscar" id="filter-job-page-submit"/>
@@ -257,12 +257,6 @@ echo $this->Elements->Menu($menu, 'Empleos');
         </div>
 
         <!--COLOCAR UN BANNER ACA -->
-        <!--<div id="advertising" class="block border">
-          <div class="block-content"> <img src="images/sb-ad.jpg"  alt="banner ad"/> 
-            <div class="advertising-test">300x250<br/>
-              Ad Banner</div>
-          </div>
-        </div>-->
       </div>
       <!-- /Content Left --> 
       
@@ -273,16 +267,9 @@ echo $this->Elements->Menu($menu, 'Empleos');
           <div class="hide-map-button"><span>Hide Map</span></div>
           <div class="show-map-button"><span>Show Map</span></div>
           <ul class="map-markers">
-            <li class ="marker1">New York City, United States</li>
-            <li class ="marker2">Brooklyn, United States</li>
-            <li class ="marker3">Newark, United States</li>
-            <li class ="marker4">Queens, United States</li>
-            <li class ="marker5">Bayonne, United States</li>
-            <li class ="marker6">Mineola, United States</li>
-            <li class ="marker7">Kearny, United States</li>
-            <li class ="marker8">Secaucus, United States</li>
-            <li class ="marker9">Bronx, United States</li>
-            <li class ="marker10">Linden, United States</li>
+            <li class ="marker1">San Salvador, El Salvador</li>
+            <li class ="marker2">San Miguel, El Salvador</li>
+            <li class ="marker3">Santa Ana, El Salvador</li>
           </ul>
         </div>
         <div class="clear"></div>
@@ -306,13 +293,13 @@ echo $this->Elements->Menu($menu, 'Empleos');
           <div class="pager">
               <ul>
               <?php 
-              echo $this->Paginator->prev('<a></a>', array('tag'=>'li', 'escape' => false), null, array('class' => 'prev noactive','tag'=>'li','escape' => false));
+              echo $this->Paginator->prev('', array('tag'=>'li', 'escape' => false), null, array('class' => 'prev noactive','tag'=>'li','escape' => false));
               echo $this->Paginator->numbers(array(
                   'separator' => '',
                   'currentClass' => 'active',
                   'tag' => 'li',
               ));
-              echo $this->Paginator->next('', array('tag'=>'li'), null, array('class' => 'next disabled noactive','tag'=>'li'));  
+              echo $this->Paginator->next('', array('tag'=>'li'), null, array('class' => 'next noactive','tag'=>'li'));  
               ?>
               </ul>
           </div>
@@ -325,24 +312,26 @@ echo $this->Elements->Menu($menu, 'Empleos');
               <div class="nav-buttons">
                 <ul>
                   <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
                   <li class="link"><a href="<?php echo $this->webroot; ?>jobs/<?php echo $jobs[$i]['Job']['id']; ?>"></a></li>
+                  <li class="favorite <?php echo($jobs[$i]['Job']['aplicado'] == 1) ? 'aplicado':'';?>"><a href="#" style="cursor:default !important"></a></li>
                 </ul>
               </div>
               <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html"><?php echo $jobs[$i]['Job']['name']; ?></a></div>
-                  <div class="company"><?php echo $jobs[$i]['Company']['name']; ?> - <?php echo $jobs[$i]['City']['name'].', '.$jobs[$i]['Country']['name']; ?></div>
+                <?php $timestamp = strtotime($jobs[$i]['Job']['created']); ?>
+                <div class="date">
+                  <?php  echo date("d", $timestamp); ?>
+                  <span><?php echo $meses[date('n', $timestamp)-1]; ?> </span>
                 </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
+                <div class="title-company">
+                  <div class="title">
+                    <a href="<?php echo $this->webroot; ?>Empleos/descripcion/<?php echo $jobs[$i]['Job']['id']; ?>">
+                      <?php echo $jobs[$i]['Job']['name']; ?>
+                    </a>
+                  </div>
+                  <div class="company">
+                    <?php echo $jobs[$i]['Company']['name']; ?> - <?php echo $jobs[$i]['City']['name'].', '.$jobs[$i]['Country']['name']; ?>
+                  </div>
+                </div>
               </div>
               <div class="body-field">
                 <div class="teaser">
@@ -401,47 +390,72 @@ echo $this->Elements->Menu($menu, 'Empleos');
                       <!-- /Cleaner --> 
                     </div>
                   </div>
-                  <?php echo "aca la condicional"; ?>
+                  <?php if($total > 3){ ?>
+                        <div class="block">
+                          <h4>Requerimientos Adicionales</h4>
+                          <div class="block-content">
+                                <?php for ($x=3; $x < count($pieces) ; $x++) { ?>
+                                  <div class = "tag-field"><?php echo $pieces[$x]; ?></div>
+                                <?php } ?>
+                          </div>
+                          <!-- Cleaner -->
+                          <div class="clear"></div>
+                          <!-- /Cleaner --> 
+                        </div>
+                  <?php } ?>
                 </div>
                 <?php } 
                 //debug($jobs);
                 ?>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="<?php echo $this->webroot; ?>users/apply/<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar</a></div>
-                  <div class="full"><a href="<?php echo $this->webroot; ?>users/apply/<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar</a></div>
+                <h3>Subir CV</h3>
+                <div class="infocontactolistesen<?php echo $jobs[$i]['Job']['id']; ?>" style="display:none">
+                    <form action="<?php echo $this->webroot;?>Users/applyajax/<?php echo $jobs[$i]['Job']['id']; ?>" method="post" enctype="multipart/form-data" id="MyUploadFormList<?php echo $jobs[$i]['Job']['id']; ?>">
+                        <input name="FileInput" id="FileInputList<?php echo $jobs[$i]['Job']['id']; ?>" type="file" />
+                        <input type="hidden" name="job" value="<?php echo $jobs[$i]['Job']['id']; ?>">
+                        <input type="submit"  id="submit-btn" value="Upload" class="submitform" formid ="#MyUploadFormList<?php echo $jobs[$i]['Job']['id']; ?> " target="#outputlist<?php echo $jobs[$i]['Job']['id']; ?>" input="#FileInputList<?php echo $jobs[$i]['Job']['id']; ?>"/>
+                          <!--<img src="images/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>-->
+                    </form>
+                        <div id="progressbox" ><div id="progressbar"></div ><div id="statustxt">0%</div></div>
+                        <div id="outputlist<?php echo $jobs[$i]['Job']['id']; ?>"></div>
                 </div>
+                <div class="infocontactolist<?php echo $jobs[$i]['Job']['id']; ?>"></div>
+                <?php if ($jobs[$i]['Job']['aplicado'] == 1) { ?>
+                  <div class="buttons-field applybtns infobox">
+                    <p style="padding:10px" class="infobox">Ya has aplicado a &eacute;sta oferta de empleo.</p>
+                  </div>  
+                <?php }else{ ?>
+                    <div class="buttons-field applybtns">
+                      <div class="apply"><a style="cursor:pointer" class="esen" div="infocontactolistesen<?php echo $jobs[$i]['Job']['id']; ?>" job="<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar con ESEN</a></div>
+                      <div class="full"><a style="cursor:pointer" class="directamente" div="infocontactolist<?php echo $jobs[$i]['Job']['id']; ?>" job="<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar directamente</a></div>
+                    </div>
+                <?php }  ?>
               </div>
             </div>
-  
-            <?php
-            }
-            ?>
+            <?php } ?>
           </div>
           <div id="cells" class="view_mode" style="display: none;">
-            <?php for ($i=0; $i < count($jobs) ; $i++) { ?>
+            <?php for ($i=0; $i < count($jobs); $i++) { ?>
             <div class="field-container odd box-1">
               <div class="nav-buttons">
                 <ul>
                   <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
+                  <li class="link"><a href="<?php echo $this->webroot; ?>jobs/<?php echo $jobs[$i]['Job']['id']; ?>"></a></li>
+                  <li class="favorite <?php echo($jobs[$i]['Job']['aplicado'] == 1) ? 'aplicado':'';?>"><a href="#" style="cursor:default !important"></a></li>
                 </ul>
               </div>
               <div class="cells-job-thumb"> <img src="<?php echo $this->webroot; ?>images/job-thumb.jpg"  alt=""/> </div>
               <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
+                <?php
+                $timestamp = strtotime($jobs[$i]['Job']['created']);
+                ?>
+                <div class="date">
+                  <?php  echo date("d", $timestamp); ?>
+                  <span><?php echo $meses[date('n', $timestamp)-1]; ?> </span>
+                </div>
                 <div class="title-company">
                   <div class="title"><a href="job.html"><?php echo $jobs[$i]['Job']['name']; ?></a></div>
                   <div class="company"><?php echo $jobs[$i]['Company']['name']; ?> - <?php echo $jobs[$i]['City']['name'].', '.$jobs[$i]['Country']['name']; ?></div>
                 </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
               </div>
               <div class="body-field">
                 <div class="teaser">
@@ -498,47 +512,75 @@ echo $this->Elements->Menu($menu, 'Empleos');
                       <!-- /Cleaner --> 
                     </div>
                   </div>
-                    <?php echo "aca la condicional 501"; ?>
+                     <?php if($total > 3){ ?>
+                        <div class="block">
+                          <h4>Requerimientos Adicionales</h4>
+                          <div class="block-content">
+                                <?php for ($x=3; $x < count($pieces) ; $x++) { ?>
+                                  <div class = "tag-field"><?php echo $pieces[$x]; ?></div>
+                                <?php } ?>
+                          </div>
+                          <!-- Cleaner -->
+                          <div class="clear"></div>
+                          <!-- /Cleaner --> 
+                        </div>
+                  <?php } ?>
                 </div>
+                <div class="infocontactocell<?php echo $jobs[$i]['Job']['id']; ?>"></div>
                 <?php } ?>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="<?php echo $this->webroot; ?>users/apply/<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar</a></div>
-                  <div class="full"><a href="<?php echo $this->webroot; ?>users/apply/<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar</a></div>
+                <div class="infocontactocellesen<?php echo $jobs[$i]['Job']['id']; ?>" style="display:none">
+                    <form action="<?php echo $this->webroot;?>Users/applyajax/<?php echo $jobs[$i]['Job']['id']; ?>" method="post" enctype="multipart/form-data" id="MyUploadFormCell<?php echo $jobs[$i]['Job']['id']; ?>">
+                        <input name="FileInput" id="FileInputCell<?php echo $jobs[$i]['Job']['id']; ?>" type="file" />
+                        <input type="hidden" name="job" value="<?php echo $jobs[$i]['Job']['id']; ?>">
+                        <input type="submit"  id="submit-btn" value="Upload" class="submitform" formid ="#MyUploadFormCell<?php echo $jobs[$i]['Job']['id']; ?> " target="#outputcell<?php echo $jobs[$i]['Job']['id']; ?>" id="FileInputCell<?php echo $jobs[$i]['Job']['id']; ?>"/>
+                          <!--<img src="images/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>-->
+                    </form>
+                        <div id="progressbox" ><div id="progressbar"></div ><div id="statustxt">0%</div></div>
+                        <div id="outputcell<?php echo $jobs[$i]['Job']['id']; ?>"></div>
                 </div>
+                <?php if ($jobs[$i]['Job']['aplicado'] == 1) { ?>
+                  <div class="buttons-field applybtns infobox">
+                    <p style="padding:10px" class="infobox">Ya has aplicado a &eacute;sta oferta de empleo.</p>
+                  </div>  
+                <?php }else{ ?>
+                    <div class="buttons-field applybtns">
+                      <div class="apply"><a style="cursor:pointer" class="esen" job="<?php echo $jobs[$i]['Job']['id']; ?>" div="infocontactocellesen<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar con ESEN</a></div>
+                       <div class="full"><a style="cursor:pointer" class="directamente" div="infocontactocell<?php echo $jobs[$i]['Job']['id']; ?>" job="<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar directamente</a></div>
+                    </div>
+                <?php }  ?>
               </div>
             </div>
             <?php } ?>
-
           </div>
           <div id="table" class="view_mode"  style="display: none;">
-            <?php for ($i=0; $i < count($jobs) ; $i++) { ?>
-            <div  class="field-container odd box-1">
+            <?php for ($i=0; $i < count($jobs); $i++) { ?>
+           <div  class="field-container odd box-1">
               <div class="nav-buttons">
                 <ul>
                   <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
+                  <li class="link"><a href="<?php echo $this->webroot; ?>jobs/<?php echo $jobs[$i]['Job']['id']; ?>"></a></li>
+                  <li class="favorite <?php echo($jobs[$i]['Job']['aplicado'] == 1) ? 'aplicado':'';?>"><a href="#" style="cursor:default !important"></a></li>
                 </ul>
               </div>
               <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
+                <?php
+                $timestamp = strtotime($jobs[$i]['Job']['created']);
+                ?>
+                <div class="date">
+                  <?php  echo date("d", $timestamp); ?>
+                  <span><?php echo $meses[date('n', $timestamp)-1]; ?> </span>
+                </div>
                 <div class="title-company">
-                   <div class="title"><a href="job.html"><?php echo $jobs[$i]['Job']['name']; ?></a></div>
+                  <div class="title"><a href="job.html"><?php echo $jobs[$i]['Job']['name']; ?></a></div>
                   <div class="company"><?php echo $jobs[$i]['Company']['name']; ?> - <?php echo $jobs[$i]['City']['name'].', '.$jobs[$i]['Country']['name']; ?></div>
                 </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
               </div>
               <div class="body-field">
                 <div class="teaser">
-                 <?php echo htmlspecialchars_decode($jobs[$i]['Job']['content']); ?>
+                 <p>
+                    <?php echo htmlspecialchars_decode($jobs[$i]['Job']['content']); ?>
                     <span class="read-more"><a>Read More</a></span>
+                  </p>
                 </div>
                 <div class="full-body">
                   <p><?php echo htmlspecialchars_decode($jobs[$i]['Job']['content']); ?></p>
@@ -553,7 +595,7 @@ echo $this->Elements->Menu($menu, 'Empleos');
                   <li class="pull-right">Experiencia: <span><?php echo $jobs[$i]['Experience'][0]['name']; ?></span></li>
                   <?php } ?>
                 </ul>
-                <?php
+                 <?php
                 if (isset($jobs[$i]['Job']['skills']) && strlen(trim($jobs[$i]['Job']['skills'])) > 0) {
                   $pieces = explode(",", $jobs[$i]['Job']['skills']);
                   $total  = count($pieces);
@@ -563,22 +605,22 @@ echo $this->Elements->Menu($menu, 'Empleos');
                     <h4>Habilidades</h4>
                     <div class="block-content">
                       <?php if ($total <= 3){ ?>
-                        <?php for ($i=0; $i < count($pieces); $i++) { ?>
+                        <?php for ($h=0; $h < count($pieces); $h++) { ?>
                           <div class = "field roll-with-description hide">
                             <div class = "roll-button"><span></span></div>
                             <div class = "roll-field">
-                              <div class = "label"><?php echo $pieces[$i]; ?></div>
+                              <div class = "label"><?php echo $pieces[$h]; ?></div>
                               <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
                               <div class = "description">...</div>
                             </div>
                           </div>
                         <?php } ?>
                       <?php }else{ ?>
-                        <?php for ($i=0; $i < 3; $i++) { ?>
+                        <?php for ($b=0; $b < 3; $b++) { ?>
                           <div class = "field roll-with-description hide">
                               <div class = "roll-button"><span></span></div>
                               <div class = "roll-field">
-                                <div class = "label"><?php echo $pieces[$i]; ?></div>
+                                <div class = "label"><?php echo $pieces[$b]; ?></div>
                                 <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
                                 <div class = "description">...</div>
                               </div>
@@ -593,11 +635,11 @@ echo $this->Elements->Menu($menu, 'Empleos');
                   </div>
                   <?php if($total > 3){ ?>
                         <div class="block">
-                          <h4>Additional Requirements</h4>
+                          <h4>Requerimientos Adicionales</h4>
                           <div class="block-content">
-                            <?php for ($i=3; $i < count($pieces) ; $i++) { ?>
-                                <div class = "tag-field"><?php echo $pieces[$i]; ?></div>
-                            <?php } ?>
+                                <?php for ($x=3; $x < count($pieces) ; $x++) { ?>
+                                  <div class = "tag-field"><?php echo $pieces[$x]; ?></div>
+                                <?php } ?>
                           </div>
                           <!-- Cleaner -->
                           <div class="clear"></div>
@@ -606,10 +648,30 @@ echo $this->Elements->Menu($menu, 'Empleos');
                   <?php } ?>
                 </div>
                 <?php } ?>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar</a></div>
-                  <div class="full"><a href="#">Aplicar</a></div>
+                <div class="infocontactotable<?php echo $jobs[$i]['Job']['id']; ?>"></div>
+
+
+                 <div class="infocontactotableesen<?php echo $jobs[$i]['Job']['id']; ?>" style="display:none">
+                    <form action="<?php echo $this->webroot;?>Users/applyajax/<?php echo $jobs[$i]['Job']['id']; ?>" method="post" enctype="multipart/form-data" id="MyUploadFormTable<?php echo $jobs[$i]['Job']['id']; ?>">
+                        <input name="FileInput" id="FileInputTable<?php echo $jobs[$i]['Job']['id']; ?>" type="file" />
+                        <input type="submit"  id="submit-btn" value="Upload" class="submitform" formid ="#MyUploadFormTable<?php echo $jobs[$i]['Job']['id']; ?> " target="#outputtable<?php echo $jobs[$i]['Job']['id']; ?>" input="FileInputTable<?php echo $jobs[$i]['Job']['id']; ?>"/>
+                        <input type="hidden" name="job" value="<?php echo $jobs[$i]['Job']['id']; ?>">
+                          <!--<img src="images/ajax-loader.gif" id="loading-img" style="display:none;" alt="Please Wait"/>-->
+                    </form>
+                        <div id="progressbox" ><div id="progressbar"></div ><div id="statustxt">0%</div></div>
+                        <div id="outputtable<?php echo $jobs[$i]['Job']['id']; ?>"></div>
                 </div>
+
+                <?php if ($jobs[$i]['Job']['aplicado'] == 1) { ?>
+                  <div class="buttons-field applybtns infobox">
+                    <p style="padding:10px" class="infobox">Ya has aplicado a &eacute;sta oferta de empleo.</p>
+                  </div>  
+                <?php }else{ ?>
+                    <div class="buttons-field applybtns">
+                      <div class="apply"><a class="esen" style="cursor:pointer" div="infocontactotableesen<?php echo $jobs[$i]['Job']['id']; ?>" job="<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar con ESEN</a></div>
+                      <div class="full"><a class="directamente" style="cursor:pointer" div="infocontactotable<?php echo $jobs[$i]['Job']['id']; ?>" job="<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar directamente</a></div>
+                    </div>
+                <?php }  ?>
               </div>
             </div>
             <?php } ?>
@@ -626,13 +688,13 @@ echo $this->Elements->Menu($menu, 'Empleos');
           <div class="pager">
             <ul>
             <?php 
-            echo $this->Paginator->prev('<a></a>', array('tag'=>'li', 'escape' => false), null, array('class' => 'prev noactive','tag'=>'li','escape' => false));
+            echo $this->Paginator->prev('', array('tag'=>'li', 'escape' => false), null, array('class' => 'prev noactive','tag'=>'li','escape' => false));
             echo $this->Paginator->numbers(array(
                 'separator' => '',
                 'currentClass' => 'active',
                 'tag' => 'li',
             ));
-            echo $this->Paginator->next('', array('tag'=>'li'), null, array('class' => 'next disabled noactive','tag'=>'li')); 
+            echo $this->Paginator->next('', array('tag'=>'li'), null, array('class' => 'next noactive','tag'=>'li')); 
             ?>
             </ul>
           </div>
@@ -649,3 +711,169 @@ echo $this->Elements->Menu($menu, 'Empleos');
   </div>
 </div>
 <!-- /Content --> 
+
+<script>
+$('.directamente').click(function(event) {
+  /* Act on the event */
+  var userid = '<?php echo $current_user["id"]; ?>';
+  var jobid  = $(this).attr('job');
+  var div    = $(this).attr('div');
+  console.log(userid);
+  $.ajax({
+    url: '<?php echo $this->webroot; ?>Users/applydirectly',
+    type: 'POST',
+    data: {id: userid, job: jobid},
+  })
+  .done(function(response) {
+    $('.'+div).html(response);
+    //console.log(response);
+  })
+  .fail(function() {
+    console.log("error");
+  })
+  .always(function() {
+    console.log("complete");
+  });
+  
+});
+
+</script>
+
+<script>
+$('.esen').click(function(event) {
+  /* Act on the event */
+  var userid = '<?php echo $current_user["id"]; ?>';
+  var jobid  = $(this).attr('job');
+  var div    = $(this).attr('div');
+  $('.'+div).show();
+});
+
+</script>
+
+<script>
+$('.submitesen').click(function(event) {
+  /* Act on the event */
+  event.preventDefault();
+  var idform = $(this).attr('formid');
+  console.log($("form").serialize());
+});
+
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() { 
+
+
+$('.submitform').click(function(event) {
+  //event.preventDefault();
+  var form   = $(this).attr('formid');
+  var target = $(this).attr('target');
+  var input  = $(this).attr('input');
+
+  var options = { 
+      target:   target,   // target element(s) to be updated with server response 
+      beforeSubmit:  beforeSubmit(target, input),  // pre-submit callback 
+      success:       afterSuccess,  // post-submit callback 
+      uploadProgress: OnProgress, //upload progress callback 
+      resetForm: true        // reset the form after successful submit 
+    }; 
+
+  $(form).submit(function() { 
+      $(this).ajaxSubmit(options);        
+      // always return false to prevent standard browser submit and page navigation 
+      return false; 
+    }); 
+
+});
+
+ 
+
+//function after succesful file upload (when server response)
+function afterSuccess()
+{
+  $('#submit-btn').show(); //hide submit button
+  $('#loading-img').hide(); //hide submit button
+  $('#progressbox').delay( 1000 ).fadeOut(); //hide progress bar
+
+}
+
+//function to check file size before uploading.
+function beforeSubmit(target, input){
+    //check whether browser fully supports all File API
+   if (window.File && window.FileReader && window.FileList && window.Blob)
+  {
+    
+    if( !$(input).val()) //check empty input filed
+    {
+      $(target).html("Debes de ingresar tu CV para aplicar");
+      return false
+    }
+    
+    var fsize = $(input)[0].files[0].size; //get file size
+    var ftype = $(input)[0].files[0].type; // get file type
+    
+
+    //allow file types 
+    switch(ftype)
+        {
+      /*case 'image/png': 
+      case 'image/gif': 
+      case 'image/jpeg': 
+      case 'image/pjpeg':
+      case 'text/plain':
+      case 'text/html':
+      case 'application/x-zip-compressed':*/
+      case 'application/pdf':
+      case 'application/msword':
+      case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+      /*case 'application/vnd.ms-excel':
+      case 'video/mp4':*/
+                break;
+            default:
+                $(target).html("<b>"+ftype+"</b> extensión no soportada!");
+        return false
+        }
+    
+    //Allowed file size is less than 5 MB (1048576)
+    if(fsize>5242880) 
+    {
+      $(target).html("<b>"+bytesToSize(fsize) +"</b> Archivo demasiado grande! <br />Utilizar un archivo de menos de 5MB.");
+      return false
+    }
+        
+    $('#submit-btn').hide(); //hide submit button
+    $('#loading-img').show(); //hide submit button
+    $(target).html("");  
+  }
+  else
+  {
+    //Output error to older unsupported browsers that doesn't support HTML5 File API
+    $(target).html("Please upgrade your browser, because your current browser lacks some new features we need!");
+    return false;
+  }
+}
+
+//progress bar function
+function OnProgress(event, position, total, percentComplete)
+{
+    //Progress bar
+  $('#progressbox').show();
+    $('#progressbar').width(percentComplete + '%') //update progressbar percent complete
+    $('#statustxt').html(percentComplete + '%'); //update status text
+    if(percentComplete>50)
+        {
+            $('#statustxt').css('color','#000'); //change status text to white after 50%
+        }
+}
+
+//function to format bites bit.ly/19yoIPO
+function bytesToSize(bytes) {
+   var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+   if (bytes == 0) return '0 Bytes';
+   var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+   return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+}
+
+}); 
+
+</script>

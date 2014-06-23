@@ -1,3 +1,6 @@
+<?php 
+$meses     = array('Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Nov', 'Dic');
+?>
 <script>
 $(document).ready(function() {
   $("li.active").wrapInner("<a href='#'></a>");
@@ -8,7 +11,7 @@ $(document).ready(function() {
 </script>
 <style>
   span.next a{
-    background: url("images/pager-sprite.png") no-repeat scroll -19px 0px rgb(230, 230, 230);
+    background: url("/images/pager-sprite.png") no-repeat scroll -19px 0px rgb(230, 230, 230);
     background: none repeat scroll 0 0 #E6E6E6;
     box-shadow: 0 3px 0 0 #CCCCCC;
     border-radius: 3px 3px 3px 3px;
@@ -24,9 +27,12 @@ $(document).ready(function() {
     -webkit-border-radius: 3px 3px 3px 3px;
   }
 
-
+.infobox {
+   color: #4F8A10 !important;
+   background-color:#EDFCED !important;
+   padding:10px !important;
+  }
 </style>
-
 <?php
 $menu = array('Inicio'=>'Inicio','Empleos'=>'Empleos','Empresas'=>'Empresas','Contáctanos'=>'Contactanos');
 echo $this->Elements->Menu($menu, '#'); 
@@ -286,21 +292,14 @@ echo $this->Elements->Menu($menu, '#');
       
       <!-- Content Center -->
       <div class="content-center">
-        <div id="map-container">
+       <div id="map-container">
           <div id="job-page-map" class="map"></div>
           <div class="hide-map-button"><span>Hide Map</span></div>
           <div class="show-map-button"><span>Show Map</span></div>
           <ul class="map-markers">
-            <li class ="marker1">New York City, United States</li>
-            <li class ="marker2">Brooklyn, United States</li>
-            <li class ="marker3">Newark, United States</li>
-            <li class ="marker4">Queens, United States</li>
-            <li class ="marker5">Bayonne, United States</li>
-            <li class ="marker6">Mineola, United States</li>
-            <li class ="marker7">Kearny, United States</li>
-            <li class ="marker8">Secaucus, United States</li>
-            <li class ="marker9">Bronx, United States</li>
-            <li class ="marker10">Linden, United States</li>
+            <li class ="marker1">San Salvador, El Salvador</li>
+            <li class ="marker2">San Miguel, El Salvador</li>
+            <li class ="marker3">Santa Ana, El Salvador</li>
           </ul>
         </div>
         <div class="clear"></div>
@@ -343,24 +342,26 @@ echo $this->Elements->Menu($menu, '#');
               <div class="nav-buttons">
                 <ul>
                   <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
                   <li class="link"><a href="<?php echo $this->webroot; ?>jobs/<?php echo $jobs[$i]['Job']['id']; ?>"></a></li>
+                  <li class="favorite <?php echo($jobs[$i]['Job']['aplicado'] == 1) ? 'aplicado':'';?>"><a href="#" style="cursor:default !important"></a></li>
                 </ul>
               </div>
               <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
-                <div class="title-company">
-                  <div class="title"><a href="job.html"><?php echo $jobs[$i]['Job']['name']; ?></a></div>
-                  <div class="company"><?php echo $jobs[$i]['Company']['name']; ?> - <?php echo $jobs[$i]['City']['name'].', '.$jobs[$i]['Country']['name']; ?></div>
+                <?php $timestamp = strtotime($jobs[$i]['Job']['created']); ?>
+                <div class="date">
+                  <?php  echo date("d", $timestamp); ?>
+                  <span><?php echo $meses[date('n', $timestamp)-1]; ?> </span>
                 </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
+                <div class="title-company">
+                  <div class="title">
+                    <a href="<?php echo $this->webroot; ?>Empleos/descripcion/<?php echo $jobs[$i]['Job']['id']; ?>">
+                      <?php echo $jobs[$i]['Job']['name']; ?>
+                    </a>
+                  </div>
+                  <div class="company">
+                    <?php echo $jobs[$i]['Company']['name']; ?> - <?php echo $jobs[$i]['City']['name'].', '.$jobs[$i]['Country']['name']; ?>
+                  </div>
+                </div>
               </div>
               <div class="body-field">
                 <div class="teaser">
@@ -419,47 +420,61 @@ echo $this->Elements->Menu($menu, '#');
                       <!-- /Cleaner --> 
                     </div>
                   </div>
-                  <?php echo "aca la condicional"; ?>
+                  <?php if($total > 3){ ?>
+                        <div class="block">
+                          <h4>Requerimientos Adicionales</h4>
+                          <div class="block-content">
+                                <?php for ($x=3; $x < count($pieces) ; $x++) { ?>
+                                  <div class = "tag-field"><?php echo $pieces[$x]; ?></div>
+                                <?php } ?>
+                          </div>
+                          <!-- Cleaner -->
+                          <div class="clear"></div>
+                          <!-- /Cleaner --> 
+                        </div>
+                  <?php } ?>
                 </div>
                 <?php } 
                 //debug($jobs);
                 ?>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="<?php echo $this->webroot; ?>users/apply/<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar</a></div>
-                  <div class="full"><a href="<?php echo $this->webroot; ?>users/apply/<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar</a></div>
-                </div>
+                <div class="infocontactolist<?php echo $jobs[$i]['Job']['id']; ?>"></div>
+                <?php if ($jobs[$i]['Job']['aplicado'] == 1) { ?>
+                  <div class="buttons-field applybtns infobox">
+                    <p style="padding:10px" class="infobox">Ya has aplicado a &eacute;sta oferta de empleo.</p>
+                  </div>  
+                <?php }else{ ?>
+                    <div class="buttons-field applybtns">
+                      <div class="apply"><a href="<?php echo $this->webroot; ?>users/apply/<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar con ESEN</a></div>
+                      <div class="full"><a style="cursor:pointer" class="directamente" div="infocontactolist<?php echo $jobs[$i]['Job']['id']; ?>" job="<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar directamente</a></div>
+                    </div>
+                <?php }  ?>
               </div>
             </div>
-  
-            <?php
-            }
-            ?>
+            <?php } ?>
           </div>
           <div id="cells" class="view_mode" style="display: none;">
-            <?php for ($i=0; $i < count($jobs) ; $i++) { ?>
+            <?php for ($i=0; $i < count($jobs); $i++) { ?>
             <div class="field-container odd box-1">
               <div class="nav-buttons">
                 <ul>
                   <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
+                  <li class="link"><a href="<?php echo $this->webroot; ?>jobs/<?php echo $jobs[$i]['Job']['id']; ?>"></a></li>
+                  <li class="favorite <?php echo($jobs[$i]['Job']['aplicado'] == 1) ? 'aplicado':'';?>"><a href="#" style="cursor:default !important"></a></li>
                 </ul>
               </div>
               <div class="cells-job-thumb"> <img src="<?php echo $this->webroot; ?>images/job-thumb.jpg"  alt=""/> </div>
               <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
+                <?php
+                $timestamp = strtotime($jobs[$i]['Job']['created']);
+                ?>
+                <div class="date">
+                  <?php  echo date("d", $timestamp); ?>
+                  <span><?php echo $meses[date('n', $timestamp)-1]; ?> </span>
+                </div>
                 <div class="title-company">
                   <div class="title"><a href="job.html"><?php echo $jobs[$i]['Job']['name']; ?></a></div>
                   <div class="company"><?php echo $jobs[$i]['Company']['name']; ?> - <?php echo $jobs[$i]['City']['name'].', '.$jobs[$i]['Country']['name']; ?></div>
                 </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
               </div>
               <div class="body-field">
                 <div class="teaser">
@@ -516,47 +531,65 @@ echo $this->Elements->Menu($menu, '#');
                       <!-- /Cleaner --> 
                     </div>
                   </div>
-                    <?php echo "aca la condicional 501"; ?>
+                     <?php if($total > 3){ ?>
+                        <div class="block">
+                          <h4>Requerimientos Adicionales</h4>
+                          <div class="block-content">
+                                <?php for ($x=3; $x < count($pieces) ; $x++) { ?>
+                                  <div class = "tag-field"><?php echo $pieces[$x]; ?></div>
+                                <?php } ?>
+                          </div>
+                          <!-- Cleaner -->
+                          <div class="clear"></div>
+                          <!-- /Cleaner --> 
+                        </div>
+                  <?php } ?>
                 </div>
+                <div class="infocontactocell<?php echo $jobs[$i]['Job']['id']; ?>"></div>
                 <?php } ?>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="<?php echo $this->webroot; ?>users/apply/<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar</a></div>
-                  <div class="full"><a href="<?php echo $this->webroot; ?>users/apply/<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar</a></div>
-                </div>
+                <?php if ($jobs[$i]['Job']['aplicado'] == 1) { ?>
+                  <div class="buttons-field applybtns infobox">
+                    <p style="padding:10px" class="infobox">Ya has aplicado a &eacute;sta oferta de empleo.</p>
+                  </div>  
+                <?php }else{ ?>
+                    <div class="buttons-field applybtns">
+                      <div class="apply"><a href="<?php echo $this->webroot; ?>users/apply/<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar con ESEN</a></div>
+                       <div class="full"><a style="cursor:pointer" class="directamente" div="infocontactocell<?php echo $jobs[$i]['Job']['id']; ?>" job="<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar directamente</a></div>
+                    </div>
+                <?php }  ?>
               </div>
             </div>
             <?php } ?>
-
           </div>
           <div id="table" class="view_mode"  style="display: none;">
-            <?php for ($i=0; $i < count($jobs) ; $i++) { ?>
-            <div  class="field-container odd box-1">
+            <?php for ($i=0; $i < count($jobs); $i++) { ?>
+           <div  class="field-container odd box-1">
               <div class="nav-buttons">
                 <ul>
                   <li class="show-hide"><a></a></li>
-                  <li class="favorite"><a href="#"></a></li>
-                  <li class="link"><a href="job.html"></a></li>
+                  <li class="link"><a href="<?php echo $this->webroot; ?>jobs/<?php echo $jobs[$i]['Job']['id']; ?>"></a></li>
+                  <li class="favorite <?php echo($jobs[$i]['Job']['aplicado'] == 1) ? 'aplicado':'';?>"><a href="#" style="cursor:default !important"></a></li>
                 </ul>
               </div>
               <div class="header-fields">
-                <div class="date">27<span>Jun</span></div>
+                <?php
+                $timestamp = strtotime($jobs[$i]['Job']['created']);
+                ?>
+                <div class="date">
+                  <?php  echo date("d", $timestamp); ?>
+                  <span><?php echo $meses[date('n', $timestamp)-1]; ?> </span>
+                </div>
                 <div class="title-company">
-                   <div class="title"><a href="job.html"><?php echo $jobs[$i]['Job']['name']; ?></a></div>
+                  <div class="title"><a href="job.html"><?php echo $jobs[$i]['Job']['name']; ?></a></div>
                   <div class="company"><?php echo $jobs[$i]['Company']['name']; ?> - <?php echo $jobs[$i]['City']['name'].', '.$jobs[$i]['Country']['name']; ?></div>
                 </div>
-                <ul class="social_media_icons job">
-                  <li> <a href="#"> <i class="fa fa-facebook"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-google-plus"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-twitter"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-linkedin-square"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-pinterest"></i> </a> </li>
-                  <li> <a href="#"> <i class="fa fa-dribbble"></i> </a> </li>
-                </ul>
               </div>
               <div class="body-field">
                 <div class="teaser">
-                 <?php echo htmlspecialchars_decode($jobs[$i]['Job']['content']); ?>
+                 <p>
+                    <?php echo htmlspecialchars_decode($jobs[$i]['Job']['content']); ?>
                     <span class="read-more"><a>Read More</a></span>
+                  </p>
                 </div>
                 <div class="full-body">
                   <p><?php echo htmlspecialchars_decode($jobs[$i]['Job']['content']); ?></p>
@@ -571,7 +604,7 @@ echo $this->Elements->Menu($menu, '#');
                   <li class="pull-right">Experiencia: <span><?php echo $jobs[$i]['Experience'][0]['name']; ?></span></li>
                   <?php } ?>
                 </ul>
-                <?php
+                 <?php
                 if (isset($jobs[$i]['Job']['skills']) && strlen(trim($jobs[$i]['Job']['skills'])) > 0) {
                   $pieces = explode(",", $jobs[$i]['Job']['skills']);
                   $total  = count($pieces);
@@ -581,22 +614,22 @@ echo $this->Elements->Menu($menu, '#');
                     <h4>Habilidades</h4>
                     <div class="block-content">
                       <?php if ($total <= 3){ ?>
-                        <?php for ($i=0; $i < count($pieces); $i++) { ?>
+                        <?php for ($h=0; $h < count($pieces); $h++) { ?>
                           <div class = "field roll-with-description hide">
                             <div class = "roll-button"><span></span></div>
                             <div class = "roll-field">
-                              <div class = "label"><?php echo $pieces[$i]; ?></div>
+                              <div class = "label"><?php echo $pieces[$h]; ?></div>
                               <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
                               <div class = "description">...</div>
                             </div>
                           </div>
                         <?php } ?>
                       <?php }else{ ?>
-                        <?php for ($i=0; $i < 3; $i++) { ?>
+                        <?php for ($b=0; $b < 3; $b++) { ?>
                           <div class = "field roll-with-description hide">
                               <div class = "roll-button"><span></span></div>
                               <div class = "roll-field">
-                                <div class = "label"><?php echo $pieces[$i]; ?></div>
+                                <div class = "label"><?php echo $pieces[$b]; ?></div>
                                 <div class = "progressbar"><span class = "progress-count" data-level = "100"></span></div>
                                 <div class = "description">...</div>
                               </div>
@@ -611,11 +644,11 @@ echo $this->Elements->Menu($menu, '#');
                   </div>
                   <?php if($total > 3){ ?>
                         <div class="block">
-                          <h4>Additional Requirements</h4>
+                          <h4>Requerimientos Adicionales</h4>
                           <div class="block-content">
-                            <?php for ($i=3; $i < count($pieces) ; $i++) { ?>
-                                <div class = "tag-field"><?php echo $pieces[$i]; ?></div>
-                            <?php } ?>
+                                <?php for ($x=3; $x < count($pieces) ; $x++) { ?>
+                                  <div class = "tag-field"><?php echo $pieces[$x]; ?></div>
+                                <?php } ?>
                           </div>
                           <!-- Cleaner -->
                           <div class="clear"></div>
@@ -624,10 +657,17 @@ echo $this->Elements->Menu($menu, '#');
                   <?php } ?>
                 </div>
                 <?php } ?>
-                <div class="buttons-field applybtns">
-                  <div class="apply"><a href="<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar</a></div>
-                  <div class="full"><a href="#">Aplicar</a></div>
-                </div>
+                <div class="infocontactotable<?php echo $jobs[$i]['Job']['id']; ?>"></div>
+                <?php if ($jobs[$i]['Job']['aplicado'] == 1) { ?>
+                  <div class="buttons-field applybtns infobox">
+                    <p style="padding:10px" class="infobox">Ya has aplicado a &eacute;sta oferta de empleo.</p>
+                  </div>  
+                <?php }else{ ?>
+                    <div class="buttons-field applybtns">
+                      <div class="apply"><a href="<?php echo $this->webroot; ?>users/apply/<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar con ESEN</a></div>
+                      <div class="full"><a class="directamente" style="cursor:pointer" div="infocontactotable<?php echo $jobs[$i]['Job']['id']; ?>" job="<?php echo $jobs[$i]['Job']['id']; ?>">Aplicar directamente</a></div>
+                    </div>
+                <?php }  ?>
               </div>
             </div>
             <?php } ?>
@@ -667,3 +707,31 @@ echo $this->Elements->Menu($menu, '#');
   </div>
 </div>
 <!-- /Content --> 
+
+
+<script>
+$('.directamente').click(function(event) {
+  /* Act on the event */
+  var userid = '<?php echo $current_user["id"]; ?>';
+  var jobid  = $(this).attr('job');
+  var div    = $(this).attr('div');
+  console.log(userid);
+  $.ajax({
+    url: '<?php echo $this->webroot; ?>Users/applydirectly',
+    type: 'POST',
+    data: {id: userid, job: jobid},
+  })
+  .done(function(response) {
+    $('.'+div).html(response);
+    //console.log(response);
+  })
+  .fail(function() {
+    console.log("error");
+  })
+  .always(function() {
+    console.log("complete");
+  });
+  
+});
+
+</script>
