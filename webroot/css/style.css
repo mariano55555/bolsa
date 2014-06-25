@@ -96,7 +96,8 @@ a.scrollTop { bottom: 0px; display: block; right: 0px; position: fixed; z-index:
 a.scrollTop div#up_container { padding: 20px; }
 a.scrollTop div#up_container span { display: block; height: 30px; width: 30px; background: url("../images/arrow-top.png") no-repeat scroll center center rgb(102, 102, 102); border: 2px solid rgb(229, 229, 229); border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; box-shadow: 0px 0px 15px rgb(204, 204, 204); -moz-box-shadow: 0px 0px 15px rgb(204, 204, 204); -webkit-box-shadow: 0px 0px 15px rgb(204, 204, 204); }
 a.scrollTop:hover div#up_container span { background: url("../images/arrow-top.png") no-repeat scroll center center rgb(52, 52, 52); border: 2px solid rgb(102, 102, 102); }
-div#bar { height: 30px; background: none repeat scroll 0% 0% rgb(77, 77, 77); }
+/*div#bar { height: 30px; background: none repeat scroll 0% 0% rgb(77, 77, 77); }*/
+div#bar { height: 30px; background: none repeat scroll 0% 0% #11488b; }
 /*--------------------------------
    Language Menu
 ----------------------------------
@@ -152,7 +153,10 @@ form#search-form input[type="submit"]:hover { background: none repeat scroll 0% 
 ----------------------------------
 */
 div.panel { margin: 20px 0px 0px; }
+
+/*div#title { height: 80px; -moz-box-shadow: 0px 0px 17px -3px #111111 inset; -webkit-box-shadow: 0px 0px 17px -3px #111111 inset; box-shadow: 0px 0px 17px -3px #111111 inset; background: none repeat scroll 0% 0% rgb(77, 77, 77); }*/
 div#title { height: 80px; -moz-box-shadow: 0px 0px 17px -3px #111111 inset; -webkit-box-shadow: 0px 0px 17px -3px #111111 inset; box-shadow: 0px 0px 17px -3px #111111 inset; background: none repeat scroll 0% 0% rgb(77, 77, 77); }
+
 div.content-inner { margin: 40px 0px 40px; }
 div.content-center { float: left; width: 620px; }
 div.content-center.border { border: 2px solid rgb(229, 229, 229); width: 536px; padding: 40px; }
@@ -194,7 +198,11 @@ div#search-job.panel div.panel-block > div { display: none; color: rgb(255, 255,
 div#search-job.panel div.panel-block:hover > div { display: block; }
 div#search-job.panel div.panel-block > div a.read-more { width: 100px; height: 40px; display: inline-block; line-height: 40px; text-align: center; background: none repeat scroll 0% 0% rgb(0, 198, 255); border-radius: 3px 3px 3px 3px; -moz-border-radius: 3px 3px 3px 3px; -webkit-border-radius: 3px 3px 3px 3px; margin-top: 15px; font-weight: bold; }
 div#search-job.panel div.panel-block > div a.read-more:hover { color: rgb(0, 198, 255); background: none repeat scroll 0% 0% rgb(255, 255, 255); }
+
 .header-banner {; background: none repeat scroll 0% 0% rgb(78, 78, 78); position: relative; padding: 20px 0px 0px; float: left; width: 100%; -moz-box-shadow: 0px 0px 17px -3px #111111 inset; -webkit-box-shadow: 0px 0px 17px -3px #111111 inset; box-shadow: 0px 0px 17px -3px #111111 inset; }
+.header-banner {background-color: #bfaa67; /*background: none repeat scroll 0% 0% rgb(78, 78, 78);*/ position: relative; padding: 20px 0px 0px; float: left; width: 100%; -moz-box-shadow: 0px 0px 17px -3px #111111 inset; -webkit-box-shadow: 0px 0px 17px -3px #111111 inset; box-shadow: 0px 0px 17px -3px #111111 inset; }
+/*.header-banner {background-color: #bfaa67}*/
+
 div#find-job .first_man { background: url("../images/panel-3-bg.jpg") no-repeat scroll left center transparent; }
 div#find-job div.inner.first { background: url("../content/man-2.png") no-repeat scroll left center transparent; text-align: right; position: relative; }
 div#find-job .first_man div.text { width: 100%; }
@@ -215,8 +223,9 @@ div#login-panel > div > div:first-child { z-index: 40; }
 div#login-panel div.left { float: left; margin-right: 20px; }
 div#login-panel div.right { float: right; }
 div#login-panel div.first { border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px; position: relative; }
-div#login-panel div.left div.first { background: url("../content/login-find-job-br.png") no-repeat scroll center center rgb(242, 242, 242); border-bottom: 3px solid #CECECE; }
-div#login-panel div.right div.first { background: url("../content/login-post-job-br.png") no-repeat scroll center center rgb(242, 242, 242); border-bottom: 3px solid #CECECE; }
+/*div#login-panel div.left div.first { background: url("../content/login-find-job-br.png") no-repeat scroll center center rgb(242, 242, 242); border-bottom: 3px solid #CECECE; }*/
+div#login-panel div.left div.first { background: url("../img/cuadro1.png") no-repeat scroll center center rgb(242, 242, 242); border-bottom: 3px solid #CECECE; }
+div#login-panel div.right div.first { background: url("../img/div2.png") no-repeat scroll center center rgb(242, 242, 242); border-bottom: 3px solid #CECECE; }
 div#login-panel div.left div.first div.counter { position: absolute; right: 40px; top: 40px; }
 div#login-panel div.left div.first div.counter ul#counter { height: 42px; padding: 0px 6px; }
 div#login-panel div.left div.first div.counter ul#counter li { display: block; float: left; height: 42px; line-height: 42px; width: 28px; background: url("../images/counter.png") no-repeat scroll center center transparent; margin-left: 2px; text-align: center; font-size: 26px; color: rgb(52, 52, 52); }
@@ -276,7 +285,7 @@ div#video iframe, div#video div.block-content { width: 260px; height: 150px; }
    Social Media Icons
 ----------------------------------
 */
-div#social-like div.block-content { clear: both; height: 84px; }
+div#social-like div.block-content { clear: both; height: 184px; }
 div#social-like div.social-like { float: left; width: 60px; position: relative; margin-top: 54px; }
 div#social-like div.social-like span { position: absolute; top: -54px; width: 60px; height: 48px; background: url("../images/like-container.png") no-repeat scroll center top transparent; text-align: center; line-height: 42px; font-size: 18px; font-weight: bold; }
 div#social-like div.social-like.linkedin, div#social-like div.social-like.motibu { margin-right: 7px; }
@@ -309,10 +318,10 @@ div#partners span.our-partner { width: 185px; height: 80px; display: block; floa
 */
 div#explore { height: 610px; }
 div#explore div.block-content > div { height: 564px; }
-div#explore ul.tabs { border-bottom: 3px solid #30AFDF; clear: both; height: 39px; }
+div#explore ul.tabs { border-bottom: 3px solid #11488b; clear: both; height: 39px; }
 div#explore ul.tabs li { display: block; float: left; }
 div#explore ul.tabs li a { background: url("../images/tab-normal.jpg") repeat-x scroll 0 0 rgba(0, 0, 0, 0); display: block; height: 40px; line-height: 40px; margin-right: 2px; text-align: center; width: 110px; }
-div#explore ul.tabs li.active a { background: url("../images/tab-hover.jpg") repeat-x scroll 0 0 rgba(0, 0, 0, 0); color: #FFFFFF; }
+div#explore ul.tabs li.active a { background: url("../images/tab-hover.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0); color: #FFFFFF; }
 div#explore ul.tabs li.first a { border-radius: 5px 0px 0px 0px; -moz-border-radius: 5px 0px 0px 0px; -webkit-border-radius: 5px 0px 0px 0px; }
 div#explore ul.tabs li.last a { border-radius: 0px 5px 0px 0px; -moz-border-radius: 0px 5px 0px 0px; -webkit-border-radius: 0px 5px 0px 0px; }
 div#explore div.map-container { height: 300px; background: url("../images/map.png") no-repeat scroll center center transparent; }

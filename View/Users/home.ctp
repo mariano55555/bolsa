@@ -11,20 +11,20 @@ echo $this->Elements->Menu($menu, 'Inicio');
     <div class="inner">
         <!-- Panel 3 -->
         <div id="login-panel">
-          <div class="left" style ="width: 100%">
+          <div class="left">
             <div class="first">
               <div class="counter">
                 <ul id="counter">
                   <li class="unvis">0</li>
-                  <li>7</li>
+                  <li>0</li>
                   <li class="border"></li>
-                  <li>9</li>
-                  <li>4</li>
+                  <li>1</li>
+                  <li>2</li>
                   <li>5</li>
                 </ul>
-                <div class="counter-label">Jobs</div>
+                <div class="counter-label">Empleos</div>
               </div>
-              <div id="find-job-buttom"><a>Register Now</a></div>
+              <!--<div id="find-job-buttom"><a>Register Now</a></div>-->
             </div>
             <div class="second">
               <div class="form">
@@ -32,6 +32,21 @@ echo $this->Elements->Menu($menu, 'Inicio');
                   <input type="text" placeholder="Email" class="textfield"/>
                   <input type="password" placeholder="Password" class="textfield"/>
                   <input type="submit" value="Sign In" id="login-submit-1"/>
+                </form>
+                 </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="first">
+              <!--<div class="badge"></div>-->
+              <!--<div id="post-job-buttom"><a>Post a Job</a></div>-->
+            </div>
+            <div class="second">
+              <div class="form">
+                <form id="login-2" action="http://uouapps.com/careers/index.html">
+                  <input type="text" placeholder="Email" class="textfield"/>
+                  <input type="password" placeholder="Password" class="textfield"/>
+                  <input type="submit" value="Sign In" id="login-submit-2"/>
                 </form>
                  </div>
             </div>
@@ -294,22 +309,34 @@ echo $this->Elements->Menu($menu, 'Inicio');
           <div class="block-content box-1">
             <section class="row-fluid">
               <ul class="partner-list span4">
-                <li><a href="#"><img src="<?php echo $this->webroot; ?>images/client-logo.png"  alt=""/></a></li>
-                <li><a href="#"><img src="<?php echo $this->webroot; ?>images/client-logo.png"  alt=""/></a></li>
-                <li><a href="#"><img src="<?php echo $this->webroot; ?>images/client-logo.png"  alt=""/></a></li>
-                <li><a href="#"><img src="<?php echo $this->webroot; ?>images/client-logo.png"  alt=""/></a></li>
+              <?php 
+              $i = 0;
+                foreach ($empresas as $key => $value) {  
+                  if ($i <= 7) { ?>
+                    <li><?php echo $this->Image->ImageCompany($value, $this->webroot.'/Empresas/perfil/'.$key) ?></li> 
+        <?php     }
+                  $i++;
+                 }   ?>
               </ul>
               <ul class="partner-list span4">
-                <li><a href="#"><img src="<?php echo $this->webroot; ?>images/client-logo.png"  alt=""/></a></li>
-                <li><a href="#"><img src="<?php echo $this->webroot; ?>images/client-logo.png"  alt=""/></a></li>
-                <li><a href="#"><img src="<?php echo $this->webroot; ?>images/client-logo.png"  alt=""/></a></li>
-                <li><a href="#"><img src="<?php echo $this->webroot; ?>images/client-logo.png"  alt=""/></a></li>
+                <?php 
+              $a = 0;
+                foreach ($empresas as $key => $value) {  
+                  if ($a >=8 && $a <= 15) { ?>
+                    <li><?php echo $this->Image->ImageCompany($value, $this->webroot.'/Empresas/perfil/'.$key) ?></li> 
+        <?php     }
+                  $a++;
+                 }   ?>
               </ul>
               <ul class="partner-list span4">
-                <li><a href="#"><img src="<?php echo $this->webroot; ?>images/client-logo.png"  alt=""/></a></li>
-                <li><a href="#"><img src="<?php echo $this->webroot; ?>images/client-logo.png"  alt=""/></a></li>
-                <li><a href="#"><img src="<?php echo $this->webroot; ?>images/client-logo.png"  alt=""/></a></li>
-                <li><a href="#"><img src="<?php echo $this->webroot; ?>images/client-logo.png"  alt=""/></a></li>
+              <?php 
+              $a = 0;
+                foreach ($empresas as $key => $value) {  
+                  if ($a >=16 && $a <= 24) { ?>
+                    <li><?php echo $this->Image->ImageCompany($value, $this->webroot.'/Empresas/perfil/'.$key) ?></li> 
+        <?php     }
+                  $a++;
+                 }   ?>
               </ul>
             </section>
           </div>
@@ -317,7 +344,7 @@ echo $this->Elements->Menu($menu, 'Inicio');
         <!--Partners Block--> 
         <div class="clear"></div>
         <!--Price Table Block-->
-        <div class="heading-l">
+        <!--<div class="heading-l">
           <h2> Our Prices </h2>
         </div>
         <div class="block-content ">
@@ -350,7 +377,7 @@ echo $this->Elements->Menu($menu, 'Inicio');
               <li><a class="btn blue" href="#">Choose</a></li>
             </ul>
           </section>
-        </div>
+        </div>-->
         
         <!--Price Table Block--> 
         
@@ -360,12 +387,17 @@ echo $this->Elements->Menu($menu, 'Inicio');
       <!-- Content Right -->
       <div class="content-right">
         <div id="social-like" class="block background">
-          <h2 class="title-1">Share Us With Your Friends</h2>
+          <h2 class="title-1">FRASE</h2>
           <div class="block-content">
-            <div class="social-like linkedin"><a class="like-button" href="#">LinkedIn</a><span class="count">500</span></div>
-            <div class="social-like motibu"><a class="like-button" href="#">Motibu</a><span class="count">2.7K</span></div>
-            <div class="social-like facebook"><a class="like-button" href="#">Facebook</a><span class="count">1.3K</span></div>
-            <div class="social-like twitter"><a class="like-button" href="#">Twitter</a><span class="count">868</span></div>
+          <blockquote>
+            <p ><span>"</span>Los sueños son sumamente importantes. Nada se hace sin que antes se imagine.
+               Sueña tu vida y vive tu sueño<span>"</span>.</p>
+            <footer>
+              <p style="font: 0.625em/1.4em 'HelveticaNeue-Regular', 'Helvetica', Helvetica, Arial, sans-serif;color: #333;text-align:right">
+                <span>— Juan Sebastián Celis Maya<br/>— George Lucas</span>
+              </p>
+            </footer> 
+          </blockquote>
           </div>
         </div>
         <div id="advertising" class="block border">
@@ -376,14 +408,14 @@ echo $this->Elements->Menu($menu, 'Inicio');
         
         </div>
         <div id="poll" class="block background">
-          <h2 class="title-1">5 Tips to pass your interview!</h2>
+          <h2 class="title-1">Titulo sobre el video</h2>
           <!--<iframe width="260" height="150" src="https://www.youtube.com/watch?v=SpbMt7ehgeo" frameborder="0" allowfullscreen></iframe>-->
           <video width="280" height="190" controls>
             <source src="<?php echo $this->webroot; ?>video/intro.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
           <!--<div class="ad-wrapper"> <img src="<?php echo $this->webroot; ?>images/sb-video.jpg"  alt="sb-video"/> </div>-->
-          <h2 class="title-1">The Poll</h2>
+          <!--<h2 class="title-1">The Poll</h2>
           <div class="block-content">
             <form id="poll-form" action="http://uouapps.com/careers/index.html">
               <ul id="radio-checkbox-list">
@@ -410,35 +442,31 @@ echo $this->Elements->Menu($menu, 'Inicio');
               </ul>
               <button class="btn blue">Vote Now</button>
             </form>
-          </div>
+          </div>-->
         </div>
         <div id="google" class="block">
-          <div class="block_title"> Ads by Google </div>
+          <div class="block_title"> Enlaces de Inter&eacute;s </div>
           <div class="block_content">
             <div class="one_ad">
-              <div class="title"> Find Your Dream Job With Career </div>
-              <div class="text"> Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. </div>
-              <div class="link"><a href="#">example.com</a></div>
+              <div class="title"> 8 cosas que debes saber para encontrar tu primer empleo </div>
+              <div class="text"> ¿Llegó la hora de buscar tu primer empleo formal? Calma, aquí tienes la información que necesitas para hallarlo de manera exitosa. </div>
+              <div class="link"><a href="http://blog.occeducacion.com/blog/bid/299807/8-cosas-que-debes-saber-para-encontrar-tu-primer-empleo#.U6iZzpR5Oyk" target="_blank">blog.occeducacion.com</a></div>
             </div>
             <div class="one_ad">
-              <div class="title"> Find Your Dream Job With Career </div>
-              <div class="text"> Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. </div>
-              <div class="link"><a href="#">example.com</a></div>
+              <div class="title"> Consejos sobre como prepararse para una entrevista de trabajo </div>
+              <div class="text"> Presentarse a una entrevista de trabajo es una tarea que muchas veces provoca estr&eacute;s y nerviosismo, ya que es una situaci&oacute;n l&iacute;mite en la que esta en juego nuestro futuro y lo que aspiramos, que es el empleo que estamos buscando. </div>
+              <div class="link"><a href="http://trabajo.comohacerpara.com/n183/consejos-sobre-como-prepararse-para-una-entrevista-de-trabajo.html" target="_blank">http://trabajo.comohacerpara.com</a></div>
             </div>
             <div class="one_ad">
-              <div class="title"> Find Your Dream Job With Career </div>
-              <div class="text"> Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. </div>
-              <div class="link"><a href="#">example.com</a></div>
+              <div class="title"> 10 Tips para llegar preparado a una entrevista de trabajo</div>
+              <div class="text"> Prepárate para el d&iacute;a de la entrevista.<br/>
+              Este paso es uno de los m&aacute;s importantes y uno de los que más descuidados por la mayor&iacute;a de los candidatos, pues se preocupan m&aacute;s por c&oacute;mo ir vestidos y c&oacute;mo comportarse en la entrevista, qué decir y qu&eacute; no, descuidando la preparaci&oacute;n que deben hacer para que la &uacute;nica oportunidad de demostrar que son el mejor candidato no se les vaya de las manos. </div>
+              <div class="link"><a href="http://www.lucas5.com/ofertas-empleo/entrevista-trabajo8.asp" target="_blank">http://www.lucas5.com/ofertas-empleo/entrevista-trabajo8.asp</a></div>
             </div>
             <div class="one_ad">
-              <div class="title"> Find Your Dream Job With Career </div>
-              <div class="text"> Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. </div>
-              <div class="link"><a href="#">example.com</a></div>
-            </div>
-            <div class="one_ad">
-              <div class="title"> Find Your Dream Job With Career </div>
-              <div class="text"> Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. </div>
-              <div class="link"><a href="#">example.com</a></div>
+              <div class="title"> Las 3 cosas que debes saber para mejorar la productividad </div>
+              <div class="text">Cuando piensas en c&oacute;mo mejorar la productividad, una de las primeras ideas que a menudo tenemos es recurrir a t&eacute;cnicas, estrategias o sistemas o implementar nuevas herramientas. Sin embargo, mejorar tu productividad es algo un poco m&aacute;s complejo que aplicar unas cuantas t&eacute;cnicas y nada más.</div>
+              <div class="link"><a href="http://blog.davidtorne.com/es/2013/03/las-3-cosas-que-debes-saber-para-mejorar-la-productividad" target="_blank">http://blog.davidtorne.com/es/2013/03/las-3-cosas-que-debes-saber-para-mejorar-la-productividad/</a></div>
             </div>
           </div>
         </div>

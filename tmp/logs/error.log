@@ -11701,3 +11701,432 @@ Stack Trace:
 #5 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(165): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
 #6 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #7 {main}
+2014-06-23 16:53:59 Error: [MissingActionException] Action UsersController::img() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'img',
+)
+Request URL: /jobsearch/users/img/favicon.ico
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-23 17:04:43 Error: [SocketException] An attempt was made to access a socket in a way forbidden by its access permissions.
+
+Request URL: /jobsearch/Users/applyajax/2
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Network\Email\SmtpTransport.php(97): CakeSocket->connect()
+#1 C:\xampp\cakephp\lib\Cake\Network\Email\SmtpTransport.php(61): SmtpTransport->_connect()
+#2 C:\xampp\cakephp\lib\Cake\Network\Email\CakeEmail.php(1066): SmtpTransport->send(Object(CakeEmail))
+#3 C:\xampp\htdocs\jobsearch\Controller\UsersController.php(535): CakeEmail->send()
+#4 C:\xampp\htdocs\jobsearch\Controller\UsersController.php(96): UsersController->__correroaplicacionesen('Elia Xiomara Ce...', 'eliacamposg@gma...', '77290437', '20062643', 'Gerente financi...', '2', 'GDS', '20062643_124964...')
+#5 [internal function]: UsersController->applyajax('2')
+#6 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(486): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#8 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#9 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-06-23 17:08:43 Error: [SocketException] An attempt was made to access a socket in a way forbidden by its access permissions.
+
+Request URL: /jobsearch/Users/applyajax/2
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Network\Email\SmtpTransport.php(97): CakeSocket->connect()
+#1 C:\xampp\cakephp\lib\Cake\Network\Email\SmtpTransport.php(61): SmtpTransport->_connect()
+#2 C:\xampp\cakephp\lib\Cake\Network\Email\CakeEmail.php(1066): SmtpTransport->send(Object(CakeEmail))
+#3 C:\xampp\htdocs\jobsearch\Controller\UsersController.php(535): CakeEmail->send()
+#4 C:\xampp\htdocs\jobsearch\Controller\UsersController.php(96): UsersController->__correroaplicacionesen('Elia Xiomara Ce...', 'eliacamposg@gma...', '77290437', '20062643', 'Gerente financi...', '2', 'GDS', '20062643_392449...')
+#5 [internal function]: UsersController->applyajax('2')
+#6 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(486): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#8 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#9 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-06-23 17:20:35 Error: [SocketException] An attempt was made to access a socket in a way forbidden by its access permissions.
+
+Request URL: /jobsearch/Users/applyajax/2
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Network\Email\SmtpTransport.php(97): CakeSocket->connect()
+#1 C:\xampp\cakephp\lib\Cake\Network\Email\SmtpTransport.php(61): SmtpTransport->_connect()
+#2 C:\xampp\cakephp\lib\Cake\Network\Email\CakeEmail.php(1066): SmtpTransport->send(Object(CakeEmail))
+#3 C:\xampp\htdocs\jobsearch\Controller\UsersController.php(535): CakeEmail->send()
+#4 C:\xampp\htdocs\jobsearch\Controller\UsersController.php(96): UsersController->__correroaplicacionesen('Elia Xiomara Ce...', 'eliacamposg@gma...', '77290437', '20062643', 'Gerente financi...', '2', 'GDS', '20062643_318478...')
+#5 [internal function]: UsersController->applyajax('2')
+#6 C:\xampp\cakephp\lib\Cake\Controller\Controller.php(486): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#7 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#8 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#9 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2014-06-23 23:12:38 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/div2.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-25 18:57:17 Error: Fatal Error (4): syntax error, unexpected 'foreach' (T_FOREACH) in [C:\xampp\htdocs\jobsearch\View\Users\home.ctp, line 317]
+2014-06-25 18:57:17 Error: [FatalErrorException] syntax error, unexpected 'foreach' (T_FOREACH)
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(184): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 317)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 317, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(927): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 317, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(900): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-25 18:57:35 Error: Fatal Error (4): syntax error, unexpected 'foreach' (T_FOREACH) in [C:\xampp\htdocs\jobsearch\View\Users\home.ctp, line 317]
+2014-06-25 18:57:35 Error: [FatalErrorException] syntax error, unexpected 'foreach' (T_FOREACH)
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(184): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 317)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 317, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(927): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 317, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(900): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-25 18:58:43 Error: Fatal Error (4): syntax error, unexpected 'foreach' (T_FOREACH) in [C:\xampp\htdocs\jobsearch\View\Users\home.ctp, line 317]
+2014-06-25 18:58:43 Error: [FatalErrorException] syntax error, unexpected 'foreach' (T_FOREACH)
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(184): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 317)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 317, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(927): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 317, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(900): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-25 19:00:43 Error: Fatal Error (4): syntax error, unexpected 'foreach' (T_FOREACH) in [C:\xampp\htdocs\jobsearch\View\Users\home.ctp, line 317]
+2014-06-25 19:00:43 Error: [FatalErrorException] syntax error, unexpected 'foreach' (T_FOREACH)
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(184): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 317)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 317, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(927): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 317, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(900): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-25 19:01:28 Error: Fatal Error (4): syntax error, unexpected ';' in [C:\xampp\htdocs\jobsearch\View\Users\home.ctp, line 323]
+2014-06-25 19:01:28 Error: [FatalErrorException] syntax error, unexpected ';'
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(184): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 323)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 323, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(927): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 323, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(900): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-25 19:02:41 Error: Fatal Error (4): syntax error, unexpected 'foreach' (T_FOREACH) in [C:\xampp\htdocs\jobsearch\View\Users\home.ctp, line 317]
+2014-06-25 19:02:41 Error: [FatalErrorException] syntax error, unexpected 'foreach' (T_FOREACH)
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(184): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 317)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 317, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(927): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 317, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(900): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-25 19:03:34 Error: Fatal Error (4): syntax error, unexpected 'foreach' (T_FOREACH) in [C:\xampp\htdocs\jobsearch\View\Users\home.ctp, line 317]
+2014-06-25 19:03:34 Error: [FatalErrorException] syntax error, unexpected 'foreach' (T_FOREACH)
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(184): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 317)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 317, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(927): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 317, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(900): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-25 19:04:47 Error: Fatal Error (4): syntax error, unexpected 'foreach' (T_FOREACH) in [C:\xampp\htdocs\jobsearch\View\Users\home.ctp, line 317]
+2014-06-25 19:04:47 Error: [FatalErrorException] syntax error, unexpected 'foreach' (T_FOREACH)
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(184): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 317)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 317, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(927): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 317, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(900): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-25 19:15:31 Error: Fatal Error (4): syntax error, unexpected 'foreach' (T_FOREACH) in [C:\xampp\htdocs\jobsearch\View\Users\home.ctp, line 315]
+2014-06-25 19:15:31 Error: [FatalErrorException] syntax error, unexpected 'foreach' (T_FOREACH)
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(184): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 315)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 315, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(927): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 315, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(900): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-25 19:16:05 Error: Fatal Error (4): syntax error, unexpected 'foreach' (T_FOREACH) in [C:\xampp\htdocs\jobsearch\View\Users\home.ctp, line 315]
+2014-06-25 19:16:05 Error: [FatalErrorException] syntax error, unexpected 'foreach' (T_FOREACH)
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(184): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 315)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 315, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(927): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 315, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(900): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-25 19:16:32 Error: Fatal Error (4): syntax error, unexpected '$i' (T_VARIABLE), expecting while (T_WHILE) in [C:\xampp\htdocs\jobsearch\View\Users\home.ctp, line 319]
+2014-06-25 19:16:32 Error: [FatalErrorException] syntax error, unexpected '$i' (T_VARIABLE), expecting while (T_WHILE)
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(184): ErrorHandler::handleFatalError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 319)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', 'C:\xampp\htdocs...', 319, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(927): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', 'C:\xampp\htdocs...', 319, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(900): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-25 19:17:44 Error: Fatal Error (1): Maximum execution time of 30 seconds exceeded in [C:\xampp\cakephp\lib\Cake\Utility\Folder.php, line 281]
+2014-06-25 19:17:44 Error: [FatalErrorException] Maximum execution time of 30 seconds exceeded
+Request URL: /jobsearch/Inicio
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Error\ErrorHandler.php(184): ErrorHandler::handleFatalError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 281)
+#1 [internal function]: ErrorHandler::handleError(1, 'Maximum executi...', 'C:\xampp\cakeph...', 281, Array)
+#2 C:\xampp\cakephp\lib\Cake\Core\App.php(927): call_user_func('ErrorHandler::h...', 1, 'Maximum executi...', 'C:\xampp\cakeph...', 281, Array)
+#3 C:\xampp\cakephp\lib\Cake\Core\App.php(900): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-06-25 19:25:33 Error: [MissingActionException] Action UsersController::img() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'img',
+)
+Request URL: /jobsearch/users/img/favicon.ico
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-25 19:37:45 Error: [MissingActionException] Action UsersController::img() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'img',
+)
+Request URL: /jobsearch/users/img/favicon.ico
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-25 22:13:40 Error: [MissingActionException] Action UsersController::img() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'img',
+)
+Request URL: /jobsearch/users/img/favicon.ico
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-25 22:19:01 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/ie-spacer.gif
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-25 22:24:22 Error: [MissingActionException] Action UsersController::admin_login() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'admin_login',
+)
+Request URL: /jobsearch/admin/users/login
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-25 22:31:36 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Alimentos%20Pr%C3%A1cticos%2C%20S.A.%20de%20C.V..png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:12:08 Error: [MissingActionException] Action UsersController::img() could not be found.
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'img',
+)
+Request URL: /jobsearch/users/img/favicon.ico
+Stack Trace:
+#0 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(187): Controller->invokeAction(Object(CakeRequest))
+#1 C:\xampp\cakephp\lib\Cake\Routing\Dispatcher.php(162): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2014-06-26 00:16:28 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Agencia%20Alemana%20para%20la%20Cooperaci%C3%B3n%20Internacional.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:23:00 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Agencia%20Alemana%20para%20la%20Cooperaci%C3%B3n%20Internacional.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:25:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Agencia%20Alemana%20para%20la%20Cooperaci%C3%B3n%20Internacional.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:49:40 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Agencia%20Alemana%20para%20la%20Cooperaci%C3%B3n%20Internacional.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:49:41 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Agencia%20Alemana%20para%20la%20Cooperaci%C3%B3n%20Internacional.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:50:43 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Banco%20de%20Am%C3%A9rica%20Central.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:50:45 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Banco%20de%20Am%C3%A9rica%20Central.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:51:51 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Agencia%20Alemana%20para%20la%20Cooperaci%C3%B3n%20Internacional.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:51:52 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Agencia%20Alemana%20para%20la%20Cooperaci%C3%B3n%20Internacional.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:54:41 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Agencia%20Alemana%20para%20la%20Cooperaci%C3%B3n%20Internacional.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:55:27 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Banco%20de%20Am%C3%A9rica%20Central.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:56:01 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Banco%20de%20Am%C3%A9rica%20Central.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:56:01 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Alimentos%20Pr%C3%A1cticos%2C%20S.A.%20de%20C.V..png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:56:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Banco%20de%20Am%C3%A9rica%20Central.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:56:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Alimentos%20Pr%C3%A1cticos%2C%20S.A.%20de%20C.V..png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:56:34 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Agencia%20Alemana%20para%20la%20Cooperaci%C3%B3n%20Internacional.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:57:08 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Agencia%20Alemana%20para%20la%20Cooperaci%C3%B3n%20Internacional.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 00:57:08 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/companies/Banco%20de%20Am%C3%A9rica%20Central.png
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2014-06-26 01:05:59 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /jobsearch/img/ie-spacer.gif
+Stack Trace:
+#0 C:\xampp\htdocs\jobsearch\webroot\index.php(109): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

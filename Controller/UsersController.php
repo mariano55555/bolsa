@@ -1,4 +1,6 @@
 <?php
+App::uses('Folder', 'Utility');
+App::uses('File', 'Utility');
 App::uses('AppController', 'Controller');
 /**
  * Users Controller
@@ -266,8 +268,10 @@ public function admin_dashboard()
  */
 public function home()
 {
+	$paises = array();
 	$this->loadModel("Job");
 	$this->loadModel("Country");
+	$this->loadModel("Company");
 	$latest = $this->Job->find("all", array(
 						'conditions' => array('Job.active' => 1), //array of conditions
 						'order'      => array('Job.created DESC'),
@@ -311,8 +315,16 @@ public function home()
 			$paises[$a]['cantidad'] = $contador;
 			$a++;
 	}
-	$parte =  array_chunk($paises, ceil(count($paises) / 2));
+	$parte = array();
+	if (count($paises) > 0) {
+		$parte =  array_chunk($paises, ceil(count($paises) / 2));
+	}
+	$empresas = $this->Company->find('list', array('fields' => array('id', 'name'),'order' => 'RAND()','limit' => 24));
+	$this->set('empresas', $empresas);
 	$this->set(compact('latest', 'all', 'paises', 'parte'));
+
+
+
 }
 
 /**

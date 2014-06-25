@@ -21,6 +21,8 @@ public function index($filter = NULL)
 	$this->set(compact('companies'));
 }
 
+
+
 /**
  * view method
  *
@@ -29,6 +31,8 @@ public function index($filter = NULL)
  * @return void
  */
 public function view($id = null) {
+		$name = $this->Company->field("name", array('Company.id' => $id));
+		$this->set('title_for_layout', 'Empresa: '.$name);
 		$company = $this->__findCompany($id);
 		$this->set(compact('company'));
 }
